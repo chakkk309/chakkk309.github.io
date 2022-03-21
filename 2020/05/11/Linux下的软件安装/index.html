@@ -16,77 +16,75 @@
   <meta name="author" content="Chakkk">
   <meta name="keywords" content="">
   
-    <meta name="description" content="环境与文件准备 虚拟机软件: VMware 15.5.1  镜像文件: CentOS-7-x86_64-DVD-1908.iso   终端软件: SecureCRT  JDK: 1.8.0_144          Tomcat: 8.5.53   MySQL: 5.7.29   VMware下安装CentOS 7.7 安装后启动VMware，点击左上角文件 -&gt; 新建虚拟机     选择[">
-<meta property="og:type" content="article">
+    <meta property="og:type" content="article">
 <meta property="og:title" content="Linux下的软件安装">
-<meta property="og:url" content="http://example.com/2020/05/11/Linux%E4%B8%8B%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="环境与文件准备 虚拟机软件: VMware 15.5.1  镜像文件: CentOS-7-x86_64-DVD-1908.iso   终端软件: SecureCRT  JDK: 1.8.0_144          Tomcat: 8.5.53   MySQL: 5.7.29   VMware下安装CentOS 7.7 安装后启动VMware，点击左上角文件 -&gt; 新建虚拟机     选择[">
+<meta property="og:url" content="https://chakkk309.github.io/2020/05/11/Linux%E4%B8%8B%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/index.html">
+<meta property="og:site_name" content="Chakkk">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/new.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/1.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/2.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/3.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/4.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/5.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/6.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/7.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/8.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/9.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/10.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/11.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/12.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/13.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/14.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/15.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/16.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/17.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/19.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/21.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/22.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/23.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/25.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/26.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/27.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/28.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/29.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/31.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/32.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/33.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/success.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/s1.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/s2.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/s4.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/s3.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/s5.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/s6.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/s7.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/s8.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/s9.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/s10.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/s11.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/s12.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/s13.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/s14.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/success.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/rz.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/java_version.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/access_success.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/manager.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/m1.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/m2.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/m3.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/m4.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/m5.png">
-<meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/m6.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/new.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/1.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/2.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/3.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/4.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/5.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/6.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/7.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/8.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/9.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/10.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/11.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/12.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/13.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/14.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/15.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/16.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/17.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/19.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/21.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/22.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/23.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/25.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/26.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/27.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/28.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/29.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/31.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/32.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/33.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/success.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/s1.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/s2.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/s4.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/s3.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/s5.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/s6.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/s7.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/s8.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/s9.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/s10.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/s11.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/s12.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/s13.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/s14.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/success.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/rz.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/java_version.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/access_success.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/manager.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/m1.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/m2.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/m3.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/m4.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/m5.png">
+<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/m6.png">
 <meta property="article:published_time" content="2020-05-11T10:46:06.000Z">
-<meta property="article:modified_time" content="2022-02-11T14:36:19.944Z">
+<meta property="article:modified_time" content="2022-03-14T14:11:56.259Z">
 <meta property="article:author" content="Chakkk">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/new.png">
+<meta name="twitter:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/new.png">
   
   
-  <title>Linux下的软件安装 - Hexo</title>
+  <title>Linux下的软件安装 - Chakkk</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -123,11 +121,11 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":false,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"chakkk309.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":":)","loop":false},"anchorjs":{"enable":false,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 6.0.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+<meta name="generator" content="Hexo 6.0.0"><link rel="alternate" href="/atom.xml" title="Chakkk" type="application/atom+xml">
 </head>
 
 
@@ -154,45 +152,9 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                Home
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 Archives
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                Categories
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                Tags
               </a>
             </li>
           
@@ -263,14 +225,6 @@
 
   
   
-    
-      <!-- 不蒜子统计文章PV -->
-      <span id="busuanzi_container_page_pv" style="display: none">
-        <i class="iconfont icon-eye" aria-hidden="true"></i>
-        <span id="busuanzi_value_page_pv"></span> 次
-      </span>
-    
-  
 </div>
 
             
@@ -297,7 +251,7 @@
             <h1 style="display: none">Linux下的软件安装</h1>
             
             <div class="markdown-body">
-              <h3 id="环境与文件准备"><a href="#环境与文件准备" class="headerlink" title="环境与文件准备"></a>环境与文件准备</h3><ul>
+              <h3 id=""><a href="#" class="headerlink" title=""></a><span id="more"></span></h3><h3 id="环境与文件准备"><a href="#环境与文件准备" class="headerlink" title="环境与文件准备"></a>环境与文件准备</h3><ul>
 <li><p>虚拟机软件: VMware 15.5.1</p>
 </li>
 <li><p>镜像文件: <a target="_blank" rel="noopener" href="http://isoredirect.centos.org/centos/7.7.1908/isos/x86_64/">CentOS-7-x86_64-DVD-1908.iso</a> </p>
@@ -314,174 +268,174 @@
 <h3 id="VMware下安装CentOS-7-7"><a href="#VMware下安装CentOS-7-7" class="headerlink" title="VMware下安装CentOS 7.7"></a>VMware下安装CentOS 7.7</h3><ol>
 <li>安装后启动VMware，点击左上角文件 -&gt; 新建虚拟机</li>
 </ol>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/new.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/new.png" srcset="/img/loading.gif" lazyload> </p>
 <ol start="2">
 <li>选择[自定义]</li>
 </ol>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/1.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/1.png" srcset="/img/loading.gif" lazyload> </p>
 <ol start="3">
 <li>根据Workstation版本进行选择</li>
 </ol>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/2.png" srcset="/img/loading.gif" lazyload>   </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/2.png" srcset="/img/loading.gif" lazyload>   </p>
 <p>4.[稍后安装操作系统]</p>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/3.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/3.png" srcset="/img/loading.gif" lazyload> </p>
 <ol start="5">
 <li>选择Linux操作系统，版本为CentOS 7 64位</li>
 </ol>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/4.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/4.png" srcset="/img/loading.gif" lazyload> </p>
 <ol start="6">
 <li>填写虚拟机名称和路径</li>
 </ol>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/5.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/5.png" srcset="/img/loading.gif" lazyload> </p>
 <ol start="7">
 <li>设置处理器数量为2，每个1核</li>
 </ol>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/6.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/6.png" srcset="/img/loading.gif" lazyload> </p>
 <ol start="8">
 <li>设置虚拟机内存</li>
 </ol>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/7.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/7.png" srcset="/img/loading.gif" lazyload> </p>
 <ol start="9">
 <li>设置网络连接 -&gt; 使用桥接网络</li>
 </ol>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/8.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/8.png" srcset="/img/loading.gif" lazyload> </p>
 <ol start="10">
 <li>选择I&#x2F;O控制器和磁盘类型 ，默认推荐类型即可</li>
 </ol>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/9.png" srcset="/img/loading.gif" lazyload> </p>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/10.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/9.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/10.png" srcset="/img/loading.gif" lazyload> </p>
 <ol start="11">
 <li>选择创建新的虚拟磁盘</li>
 </ol>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/11.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/11.png" srcset="/img/loading.gif" lazyload> </p>
 <ol start="12">
 <li>选择磁盘容量，这里默认20G</li>
 </ol>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/12.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/12.png" srcset="/img/loading.gif" lazyload> </p>
 <ol start="13">
 <li>虚拟机命名</li>
 </ol>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/13.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/13.png" srcset="/img/loading.gif" lazyload> </p>
 <ol start="14">
 <li>到此基本参数已经设置完毕</li>
 </ol>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/14.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/14.png" srcset="/img/loading.gif" lazyload> </p>
 <ol start="15">
 <li>退出页面，选择编辑虚拟机设置</li>
 </ol>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/15.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/16.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/15.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/16.png" srcset="/img/loading.gif" lazyload> </p>
 <ol start="17">
 <li>选择CD&#x2F;DVD选项，右边选择连接 -&gt; 使用ISO映像文件（找到之前下载好的文件）</li>
 </ol>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/17.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/17.png" srcset="/img/loading.gif" lazyload> </p>
 <ol start="18">
 <li><p>启动安装虚拟机了</p>
 <p>鼠标点进工作区，使用上下键进行控制，选择第一项Install CentOS 7，按照提示静待安装</p>
 </li>
 </ol>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/19.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/19.png" srcset="/img/loading.gif" lazyload> </p>
 <ol start="19">
 <li>选择语言：简体中文</li>
 </ol>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/21.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/21.png" srcset="/img/loading.gif" lazyload> </p>
 <ol start="20">
 <li>首先点进[网络和主机名]，右上角开启网络</li>
 </ol>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/22.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/22.png" srcset="/img/loading.gif" lazyload> </p>
 <ol start="21">
 <li>进入[日期&amp;时间]，关闭再重新开启，进行时间同步</li>
 </ol>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/23.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/23.png" srcset="/img/loading.gif" lazyload> </p>
 <ol start="22">
 <li>进入[设备选择]，我要配置分区-&gt;选中本地标准磁盘，并添加</li>
 </ol>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/25.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/25.png" srcset="/img/loading.gif" lazyload> </p>
 <ol start="23">
 <li>点击左下角加号添加分区</li>
 </ol>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/26.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/26.png" srcset="/img/loading.gif" lazyload> </p>
 <ol start="24">
 <li>添加一个挂载点[swap]，期望容量[1024 MB]</li>
 </ol>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/27.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/27.png" srcset="/img/loading.gif" lazyload> </p>
 <ol start="25">
 <li>同样添加挂载点[&#x2F;boot]，容量[1024 MB]</li>
 </ol>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/28.png" srcset="/img/loading.gif" lazyload>  </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/28.png" srcset="/img/loading.gif" lazyload>  </p>
 <ol start="26">
 <li>剩下空间全部分配给[&#x2F;]</li>
 </ol>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/29.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/29.png" srcset="/img/loading.gif" lazyload> </p>
 <ol start="27">
 <li><p>文件系统可以默认，<code>swap-&gt;swap,/root-&gt;xfx</code></p>
 </li>
 <li><p>选择[接受更改]</p>
 </li>
 </ol>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/31.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/31.png" srcset="/img/loading.gif" lazyload> </p>
 <ol start="29">
 <li>设置root用户的密码</li>
 </ol>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/32.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/32.png" srcset="/img/loading.gif" lazyload> </p>
 <ol start="30">
 <li>设置ROOT好密码之后自动就开始安装了</li>
 </ol>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/33.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/33.png" srcset="/img/loading.gif" lazyload> </p>
 <ol start="31">
 <li>安装后输入用户名（root）和密码，成功进入虚拟机</li>
 </ol>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/success.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/success.png" srcset="/img/loading.gif" lazyload> </p>
 <p>​    </p>
 <h3 id="使用SecureCRT连接虚拟机"><a href="#使用SecureCRT连接虚拟机" class="headerlink" title="使用SecureCRT连接虚拟机"></a>使用SecureCRT连接虚拟机</h3><ol>
 <li>点击左边菜单栏session manager-&gt;new session</li>
 </ol>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/s1.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/s1.png" srcset="/img/loading.gif" lazyload> </p>
 <ol start="2">
 <li>协议默认为SSH2</li>
 </ol>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/s2.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/s2.png" srcset="/img/loading.gif" lazyload> </p>
 <ol start="3">
 <li>虚拟机上输入<code>ip addr</code> 查看其ip地址，填入hostname中</li>
 </ol>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/s4.png" srcset="/img/loading.gif" lazyload> </p>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/s3.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/s4.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/s3.png" srcset="/img/loading.gif" lazyload> </p>
 <ol start="4">
 <li>虚拟机名称</li>
 </ol>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/s5.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/s5.png" srcset="/img/loading.gif" lazyload> </p>
 <ol start="5">
 <li>一个新的session建立成功</li>
 </ol>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/s6.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/s6.png" srcset="/img/loading.gif" lazyload> </p>
 <ol start="6">
 <li>右键 -&gt; 虚拟机名称 -&gt; connect terminal 建立连接</li>
 </ol>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/s7.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/s7.png" srcset="/img/loading.gif" lazyload> </p>
 <ol start="7">
 <li>选择 Accept&amp;save</li>
 </ol>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/s8.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/s8.png" srcset="/img/loading.gif" lazyload> </p>
 <ol start="8">
 <li>输入用户名（默认设置的root账号），填写密码</li>
 </ol>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/s9.png" srcset="/img/loading.gif" lazyload> </p>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/s10.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/s9.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/s10.png" srcset="/img/loading.gif" lazyload> </p>
 <ol start="9">
 <li>登录成功</li>
 </ol>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/s11.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/s11.png" srcset="/img/loading.gif" lazyload> </p>
 <ol start="10">
 <li>设置显示格式</li>
 </ol>
 <p>   菜单栏 options -&gt; Session Options </p>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/s12.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/s12.png" srcset="/img/loading.gif" lazyload> </p>
 <p>   Emulation -&gt; 勾选右侧ANSI color </p>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/s13.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/s13.png" srcset="/img/loading.gif" lazyload> </p>
 <p>   Appearance -&gt; 设置Character encoding -&gt; UTF-8</p>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/s14.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/s14.png" srcset="/img/loading.gif" lazyload> </p>
 <p>   此时看到页面颜色已经改变，可以正常进行操作了</p>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/success.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/success.png" srcset="/img/loading.gif" lazyload> </p>
 <h3 id="Linux下安装配置JDK"><a href="#Linux下安装配置JDK" class="headerlink" title="Linux下安装配置JDK"></a>Linux下安装配置JDK</h3><ol>
 <li><p>首先使用yum安装插件，然后就可以正常使用rz、sz命令上传、下载数据了</p>
 <div class="code-wrapper"><pre><code class="hljs shell">yum -y install lrzsz</code></pre></div>
@@ -489,7 +443,7 @@
 <li><p>选择从桌面上传文件，选择下载好的JDK压缩包 -&gt; Add -&gt; Ok</p>
 <div class="code-wrapper"><pre><code class="hljs shell">rz</code></pre></div></li>
 </ol>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/rz.png" srcset="/img/loading.gif" lazyload>    </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/rz.png" srcset="/img/loading.gif" lazyload>    </p>
 <ol start="3">
 <li><p>解压</p>
 <div class="code-wrapper"><pre><code class="hljs shell">tar -zxvf jdk-8u144-linux-x64.tar.gz</code></pre></div>
@@ -507,7 +461,7 @@
 <div class="code-wrapper"><pre><code class="hljs shell">java -version</code></pre></div>
 </li>
 <li><p>JDK配置成功</p>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/java_version.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/java_version.png" srcset="/img/loading.gif" lazyload></p>
 </li>
 </ol>
 <p>​     </p>
@@ -539,9 +493,9 @@ vi context.xml</code></pre></div>
 <li><p>浏览器访问<code>http://自己的ip:8080/</code></p>
 </li>
 </ol>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/access_success.png" srcset="/img/loading.gif" lazyload>    </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/access_success.png" srcset="/img/loading.gif" lazyload>    </p>
 <p>   点击Manager App，输入<code>root/root</code>，显示页面则登录成功</p>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/manager.png" srcset="/img/loading.gif" lazyload>    </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/manager.png" srcset="/img/loading.gif" lazyload>    </p>
 <p><strong>注：需要关闭防火墙并且设置再次开机默认为不启动</strong></p>
 <div class="code-wrapper"><pre><code class="hljs shell">systemctl stop firewalld.service
 systemctl disable firewalld.service</code></pre></div>
@@ -587,13 +541,13 @@ mkdir data</code></pre></div>
 <p>复制，选择进行覆盖</p>
 <div class="code-wrapper"><pre><code class="hljs shell">cp support-files/my_default.cnf /etc/my.cnf</code></pre></div></li>
 </ol>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/m1.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/m1.png" srcset="/img/loading.gif" lazyload> </p>
 <ol start="5">
 <li><p>初始化 MySQL，<strong>注意记住初始密码！</strong> </p>
 <div class="code-wrapper"><pre><code class="hljs shell">cd /usr/local/mysql-5.7.29
 ./bin/mysqld --initialize --user=mysql --   basedir=/usr/local/mysql-5.7.29/ --datadir=/usr/local/mysql-   5.7.29/data/</code></pre></div>
 
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/m2.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/m2.png" srcset="/img/loading.gif" lazyload> </p>
 </li>
 <li><p>把启动脚本放到开机初始化目录</p>
 <div class="code-wrapper"><pre><code class="hljs shell">cp support-files/mysql.server /etc/init.d/mysql</code></pre></div>
@@ -601,12 +555,12 @@ mkdir data</code></pre></div>
 <li><p>exit后，启动MySQL服务</p>
 <div class="code-wrapper"><pre><code class="hljs shell">service mysql start</code></pre></div>
 
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/m3.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/m3.png" srcset="/img/loading.gif" lazyload> </p>
 <p>登录MySQL，密码为初始密码</p>
 <div class="code-wrapper"><pre><code class="hljs shell">cd /usr/local/mysql-5.7.29
 ./bin/mysql -u root -p</code></pre></div>
 
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/m4.png" srcset="/img/loading.gif" lazyload>  </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/m4.png" srcset="/img/loading.gif" lazyload>  </p>
 </li>
 <li><p>修改密码</p>
 <div class="code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">mysql&gt; </span><span class="language-bash"><span class="hljs-built_in">set</span> password=password(<span class="hljs-string">&#x27;root&#x27;</span>);</span>
@@ -619,12 +573,12 @@ mkdir data</code></pre></div>
 <span class="hljs-meta">mysql&gt; </span><span class="language-bash">flush privileges;</span></code></pre></div>
 
 <p>授权root用户时会出现一个错误，可以忽略继续进行</p>
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/m5.png" srcset="/img/loading.gif" lazyload>  </p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/m5.png" srcset="/img/loading.gif" lazyload>  </p>
 </li>
 <li><p>重启MySQL</p>
 <div class="code-wrapper"><pre><code class="hljs shell">service mysql restart</code></pre></div>
 
-<p><img src="http://r756b90r8.hb-bkt.clouddn.com/Linux%20configration/m6.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Linux%20configration/m6.png" srcset="/img/loading.gif" lazyload></p>
 </li>
 </ol>
 <p>​      至此MySQL安装成功</p>
@@ -639,7 +593,7 @@ mkdir data</code></pre></div>
               
                 <p class="note note-warning">
                   
-                    This blog articles in addition to the special statement, are all using the <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 protocol </a> ，reprint please indicate the source！
+                    This blog articles in addition to the special statement, are all using the <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 protocol</a>, reprint please indicate the source!
                   
                 </p>
               
@@ -760,8 +714,6 @@ mkdir data</code></pre></div>
   
 
 
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 
