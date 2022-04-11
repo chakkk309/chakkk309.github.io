@@ -23,12 +23,12 @@
 <meta property="og:site_name" content="Chakkk">
 <meta property="og:description" content="网络安全是一个很大的领域，自己很多时候只是在服务器上单纯地跑跑程序，并没有对恶劣的网络环境有所察觉。虽然被入侵后只要将旧系统删除并且重装后，服务器主机就能够恢复正常。但是为避免本人隔三差五地重装系统与备份，还是很有必要了解一下主机的简易安全防护措施。 此次被攻击方式是hacker利用系统的程序漏洞主动攻击，如果主机开放了某个网络服务，就必须要启动某个网络软件，由于撰写方式等可能会产生安全问题。当问">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Backup/image_1624176187521.png">
+<meta property="og:image" content="http://ra6pr5q25.hb-bkt.clouddn.com/Backup/image_1624176187521.png">
 <meta property="article:published_time" content="2021-06-09T14:49:00.000Z">
-<meta property="article:modified_time" content="2022-03-21T13:40:57.687Z">
+<meta property="article:modified_time" content="2022-04-11T17:05:34.516Z">
 <meta property="article:author" content="Chakkk">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://r8kumn9ak.hb-bkt.clouddn.com/Backup/image_1624176187521.png">
+<meta name="twitter:image" content="http://ra6pr5q25.hb-bkt.clouddn.com/Backup/image_1624176187521.png">
   
   
   <title>记一次服务器被入侵后的问题分析与数据备份 - Chakkk</title>
@@ -287,7 +287,7 @@ docker pull halohub/halo:1.4.8
 <span class="hljs-meta"># </span><span class="language-bash">创建容器并运行</span>
 docker run -it -d --name halo -p 8090:8090 -v ~/.halo:/root/.halo --restart=always halohub/halo:1.4.8</code></pre></div>
 
-<h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><p>Q1：使用sz命令无法下载文件夹到本地，该工具只能上传或者下载单个或多个文件，无法对文件夹进行操作。<br>A1：答应我打个包好吗！<br>Q2：使用SecureCRT连接服务器出现如下错误<br><img src="http://r8kumn9ak.hb-bkt.clouddn.com/Backup/image_1624176187521.png" srcset="/img/loading.gif" lazyload alt="image.png"> </p>
+<h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><p>Q1：使用sz命令无法下载文件夹到本地，该工具只能上传或者下载单个或多个文件，无法对文件夹进行操作。<br>A1：答应我打个包好吗！<br>Q2：使用SecureCRT连接服务器出现如下错误<br><img src="http://ra6pr5q25.hb-bkt.clouddn.com/Backup/image_1624176187521.png" srcset="/img/loading.gif" lazyload alt="image.png"> </p>
 <p>A2：在session option里修改user为当前用户即可。<br>Q3：如果无法进行pull操作，出现错误<code>Get https://registry-1.docker.io/v2/: net/http: request canceled</code><br>A3：需要重新设置镜像源，步骤如下：</p>
 <div class="code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta"># </span><span class="language-bash">编辑daemon.json文件</span>
 vim /etc/docker/daemon.json
