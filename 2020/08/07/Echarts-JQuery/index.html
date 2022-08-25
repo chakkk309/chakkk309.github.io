@@ -1,0 +1,653 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/chakkk.jpg">
+  <link rel="icon" href="/img/chakkk.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Jiaqi">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="ECharts开源来自百度商业前端数据可视化团队，基于html5 Canvas，是一个纯Javascript图表库，提供直观，生动，可交互，可个性化定制的数据可视化图表。以官网的一个条形图 为例，记录一下echarts的摸索过程。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Echarts+JQuery">
+<meta property="og:url" content="https://chakkk309.github.io/2020/08/07/Echarts-JQuery/index.html">
+<meta property="og:site_name" content="Chakkk">
+<meta property="og:description" content="ECharts开源来自百度商业前端数据可视化团队，基于html5 Canvas，是一个纯Javascript图表库，提供直观，生动，可交互，可个性化定制的数据可视化图表。以官网的一个条形图 为例，记录一下echarts的摸索过程。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-08-07T12:42:33.309Z">
+<meta property="article:modified_time" content="2021-07-03T05:40:59.609Z">
+<meta property="article:author" content="Jiaqi">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Echarts+JQuery - Chakkk</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"chakkk309.github.io","root":"/","version":"1.9.2","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Chakkk</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/ta.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">Echarts+JQuery</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2020-08-07 20:42" pubdate>
+          August 7, 2020 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.5k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          15 mins
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> views
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Echarts+JQuery</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>ECharts开源来自百度商业前端数据可视化团队，基于html5
+Canvas，是一个纯Javascript图表库，提供直观，生动，可交互，可个性化定制的数据可视化图表。以官网的一个<a
+target="_blank" rel="noopener" href="https://echarts.apache.org/examples/zh/editor.html?c=bar-background">条形图</a>
+为例，记录一下echarts的摸索过程。</p>
+<span id="more"></span>
+<p><strong>jsp文件中引入echarts.js</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p><strong>添加按钮链接后续被调用的函数</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-primary btn-sm&quot;</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;getBarEchart();&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ace-icon fa fa-plus bigger-110&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>柱状图<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p><strong>为图表准备一个Dom用于存储柱状图</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;container-bar&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 600px;height:400px;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p><strong>编写生成柱状图的函数。</strong>
+其中关于option的配置，从官网查找想选择的图表将其样式复制到项目中即可。<code>data</code>可写静态数据，但大多数时候需要从需要从后台获取动态更新，这里使用的是JQuery的ajax()方法异步加载数据。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">getBarEchart</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-comment">// 获得对象的引用</span><br>    <span class="hljs-keyword">var</span> dom = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;container-bar&quot;</span>);<br>    <span class="hljs-comment">// 初始化echarts实例</span><br>    <span class="hljs-keyword">var</span> myChart = echarts.<span class="hljs-title function_">init</span>(dom);<br>    <span class="hljs-comment">// 图表配置</span><br>    <span class="hljs-keyword">var</span> option = &#123;<br>        xAxis : &#123;<br>            type : <span class="hljs-string">&#x27;category&#x27;</span>,<br>            <span class="hljs-comment">// data: [&#x27;Mon&#x27;, &#x27;Tue&#x27;, &#x27;Wed&#x27;, &#x27;Thu&#x27;, &#x27;Fri&#x27;, &#x27;Sat&#x27;, &#x27;Sun&#x27;]</span><br>            data : <span class="hljs-title function_">jsonAge</span>()<br>        &#125;,<br>        yAxis : &#123;<br>            type : <span class="hljs-string">&#x27;value&#x27;</span>,<br>            minInterval : <span class="hljs-number">1</span><br>        &#125;,<br>        series : [ &#123;<br>            <span class="hljs-comment">// data: [120, 200, 150, 80, 70, 110, 130],</span><br>            data : <span class="hljs-title function_">jsonCount</span>(),<br>            type : <span class="hljs-string">&#x27;bar&#x27;</span>,<br>            showBackground : <span class="hljs-literal">true</span>,<br>            backgroundStyle : &#123;<br>                color : <span class="hljs-string">&#x27;rgba(220, 220, 220, 0.8)&#x27;</span><br>            &#125;<br>        &#125; ]<br>    &#125;;<br>    <br>    <span class="hljs-keyword">if</span> (option &amp;&amp; <span class="hljs-keyword">typeof</span> option === <span class="hljs-string">&quot;object&quot;</span>) &#123;<br>        <span class="hljs-comment">// 使用刚指定的配置项和数据渲染生成</span><br>        myChart.<span class="hljs-title function_">setOption</span>(option, <span class="hljs-literal">true</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>官网效果：</p>
+<figure>
+<img
+src="http://ra6pr5q25.hb-bkt.clouddn.com/Echarts%20JQuery/image-e75f270553df41959146e2ce0d425da8.png" srcset="/img/loading.gif" lazyload
+alt="image.png" />
+<figcaption aria-hidden="true">image.png</figcaption>
+</figure>
+<p>ECharts参数有很多，根据所需进行相应的配置即可。记录遇到的小问题：</p>
+<ul>
+<li>饼图的颜色变成灰色</li>
+<li>柱状图图表的横坐标不解析（json没有进行解析）</li>
+<li>纵坐标的最小单位的设置，配置<code>minInterval</code>参数即可</li>
+</ul>
+<p><br/></p>
+<blockquote>
+<p>例：查询某站点用户年龄分布，动态生成柱状图。</p>
+</blockquote>
+<p><strong>页面：ajax请求(Asynchronous JavaScript and XML)</strong></p>
+<p>异步操作：通常指那些发生在幕后的，不会中断进程的操作。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">jsonAge</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">var</span> result = <span class="hljs-string">&#x27;&#x27;</span>;<br>    <span class="hljs-keyword">var</span> url = basePath + <span class="hljs-string">&quot;fra-test/Test.jsonAge.html&quot;</span>;<br>    <span class="hljs-keyword">var</span> params = <span class="hljs-literal">null</span>;<br>    $.<span class="hljs-title function_">ajax</span>(&#123;<br>        <span class="hljs-string">&quot;url&quot;</span> : url,<br>        <span class="hljs-string">&quot;data&quot;</span> : params,<br>        <span class="hljs-string">&quot;type&quot;</span> : <span class="hljs-string">&quot;post&quot;</span>,<br>        <span class="hljs-string">&quot;async&quot;</span> : <span class="hljs-literal">false</span>,<br>        <span class="hljs-string">&quot;datatype&quot;</span> : <span class="hljs-string">&quot;json&quot;</span>,<br>        <span class="hljs-string">&quot;success&quot;</span> : <span class="hljs-keyword">function</span>(<span class="hljs-params">json</span>) &#123;<br>            <span class="hljs-keyword">var</span> obj = <span class="hljs-built_in">eval</span>(<span class="hljs-string">&quot;(&quot;</span> + json + <span class="hljs-string">&quot;)&quot;</span>);<br>            result = obj;<br>        &#125;<br>    &#125;);<br>    <span class="hljs-keyword">return</span> result;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>参数一览：</p>
+<table>
+
+<thead>
+<tr class="header">
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>url</td>
+<td>规定发送请求的 URL，默认是当前页面</td>
+</tr>
+<tr class="even">
+<td>data</td>
+<td>规定要发送到服务器的数据</td>
+</tr>
+<tr class="odd">
+<td>type</td>
+<td>规定请求的类型（GET 或 POST）</td>
+</tr>
+<tr class="even">
+<td>async</td>
+<td>布尔值，表示请求是否异步处理。默认是 true</td>
+</tr>
+<tr class="odd">
+<td>dataType</td>
+<td>预期的服务器响应的数据类型</td>
+</tr>
+<tr class="even">
+<td>success(result,status,xhr)</td>
+<td>当请求成功时运行的函数</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Action：JSON的构建</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> String <span class="hljs-title function_">jsonAge</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>    List&lt;?&gt; list = <span class="hljs-built_in">this</span>.testBiz.getAge();<br>    <span class="hljs-type">JSONArray</span> <span class="hljs-variable">jsonAge</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">JSONArray</span>();<br>    <span class="hljs-keyword">for</span> (Object o : list) &#123;<br>        jsonAge.add(o + <span class="hljs-string">&quot;岁&quot;</span>);<br>    &#125;<br>    <span class="hljs-built_in">super</span>.genReMessage(jsonAge.toString());<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;json&quot;</span>;<br>&#125;<br><br><span class="hljs-keyword">public</span> String <span class="hljs-title function_">jsonCount</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>    List&lt;?&gt; list = <span class="hljs-built_in">this</span>.testBiz.selectAge();<br>    <span class="hljs-type">JSONArray</span> <span class="hljs-variable">jsonCount</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">JSONArray</span>();<br>    <span class="hljs-keyword">for</span> (Object o : list) &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">value</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">if</span> (o <span class="hljs-keyword">instanceof</span> Integer) &#123;<br>            value = (Integer) o;<br>        &#125;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">this</span>.testdao.countAge(value);<br>        jsonCount.add(count);<br>    &#125;<br>    <span class="hljs-built_in">super</span>.genReMessage(jsonCount.toString());<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;json&quot;</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><strong>dao层：sql查询返回list</strong></p>
+<p>无论使用的是什么框架，只有理解了数据的来源和去处、也就是参数传递的流程，才真正能让其为我们所用。</p>
+<p>[补充] <strong>跨站脚本攻击（XSS）</strong></p>
+<p>使用JSON时常见的安全漏洞，通常发生在js从服务器获取到一段JSON字符串并将其转化为js对象时。如果想要对代表对象的文本进行操作，首先要将其转换为对象并且装入内存中。</p>
+<p>例：使用<strong>eval()</strong> 函数来将对象放入内存</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> jsonString=<span class="hljs-string">&#x27;&#123;&quot;animals&quot;:&quot;cat&quot;&#125;&#x27;</span>;<br><span class="hljs-keyword">var</span> myObject=<span class="hljs-built_in">eval</span>(<span class="hljs-string">&quot;(&quot;</span>+jsonString+<span class="hljs-string">&quot;)&quot;</span>);<br><span class="hljs-title function_">alert</span>(myObject.<span class="hljs-property">animals</span>);<br></code></pre></td></tr></table></figure>
+<p>但是eval（）函数会将传入的字符无差别地编译执行，如果从第三方服务器中获取的JSON数据被替换成为恶意代码，那么我们的站点就会无辜蒙冤在访问者的浏览器中编译执行的代码。
+<strong>JSON.parse()</strong>
+便应运而生，该函数仅会解析JSON，不会执行脚本，更加安全可靠。</p>
+<p>例：使用JSON.parse()代替eval（)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> jsonString=<span class="hljs-string">&#x27;&#123;&quot;animals&quot;:&quot;cat&quot;&#125;&#x27;</span>;<br><span class="hljs-keyword">var</span> myObject=<span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(jsonString);<br><span class="hljs-title function_">alert</span>(myObject.<span class="hljs-property">animals</span>);<br></code></pre></td></tr></table></figure>
+<p><br/></p>
+<blockquote>
+<p>辅助工具：Google Chrome插件JSONView</p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Echarts+JQuery</div>
+      <div>https://chakkk309.github.io/2020/08/07/Echarts-JQuery/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Jiaqi</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>August 7, 2020</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/04/24/websocket/" title="websocket">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">websocket</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/07/29/MyEcplise2015%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%EF%BC%88jdk-tomcat%EF%BC%89/" title="MyEcplise2015环境配置（JDK+Tomcat）">
+                        <span class="hidden-mobile">MyEcplise2015环境配置（JDK+Tomcat）</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.1/es5/tex-mml-chtml.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

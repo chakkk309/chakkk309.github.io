@@ -1,0 +1,649 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/chakkk.jpg">
+  <link rel="icon" href="/img/chakkk.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Jiaqi">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="网络安全是一个很大的领域，自己很多时候只是在服务器上单纯地跑跑程序，并没有对恶劣的网络环境有所察觉。虽然被入侵后只要将旧系统删除并且重装后，服务器主机就能够恢复正常。但是为避免本人隔三差五地重装系统与备份，还是很有必要了解一下主机的简易安全防护措施。 此次被攻击方式是hacker利用系统的程序漏洞主动攻击，如果主机开放了某个网络服务，就必须要启动某个网络软件，由于撰写方式等可能会产生安全问题。当问">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记一次服务器被入侵后的问题分析与数据备份">
+<meta property="og:url" content="https://chakkk309.github.io/2021/06/09/Backup/index.html">
+<meta property="og:site_name" content="Chakkk">
+<meta property="og:description" content="网络安全是一个很大的领域，自己很多时候只是在服务器上单纯地跑跑程序，并没有对恶劣的网络环境有所察觉。虽然被入侵后只要将旧系统删除并且重装后，服务器主机就能够恢复正常。但是为避免本人隔三差五地重装系统与备份，还是很有必要了解一下主机的简易安全防护措施。 此次被攻击方式是hacker利用系统的程序漏洞主动攻击，如果主机开放了某个网络服务，就必须要启动某个网络软件，由于撰写方式等可能会产生安全问题。当问">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-06-09T14:49:00.000Z">
+<meta property="article:modified_time" content="2022-04-11T17:05:36.000Z">
+<meta property="article:author" content="Jiaqi">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>记一次服务器被入侵后的问题分析与数据备份 - Chakkk</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"chakkk309.github.io","root":"/","version":"1.9.2","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Chakkk</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/ta.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">记一次服务器被入侵后的问题分析与数据备份</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-06-09 22:49" pubdate>
+          June 9, 2021 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.2k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          10 mins
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> views
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">记一次服务器被入侵后的问题分析与数据备份</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>网络安全是一个很大的领域，自己很多时候只是在服务器上单纯地跑跑程序，并没有对恶劣的网络环境有所察觉。虽然被入侵后只要将旧系统删除并且重装后，服务器主机就能够恢复正常。但是为避免本人隔三差五地重装系统与备份，还是很有必要了解一下主机的简易安全防护措施。</p>
+<p>此次被攻击方式是hacker利用系统的程序漏洞主动攻击，如果主机开放了某个网络服务，就必须要启动某个网络软件，由于撰写方式等可能会产生安全问题。当问题被公开，较高水平的cracker会尝试编写攻击代码，因此关闭不需要的网络服务与软件功能是一个良好的习惯，需要警惕网络世界的攻击。</p>
+<p>常见的安全防护措施如下所示：</p>
+<ul>
+<li>通过配置防火墙可以将大部分来自因特网的垃圾链接丢弃，只允许自己开放的服务链接进入本机，它是最基础的安全防护措施。</li>
+<li>网络自动升级软件</li>
+<li>限制连接端口，端口查看的命令netstat与的具体使用如下所示：</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>功能</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>列出正在监听的网络服务</td>
+<td>netstat -tunl</td>
+</tr>
+<tr class="even">
+<td>列出已连接的网络连接状态</td>
+<td>netstat -tun</td>
+</tr>
+<tr class="odd">
+<td>删除已建立活在监听当中的连接</td>
+<td>netstat -tunp</td>
+</tr>
+</tbody>
+</table>
+<h4 id="修复步骤">修复步骤</h4>
+<p>被攻击后的主机修复工作中最好的方法是重新安装Linux，较为合理的修复步骤如下所示：</p>
+<ol type="1">
+<li>立即拔出网线，即切断网络流量</li>
+<li>分析日志文件信息，查找可能的入侵途径，如检查主机开放的服务于服务器安全警告等</li>
+<li>将重要数据进行备份，即那些非Linux系统上面原有的数据</li>
+<li>重新安装系统</li>
+<li>对软件漏洞进行修补，关闭不需要的服务</li>
+<li>对数据进行恢复操作，接入网络</li>
+</ol>
+<h4 id="问题分析">问题分析</h4>
+<p>问题出现时间：远程连接Redis数据库出现连接超时情况，随后ssh无法连接。
+后续尝试解决操作：</p>
+<ol type="1">
+<li><p>将服务器关机重启</p></li>
+<li><p>登录云控制台对服务器状态进行查看，此时CPU使用率达到100%。</p></li>
+<li><p>修改安全组规则，禁止流量输出，随后可以使用ssh登录。</p></li>
+<li><p>使用top命令查看资源占用状况，根据进程名确认服务器被挖矿，但无法kill掉可疑的进程。由于限制了流量出入，无法判断占用CPU最多的进程。</p></li>
+<li><p>查看<code>/root/.ssh</code>，发现入侵用户与时间，根据登录时间基本确定是原因Redis设置了弱密码未授权登录，漏洞被利用。</p></li>
+<li><p>腾讯云使用VNC登录可以查看当前系统运行的进程，查找最近一天内被修改过的文件<code>find . -type f -ctime -1| xargs ls –a</code>，尝试查找任何后台的守护进程与可疑脚本，未果。</p></li>
+<li><p>尝试启动原有服务，显示内存溢出无法操作，备份重要文件，重装系统。</p></li>
+</ol>
+<h4 id="思考">思考</h4>
+<ol type="1">
+<li>不要随便关闭防火墙，只开放指定端口供服务访问</li>
+<li>设置安全组规则，严格限制进出操作，尤其是访问数据库的端口只对某一台或几台主机开放</li>
+<li>不要设置无意义或无效的密码</li>
+<li>需要定期数据备份或对服务器打快照</li>
+</ol>
+<h4 id="数据备份">数据备份</h4>
+<p>服务器上的重要数据主要是数据库与文本内容，下面记录对halo博客进行备份的具体操作。</p>
+<ol type="1">
+<li>将halo文件夹打包，使用SecureCRT工具下载到本地进行备份。</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">halo数据默认存放目录为/root/halo/</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">打包</span><br>tar -czvf halo.tar .halo/<br><span class="hljs-meta prompt_"># </span><span class="language-bash">下载到本地</span><br>sz halo.tar<br></code></pre></td></tr></table></figure>
+<ol start="2" type="1">
+<li>重装系统，并将备份好的文件上传到默认路径下并解压缩.</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">安装上传工具</span><br>yum install lrzsz<br><span class="hljs-meta prompt_"># </span><span class="language-bash">上传文件备份</span><br>rz （选择halo.tar）<br><span class="hljs-meta prompt_"># </span><span class="language-bash">解压</span><br>tar -zxvf halo.tar<br></code></pre></td></tr></table></figure>
+<p>​ 在Docker上运行程序，安装具体步骤如下： <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell">yum update<br>yum -y install docker<br>systemctl start docker<br>systemctl enable docker<br>systemctl status docker<br><span class="hljs-meta prompt_"># </span><span class="language-bash">拉取halo镜像</span><br>docker pull halohub/halo:1.4.8<br><span class="hljs-meta prompt_"># </span><span class="language-bash">创建容器并运行</span><br>docker run -it -d --name halo -p 8090:8090 -v ~/.halo:/root/.halo --restart=always halohub/halo:1.4.8<br></code></pre></td></tr></table></figure></p>
+<h4 id="问题">问题</h4>
+<p>Q1：使用sz命令无法下载文件夹到本地，该工具只能上传或者下载单个或多个文件，无法对文件夹进行操作。
+A1：答应我打个包好吗！ Q2：使用SecureCRT连接服务器出现如下错误 <img
+src="http://ra6pr5q25.hb-bkt.clouddn.com/Backup/image_1624176187521.png" srcset="/img/loading.gif" lazyload
+alt="image.png" /></p>
+<p>A2：在session option里修改user为当前用户即可。
+Q3：如果无法进行pull操作，出现错误<code>Get https://registry-1.docker.io/v2/: net/http: request canceled</code>
+A3：需要重新设置镜像源，步骤如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">编辑daemon.json文件</span><br>vim /etc/docker/daemon.json<br><span class="hljs-meta prompt_"># </span><span class="language-bash">添加新的镜像源：</span><br>&#123;<br>    &quot;registry-mirrors&quot;:[&quot;https://docker.mirrors.ustc.edu.cn&quot;]<br>&#125;<br>systemctl daemon-reload <br>systemctl restart docker<br></code></pre></td></tr></table></figure>
+<p>参考： * https://www.cnblogs.com/yang68h/p/7422372.html *
+https://cloud.tencent.com/developer/article/1416030?from=information.detail.bioset%E8%BF%9B%E7%A8%8B
+* https://blog.csdn.net/zweiustc/article/details/16338823 *
+https://www.jianshu.com/p/560111e6d3bf</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>记一次服务器被入侵后的问题分析与数据备份</div>
+      <div>https://chakkk309.github.io/2021/06/09/Backup/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Jiaqi</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>June 9, 2021</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/06/19/domainGenerate/" title="域名备案与证书申请">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">域名备案与证书申请</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/04/24/websocket/" title="websocket">
+                        <span class="hidden-mobile">websocket</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.1/es5/tex-mml-chtml.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
