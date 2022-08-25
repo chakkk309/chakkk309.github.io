@@ -24,7 +24,7 @@
 <meta property="og:description" content="网络安全是一个很大的领域，自己很多时候只是在服务器上单纯地跑跑程序，并没有对恶劣的网络环境有所察觉。虽然被入侵后只要将旧系统删除并且重装后，服务器主机就能够恢复正常。但是为避免本人隔三差五地重装系统与备份，还是很有必要了解一下主机的简易安全防护措施。 此次被攻击方式是hacker利用系统的程序漏洞主动攻击，如果主机开放了某个网络服务，就必须要启动某个网络软件，由于撰写方式等可能会产生安全问题。当问">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-06-09T14:49:00.000Z">
-<meta property="article:modified_time" content="2022-04-11T17:05:36.000Z">
+<meta property="article:modified_time" content="2022-08-25T18:35:07.268Z">
 <meta property="article:author" content="Jiaqi">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -324,16 +324,21 @@
 <h4 id="问题">问题</h4>
 <p>Q1：使用sz命令无法下载文件夹到本地，该工具只能上传或者下载单个或多个文件，无法对文件夹进行操作。
 A1：答应我打个包好吗！ Q2：使用SecureCRT连接服务器出现如下错误 <img
-src="http://ra6pr5q25.hb-bkt.clouddn.com/Backup/image_1624176187521.png" srcset="/img/loading.gif" lazyload
-alt="image.png" /></p>
+src="image_1624176187521.png" srcset="/img/loading.gif" lazyload /></p>
 <p>A2：在session option里修改user为当前用户即可。
 Q3：如果无法进行pull操作，出现错误<code>Get https://registry-1.docker.io/v2/: net/http: request canceled</code>
 A3：需要重新设置镜像源，步骤如下：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">编辑daemon.json文件</span><br>vim /etc/docker/daemon.json<br><span class="hljs-meta prompt_"># </span><span class="language-bash">添加新的镜像源：</span><br>&#123;<br>    &quot;registry-mirrors&quot;:[&quot;https://docker.mirrors.ustc.edu.cn&quot;]<br>&#125;<br>systemctl daemon-reload <br>systemctl restart docker<br></code></pre></td></tr></table></figure>
-<p>参考： * https://www.cnblogs.com/yang68h/p/7422372.html *
-https://cloud.tencent.com/developer/article/1416030?from=information.detail.bioset%E8%BF%9B%E7%A8%8B
-* https://blog.csdn.net/zweiustc/article/details/16338823 *
-https://www.jianshu.com/p/560111e6d3bf</p>
+<p><br></p>
+<blockquote>
+<p>参考：</p>
+<ul>
+<li>https://www.cnblogs.com/yang68h/p/7422372.html</li>
+<li>https://cloud.tencent.com/developer/article/1416030?from=information.detail.bioset%E8%BF%9B%E7%A8%8B</li>
+<li>https://blog.csdn.net/zweiustc/article/details/16338823</li>
+<li>https://www.jianshu.com/p/560111e6d3bf</li>
+</ul>
+</blockquote>
 
                 
               </div>
@@ -404,7 +409,7 @@ https://www.jianshu.com/p/560111e6d3bf</p>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/04/24/websocket/" title="websocket">
+                      <a href="/2021/04/24/Websocket/" title="websocket">
                         <span class="hidden-mobile">websocket</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>

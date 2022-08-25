@@ -19,14 +19,17 @@
     <meta name="description" content="项目中需要实现后端向前端发送请求，调取Web端摄像头进行拍照这一功能。但之前接触过的前后端分离项目大多都由前端调用后台接口进行各项操作。查阅各项资料后，发现使用WebSocket可以实现消息的推送。简单摸索了一下，在项目中使用WebSocket的步骤如下（前端使用Angular，后端使用Spring boot，Maven管理项目）： 1.分别编写前端ts和后台java代码，进行WebSocket的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="websocket">
-<meta property="og:url" content="https://chakkk309.github.io/2021/04/24/websocket/index.html">
+<meta property="og:url" content="https://chakkk309.github.io/2021/04/24/Websocket/index.html">
 <meta property="og:site_name" content="Chakkk">
 <meta property="og:description" content="项目中需要实现后端向前端发送请求，调取Web端摄像头进行拍照这一功能。但之前接触过的前后端分离项目大多都由前端调用后台接口进行各项操作。查阅各项资料后，发现使用WebSocket可以实现消息的推送。简单摸索了一下，在项目中使用WebSocket的步骤如下（前端使用Angular，后端使用Spring boot，Maven管理项目）： 1.分别编写前端ts和后台java代码，进行WebSocket的">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://chakkk309.github.io/2021/04/24/Websocket/1009.png">
+<meta property="og:image" content="https://chakkk309.github.io/2021/04/24/Websocket/1006.png">
 <meta property="article:published_time" content="2021-04-24T15:36:00.000Z">
-<meta property="article:modified_time" content="2022-04-11T17:00:30.000Z">
+<meta property="article:modified_time" content="2022-08-25T18:32:47.253Z">
 <meta property="article:author" content="Jiaqi">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://chakkk309.github.io/2021/04/24/Websocket/1009.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -267,9 +270,7 @@ message，初步连接测试成功。</p>
 <p>Q1：使用<strong>ws.send(data)</strong>
 时发送了第一次消息后连接就会断开，无法再进行第二次操作。打印错误msg，造成connect
 closed的状态码为1009，即CLOSE_TOO_LARGE：由于收到过大的数据帧而断开连接。控制台输出如下：
-<img
-src="http://ra6pr5q25.hb-bkt.clouddn.com/Websocket%20record/image-20210425101825875-b63667fce3c94d1a8d76ec24d28d0091.png" srcset="/img/loading.gif" lazyload
-alt="1009" /></p>
+<img src="1009.png" srcset="/img/loading.gif" lazyload alt="1009" /></p>
 <p>A1：传递消息内容的是base64的图片string格式，数据量比较大导致原有的输出缓冲区容量无法存储，最后error断开了连接。可以通过在config类中自定义增大缓冲区的容量，添加如下代码片段,详见<a
 target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43770545/article/details/107109095">link</a></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Bean</span><br><span class="hljs-keyword">public</span> ServletServerContainerFactoryBean <span class="hljs-title function_">createWebSocketContainer</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">ServletServerContainerFactoryBean</span> <span class="hljs-variable">container</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ServletServerContainerFactoryBean</span>();<br>    <span class="hljs-comment">// set output bufferSize</span><br>    container.setMaxTextMessageBufferSize(<span class="hljs-number">512000</span>);<br>    container.setMaxBinaryMessageBufferSize(<span class="hljs-number">512000</span>);<br>    container.setMaxSessionIdleTimeout(<span class="hljs-number">15</span> * <span class="hljs-number">60000L</span>);     <br>    <span class="hljs-keyword">return</span> container;<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -284,9 +285,7 @@ target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/we
 <p>A2：猜测或许与函数作用域有关？详见<a
 target="_blank" rel="noopener" href="https://blog.csdn.net/princek123/article/details/83584208">link</a>，使用这种形式即可进行外部方法的调用。</p>
 <p>Q3：后台接收到消息，无法注入service进行相应的方法调用，项目直接down了，NPE。前端msg状态码1006，CLOSE_ABNORMAL，非正常关闭。
-<img
-src="http://ra6pr5q25.hb-bkt.clouddn.com/Websocket%20record/image-cfdae6d3a0634e62ac0a0eae71d3a027.png" srcset="/img/loading.gif" lazyload
-alt="1006" /></p>
+<img src="1006.png" srcset="/img/loading.gif" lazyload alt="1006" /></p>
 <p>A3：WebSocket启动的时候优先于Spring容器，需要在WebSocketServer中将要用到的服务静态初始化。在已创建的WebSocket中进行相应的配置，WebSocket中注入Service的方法见<a
 target="_blank" rel="noopener" href="https://blog.csdn.net/kxj19980524/article/details/85108047">link</a>，另一种<a
 target="_blank" rel="noopener" href="https://blog.csdn.net/canot/article/details/52495333">link</a>，还没实践，可以一试。</p>
@@ -296,19 +295,34 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43424101/artic
 <p>WebSocket的本质就是为了解决HTTP协议的单向性，HTTP是基于request-respon应答的。一旦服务器主动向客户端发送消息就麻烦了，因为这个时候TCP连接已经释放了，根本无法得知客户端的位置。
 解决方法很有限，要么就是不断轮询，要么换成长连接（客户端发送请求，服务端等有消息了再回复），但这些都不能从根本上解决问题。
 而WebSocket，可以进行服务器和客户端的双向通信。尤其是在消息推送方面，灵活方便。</p>
-<p>WebSocket的优点： 1.数据格式轻量 2.没有同源限制
-3.协议标识符是ws（如果加密，则为wss），服务器网址就是 URL</p>
-<p>Reference * <a
-target="_blank" rel="noopener" href="https://blog.csdn.net/cai4561/article/details/106809244">WebSocket断开连接时的状态码及其含义</a>
-* <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/7aed14eb42dd">连接创建基础</a> * <a
-target="_blank" rel="noopener" href="https://www.jianshu.com/p/5297732db7f2">重连机制</a> * Mozilla
-中<a
+<p>WebSocket的优点：</p>
+<ul>
+<li>数据格式轻量</li>
+<li>没有同源限制</li>
+<li>协议标识符是ws（如果加密，则为wss），服务器网址就是 URL</li>
+</ul>
+<p>Reference：</p>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/cai4561/article/details/106809244">WebSocket断开连接时的状态码及其含义</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://www.jianshu.com/p/7aed14eb42dd">连接创建基础</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/5297732db7f2">重连机制</a></li>
+<li>Mozilla 中<a
 target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API">websocket
-API</a> 的使用 * <a
+API</a> 的使用</li>
+<li><a
 target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_client_applications">Write
-websocket Client Application</a> * <a
-target="_blank" rel="noopener" href="https://tools.ietf.org/search/rfc6455">WebSocket RFC</a></p>
-<p>ToDo * 重连与心跳机制 * 协议构成 * 于Nginx相关内容</p>
+websocket Client Application</a></li>
+<li><a target="_blank" rel="noopener" href="https://tools.ietf.org/search/rfc6455">WebSocket
+RFC</a></li>
+</ul>
+<p>ToDo：</p>
+<ul>
+<li>重连与心跳机制</li>
+<li>协议构成</li>
+<li>于Nginx相关内容</li>
+</ul>
 
                 
               </div>
@@ -327,7 +341,7 @@ target="_blank" rel="noopener" href="https://tools.ietf.org/search/rfc6455">WebS
   <div class="license-box my-3">
     <div class="license-title">
       <div>websocket</div>
-      <div>https://chakkk309.github.io/2021/04/24/websocket/</div>
+      <div>https://chakkk309.github.io/2021/04/24/Websocket/</div>
     </div>
     <div class="license-meta">
       
@@ -379,7 +393,7 @@ target="_blank" rel="noopener" href="https://tools.ietf.org/search/rfc6455">WebS
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/08/07/Echarts-JQuery/" title="Echarts+JQuery">
+                      <a href="/2020/08/07/Echarts+JQuery/" title="Echarts+JQuery">
                         <span class="hidden-mobile">Echarts+JQuery</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
