@@ -1,0 +1,778 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/images/chakkk.jpg">
+  <link rel="icon" href="/images/chakkk.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Jiaqi">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Join Algorithms">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Join Algorithms">
+<meta property="og:url" content="https://chakkk309.github.io/2022/03/19/JoinAlgorithms/index.html">
+<meta property="og:site_name" content="Chakkk">
+<meta property="og:description" content="Join Algorithms">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/JoinAlgorithms/image-20220216104347403.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/JoinAlgorithms/image-20220216105314271.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/JoinAlgorithms/image-20220216105439174.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/JoinAlgorithms/image-20220216105948926.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/JoinAlgorithms/image-20220216110354826.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/JoinAlgorithms/image-20220227232015339.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/JoinAlgorithms/image-20220227233311476.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/JoinAlgorithms/image-20220227234342254.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/JoinAlgorithms/image-20220227235214838.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/JoinAlgorithms/image-20220227235355655.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/JoinAlgorithms/image-20220228001503985.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/JoinAlgorithms/image-20220228001801572.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/JoinAlgorithms/image-20220228002210626.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/JoinAlgorithms/image-20220228002352893.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/JoinAlgorithms/image-20220228002708237.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/JoinAlgorithms/image-20220228002919573.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/JoinAlgorithms/image-20220228003129697.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/JoinAlgorithms/image-20220228003240174.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/JoinAlgorithms/image-20220228003345557.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/JoinAlgorithms/image-20220228003533296.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/JoinAlgorithms/image-20220228004404188.png">
+<meta property="article:published_time" content="2022-03-18T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-08-26T16:55:37.542Z">
+<meta property="article:author" content="Jiaqi">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://chakkk309.github.io/2022/03/19/JoinAlgorithms/image-20220216104347403.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Join Algorithms - Chakkk</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"chakkk309.github.io","root":"/","version":"1.9.2","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Chakkk</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/images/ta.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">Join Algorithms</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-03-19 00:00" pubdate>
+          March 19, 2022 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.8k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          10 mins
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> views
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Join Algorithms</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="join-algorithms">Join Algorithms</h1>
+<span id="more"></span>
+<h4 id="为什么需要join连表呢">为什么需要join连表呢？</h4>
+<p>关系型模型在存储时会按照连接关系分别存储，在取用数据的时候就需要join算子按照连接关系将数据重组起来。</p>
+<h4 id="连接算法">连接算法</h4>
+<p>本节主要研究<code>inner equijoin</code>算法（内连接且用相等谓词）。在查询计划中，join的一个原则是尽量把小表放在左侧，称其为外表或驱动表。</p>
+<h4 id="join算子">Join算子</h4>
+<p>SQL和逻辑计划：</p>
+<center>
+<img src="image-20220216104347403.png" srcset="/img/loading.gif" lazyload style="zoom:50%; text-align:center" />
+</center>
+<p>主要从两个方面来研究算子：output &amp;&amp; cost analysis
+criteria。output决定了算子向上级输出的数据是什么；而开销模型则意味着不同的算法的开销，决定使用什么样的join方法实现。</p>
+<h3 id="operator-output">Operator Output</h3>
+<p>如果R表中的数据r（<span class="math inline">\(r \epsilon
+R\)</span>）和S表中的数据s（<span class="math inline">\(s \epsilon
+S\)</span>）匹配成功，r和s则连接成为一条新的tuple。而此时的Output会根据SQL处理模型，存储模型以及SQL需要的数据不同，输出不同的数据。</p>
+<p>1.直接输出数据，又叫提前物化（Early Materialization）</p>
+<p>执行join后向上输出的是连接后的一整行数据，优点是其他子算子不需要再回表了，无论想要哪个字段都可以立即得到。</p>
+<p>对于一个SQL:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-keyword">SELECT</span> R.id, S.cdate<br>  <span class="hljs-keyword">FROM</span> R JPIN S<br>    <span class="hljs-keyword">ON</span> R.id <span class="hljs-operator">=</span> S.id<br> <span class="hljs-keyword">WHERE</span> S.value <span class="hljs-operator">&gt;</span> <span class="hljs-number">100</span><br></code></pre></td></tr></table></figure>
+<center>
+<img alt="Early Materialization" src="image-20220216105314271.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />
+</center>
+<p>2.输出record ID，又叫推迟物化（Late Materialization）</p>
+<p>输出的不是完整的行数据，只是输出了行id，如果上级算子需要S表日期时，就需要通过行id回表查找。</p>
+<center>
+<img alt="Late Materialization" src="image-20220216105439174.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />
+</center>
+<h3 id="cost-analysis-criteria">Cost analysis criteria</h3>
+<p>开销模型，假设：</p>
+<ul>
+<li>R表中有M页，m条tuple</li>
+<li>S表中有N页，n条tuple</li>
+</ul>
+<p>如何分析开销呢？按照处理连接算法需要多少次磁盘IO来估计开销，相比于读取内存或CPU计算次数来说，磁盘IO的数量级比较大。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> R.id, S.cdate<br>  <span class="hljs-keyword">FROM</span> R <span class="hljs-keyword">JOIN</span> S<br>    <span class="hljs-keyword">ON</span> R.id <span class="hljs-operator">=</span> S.id<br> <span class="hljs-keyword">WHERE</span> S.value <span class="hljs-operator">&gt;</span> <span class="hljs-number">100</span><br></code></pre></td></tr></table></figure>
+<p>用以上SQL为例，分析不同的算法对于连表的开销。</p>
+<h2 id="笛卡尔积">笛卡尔积</h2>
+<p><span class="math inline">\(R\bowtie S\)</span>
+表示两个表进行join操作，在SQL语句中是最常见的算子，需要小心谨慎去优化，比较耗时且容易出错。</p>
+<p>连表最容易想到的实现方法是<span class="math inline">\(R\times
+S\)</span>，即两个表进行笛卡尔积，列举出一个巨大的表，再使用谓词进行筛选。这种方法中间的结果集是非常大的，效率非常低效。除了笛卡尔积外，还有几种降低连表开销的算法：</p>
+<h2 id="nested-loop-join">Nested Loop Join</h2>
+<h3 id="simplestupid-nested-loop-join">Simple/Stupid Nested Loop
+Join</h3>
+<p>简单嵌套循环是一个二重循环，一般使用R表为外表，S为内表。</p>
+<p>为何小表做外表呢？面向磁盘的数据库中，所谓的小表一般指的是文件页数少的，虽然R表行数多，但是它的表窄，页数少，遍历R需要的磁盘IO次数就较小。</p>
+<center>
+<img src="image-20220216105948926.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />
+</center>
+<center>
+<img alt="Simple Nested Loop Join" src="image-20220216110354826.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />
+</center>
+<p>为什么这个算法效率不高？</p>
+<p>对于R表中的每一行数据，都会扫描一次S表。对于这样的重复遍历，数据库的缓存池完全没有起到作用。比如S有三个页，缓存池中只能存储一个页，S会将缓存池灌满并一个个淘汰，当遍历到R表的第二行，S的第一行数据早已不存在于缓存池中了。嵌套循环的总体开销为
+<span class="math inline">\(M + (m \cdot N)\)</span>。</p>
+<p>假设R表中M=1000页， m=100000条数据；S表中N=500， n=40000</p>
+<p>代价分析：代入公式得，<span class="math inline">\(M + (m \cdot N)=
+1000 + (100,000 \cdot 50) = 50,001,000\
+IO_S\)</span>。假设读取磁盘IO的时间为 0.1 ms/IO，总用时约为1.3小时。</p>
+<p>如果将较小的表S作为外表，总体开销为 <span class="math inline">\(N +
+(n \cdot M) = 500 + (40000 \cdot 1000) = 40,000,500\
+IO_S\)</span>，约花费1.1小时。</p>
+<h3 id="block-nested-loop-join">Block Nested Loop Join</h3>
+<p>设计思想是按block（页）进行遍历，进行四层嵌套循环：先把R表第一页读进缓冲池，再把S表第一页读进，在内部将两个页交叉匹配，然后把S表第一页淘汰，换其他的页继续计算。</p>
+<center>
+<img alt="Block Nested Loop Join" src="image-20220227232015339.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />
+</center>
+<p>总体开销为 <span class="math inline">\(M + (M \cdot
+N)\)</span>。效率提高了一些，虽然免不了从头到尾遍历R表，M个页的IO是少不了的。但是对于S表遍历的次数从m变为M次。即从遍历R表的tuple数变为遍历R表的页数次。</p>
+<p>假设R表中M=1000页， m=100000条数据；S表中N=500， n=40000</p>
+<p>代价分析：代入公式算得，<span class="math inline">\(M + (M \cdot N)=
+1000 + (1000 \cdot 50) = 501,000\ IO_S\)</span>。假设读取磁盘IO的时间为
+0.1 ms/IO，总用时约为50秒，性能提升几百倍。</p>
+<p>如果可以给Join开B个页的内存，如何最大化的利用内存来提升性能呢？</p>
+<p>有一个页要留作输出缓存，剩余B-1个页做为输入缓存。应该多缓存R还是多缓存S呢？</p>
+<p>分配原则：多缓存左表（外表）为B-2页，只留一个页作为内表，伪代码为：</p>
+<center>
+<img src="image-20220227233311476.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />
+</center>
+<p>这种方法总体开销为 <span class="math inline">\(M + ([M / (B-2)] \cdot
+N)\)</span>。B-2
+页的缓存，把R表遍历几次。M的遍历次数是无法避免的，尽量把拉取N表的遍数降低，尽量多缓存外表。</p>
+<p>如果缓存足够大（B&gt;M+2)，整个外表都能进入缓存，需要多少次IO呢？这是最理想的情况，开销为<span
+class="math inline">\(M+N\)</span> 为<span class="math inline">\(1500\
+IO_S\)</span>，仅用时0.15秒。</p>
+<p>问题：嵌套循环无论如何都需要遍历外表，也就是总要遍历N次。需要遍历寻找匹配的id，为什么需要遍历？因为不存在索引，只能从头扫尾扫描表。如果内表存在索引，就不需要一遍遍遍历了，可以走索引去查S表。</p>
+<h3 id="index-nested-loop-join">Index Nested Loop Join</h3>
+<center>
+<img alt="Index Nested Loop Join" src="image-20220227234342254.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />
+</center>
+<p>使用索引的循环嵌套，也叫lookup
+join。拿着R表中的每一行数据到内表中做查询，如果存在索引，就直接走<code>S.id</code>这条索引（B+树）。</p>
+<p>B+树的层级与度不是固定的，不同的索引结构不一样，故开销不太好估算。假设每走一次索引，需要C个磁盘IO（包括根节点与叶子节点等），开销为<span
+class="math inline">\(M+(m\cdot C)\)</span>。只需要m次的索引查询。</p>
+<p>总结：</p>
+<ul>
+<li>尽量让小表作为外表</li>
+<li>需要尽量缓存外表，缓存内表再大都会有缓存重刷的问题。</li>
+<li>尽量使用索引</li>
+</ul>
+<h2 id="sorted-merge-join">Sorted-merge Join</h2>
+<p>分为两个阶段：阶段一为排序，阶段二为归并。</p>
+<p>伪代码如下：第一行排序，剩下的为merge内容</p>
+<center>
+<img src="image-20220227235214838.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />
+</center>
+<p>例：</p>
+<center>
+<img alt="Sort Merge Join" src="image-20220227235355655.png" srcset="/img/loading.gif" lazyload style="zoom:80%;" />
+</center>
+<p>此时出现问题：此时S的游标要进行回退。S走到头了本次循环结束。</p>
+<p>R表的排序开销：<span class="math inline">\(2M\cdot(1+[\log_{B-1}
+[M/B]])\)</span>，S表的排序开销：<span
+class="math inline">\(2N\cdot(1+[\log_{B-1}
+[M/B]])\)</span>，归并开销：<span
+class="math inline">\((M+N)\)</span>，总开销为三者之和。</p>
+<p>例：假设对于一个数据库来说，R表中: M=1000页,
+m=100000条数据；S表中：N=500,
+n=40000，假设B=100，100页缓存用来做排序。</p>
+<p>代入公式得，<span class="math inline">\(Sort Cost(R) = 4000\ IO_S,
+Sort Cost(S) = 2000\ IO_S,Merge Cost = 1500\
+IO_S\)</span>，一共为7500次IO，总用时约为0.75秒。</p>
+<p>问题：可能会出现退化的情况下，如果两个表的id全部相等，就会退化为stupid
+next loop join了，开销为<span class="math inline">\((M\cdot N) + sort
+cost\)</span>。</p>
+<p>这种方法什么时候最有效呢？已经排好序的状态下极大地节省开销（下一级sort算子已经排好序了或读表时按照索引去读）；另一种情况是结果要求输出数据是要排好序的状态，可以考虑先排序再做merge
+join。</p>
+<p>B+树点查询的时间复杂度是<span
+class="math inline">\(\log_n\)</span>，随着数据越来越多查询速度会越来越慢。针对点查询，可以使用哈希索引。</p>
+<h2 id="basic-hash-join">Basic Hash Join</h2>
+<p>基础的哈希算法分为两部分，第一阶段进行Build，构建哈希表，把外表R作为哈希表；然后Probe，去S表中遍历扫描。</p>
+<center>
+<img src="image-20220228001503985.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />
+</center>
+<center>
+<img alt="Hash Join" src="image-20220228001801572.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />
+</center>
+<p>R表中的key存的是连接列，value提前物化和推迟物化的问题，根据情况存储整行数据或者行id。</p>
+<p><strong>Probe阶段的优化</strong>：创建一个布隆过滤器，这样就可以提前判断key是否存在于哈希表中。内表做了哈希，企图从找到key，发现却匹配不上。布隆过滤器的位置如下图，在B表去查找哈希之前提前进行判断。</p>
+<center>
+<img alt="Bloom filter" src="image-20220228002210626.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />
+</center>
+<p><strong>布隆过滤器</strong></p>
+<p>插入RZA，插入GZA，查找Raekwno，查找ODB <div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="image-20220228002352893.png" srcset="/img/loading.gif" lazyload /></div><div class="group-image-wrap"><img
+src="image-20220228002422628.png" srcset="/img/loading.gif" lazyload /></div></div><div class="group-image-row"><div class="group-image-wrap"><img
+src="image-20220228002450165.png" srcset="/img/loading.gif" lazyload /></div><div class="group-image-wrap"><img
+src="image-20220228002616755.png" srcset="/img/loading.gif" lazyload /></div></div></div></p>
+<p>有时布隆过滤器会出现假阳性，不过问题不大，最后还是要到哈希表中去查询。</p>
+<center>
+<img src="image-20220228002708237.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />
+</center>
+<p>问题：如果没有足够的内存去存储整个哈希表怎么办？可能需要驱逐一些哈希表到硬盘中。</p>
+<h2 id="grace-hash-join">Grace Hash Join</h2>
+<center>
+<img src="image-20220228002919573.png" srcset="/img/loading.gif" lazyload style="zoom: 50%;" />
+</center>
+<p>Grace是一种数据库一体机，内部使用了grace 哈希join方法。</p>
+<center>
+<img src="image-20220228003129697.png" srcset="/img/loading.gif" lazyload style="zoom:67%;" />
+</center>
+<figure>
+<img src="image-20220228003240174.png" srcset="/img/loading.gif" lazyload alt="image-20220228003240174" />
+<figcaption aria-hidden="true">image-20220228003240174</figcaption>
+</figure>
+<p>如果一个block也非常大，应该怎么解决？</p>
+<p>继续哈希，直到足够小的块。</p>
+<center>
+<img alt="" src="image-20220228003345557.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />
+</center>
+<center>
+<img alt="recursive partitioning" src="image-20220228003533296.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />
+</center>
+<p>假设我们有足够的缓存池，花销为<span
+class="math inline">\(3(M+N)\)</span>。Partitioning
+Phase为读写两个表为<span class="math inline">\(2(M+N)\ IO_S\)</span>
+，Probing阶段只需要读表，为<span class="math inline">\(M+N\
+IO_S\)</span>，需要4500次IO，约0.45秒。为啥需要两遍？先读出再写回。</p>
+<p>思考：如果DBMS知道外表多大，可以使用静态不扩容的hash表，反之使用动态扩容哈希表。</p>
+<p><strong>Join算法开销比较</strong></p>
+<center>
+<img src="image-20220228004404188.png" srcset="/img/loading.gif" lazyload style="zoom: 50%;" />
+</center>
+<p>哈希是比较好的一种方法，但是也存在一些特例：数据是倾斜的，哈希碰撞，可能sorting会比较好一点；输出结果需要进行排序时使用merge好一点。一般数据库的优化器会在hash
+和merge join之间进行选择。OLAP中用嵌套循环比较少。</p>
+<p><br/></p>
+<blockquote>
+<p>update: 2022-02-28</p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Join Algorithms</div>
+      <div>https://chakkk309.github.io/2022/03/19/JoinAlgorithms/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Jiaqi</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>March 19, 2022</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/03/19/HashTables/" title="Hash Table">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Hash Table</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/03/19/BufferPool/" title="Buffer Pool">
+                        <span class="hidden-mobile">Buffer Pool</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.1/es5/tex-mml-chtml.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

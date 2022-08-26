@@ -1,0 +1,839 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/images/chakkk.jpg">
+  <link rel="icon" href="/images/chakkk.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Jiaqi">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="问题：存储引擎如何管理内存与磁盘间的数据流动？ buffer pool：在内存中开辟一片区域作为缓存，存储数据库文件。 1.简介 DBMS负责管理数据在内存和在磁盘上的移动。 在大多数情况下，数据不能直接在磁盘中操作，任何数据库都必须能够有效地将磁盘上表示为文件的数据移动到内存中，以便使用。 缓存池存在于内存中，而且一定是比磁盘小的多。数据库的执行器想要读取2号页时，首先会查询缓存池中是否存在该页">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Buffer Pool">
+<meta property="og:url" content="https://chakkk309.github.io/2022/03/19/BufferPool/index.html">
+<meta property="og:site_name" content="Chakkk">
+<meta property="og:description" content="问题：存储引擎如何管理内存与磁盘间的数据流动？ buffer pool：在内存中开辟一片区域作为缓存，存储数据库文件。 1.简介 DBMS负责管理数据在内存和在磁盘上的移动。 在大多数情况下，数据不能直接在磁盘中操作，任何数据库都必须能够有效地将磁盘上表示为文件的数据移动到内存中，以便使用。 缓存池存在于内存中，而且一定是比磁盘小的多。数据库的执行器想要读取2号页时，首先会查询缓存池中是否存在该页">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220125005537858.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220428222157638.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220120143247987.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220120143331428.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220428223934250.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220428224003070.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220428225918009.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220428230238203.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220428230434458.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220503132710028.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220503132823543.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220503132900930.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220503132932793.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220503133122934.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220503133219260.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220503133252679.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220503133335312.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220503133920418.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220503134050627.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220503134112451.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220503134137166.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220503134157363.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220503134230843.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220503134254772.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220503145752398.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220503145829478.png">
+<meta property="article:published_time" content="2022-03-18T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-08-26T16:55:09.106Z">
+<meta property="article:author" content="Jiaqi">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220125005537858.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Buffer Pool - Chakkk</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"chakkk309.github.io","root":"/","version":"1.9.2","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Chakkk</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/images/ta.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">Buffer Pool</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-03-19 00:00" pubdate>
+          March 19, 2022 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.1k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          13 mins
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> views
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Buffer Pool</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>问题：存储引擎如何管理内存与磁盘间的数据流动？</p>
+<p>buffer pool：在内存中开辟一片区域作为缓存，存储数据库文件。</p>
+<h2 id="简介">1.简介</h2>
+<p>DBMS负责管理数据在内存和在磁盘上的移动。</p>
+<p>在大多数情况下，数据不能直接在磁盘中操作，任何数据库都必须能够有效地将磁盘上表示为文件的数据移动到内存中，以便使用。</p>
+<p>缓存池存在于内存中，而且一定是比磁盘小的多。数据库的执行器想要读取2号页时，首先会查询缓存池中是否存在该页，如果有就读取，没有的话就需要从先加载索引页到缓存池，对应找到2号页的位置，将其加载到缓存池中，交给执行器进行数据解析。</p>
+<center>
+<img src="image-20220125005537858.png" srcset="/img/loading.gif" lazyload alt="disk-oriented DB" style="zoom:80%;" />
+</center>
+<p>另一方面，可以从时间和空间上来考虑这个问题：</p>
+<p><strong>空间</strong></p>
+<ul>
+<li>空间上的控制指的是页在磁盘上的物理位置，也就是在磁盘的什么位置写入页</li>
+<li>目标：保证经常使用的页在磁盘中的物理位置也是比较邻近的，使在磁盘上经常使用的页面在物理上尽可能靠近</li>
+</ul>
+<p><strong>时间</strong></p>
+<ul>
+<li>什么时候把页读到内存中，什么时候把页写入磁盘中</li>
+<li>目标：最小化从磁盘中读取数据的开销，尽量减少从磁盘读取数据的数量</li>
+</ul>
+<h2 id="lock-latches">2. Lock &amp; Latches</h2>
+<p>在讨论DBMS如何保护它的内部元素时，我们需要区分Lock和Latches</p>
+<h4 id="locks">Locks</h4>
+<ul>
+<li><p>锁是一种高级的逻辑原语，它保护数据库的内容(例如行数据、表、数据库)不受其他事务的影响，在事务级别保护数据库的逻辑内容。
+如：对一个表上锁，这期间任何事务都不能操作该表。</p></li>
+<li><p>在事务期间被持有，数据库系统可以向用户公开在运行查询时持有哪些锁</p></li>
+<li><p>需要保证能够回滚</p></li>
+</ul>
+<h4 id="latchmutex">Latch（Mutex）</h4>
+<ul>
+<li><p>DBMS用于其内部数据结构(例如，哈希表，内存区域)的关键部分的一种低级保护原语，是一种底层的锁
+如：跟表相关的数据页加上的锁</p></li>
+<li><p>仅在操作期间被持有，在线程级别保护数据库内部的数据结构</p></li>
+<li><p>不需要保证回滚</p></li>
+</ul>
+<h2 id="缓存池">3. 缓存池</h2>
+<p>缓存池是从磁盘读取页的内存缓存。它本质上是在数据库内部分配的一个大内存区域，用于存储从磁盘获取的页。</p>
+<p>缓存池的组织形式：内存区域被组织为一个固定长度的page数组，数组中的每一个元素叫做帧（frame），缓存池里的一帧和磁盘上的一个页相对应。</p>
+<center>
+<img src="image-20220428222157638.png" srcset="/img/loading.gif" lazyload alt="bufferpool" style="zoom:50%;" />
+</center>
+<p>当DBMS请求一个页时，一个精确的副本被放置到缓冲池的一个帧中。当请求页时，数据库系统可以首先搜索缓存池。如果没有找到该页，则系统从磁盘中获取该页的副本。</p>
+<p>怎么知道缓存池缓存了那些页呢？需要page
+table类似索引的结构以及其他方法，如下图在page3处增加了图钉标志，不要清除page3它之后还会有用处；或者对某个空位置加锁，预留位置读取特定的页。</p>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="image-20220120143247987.png" srcset="/img/loading.gif" lazyload alt="flag" style="zoom:40%;"/></div><div class="group-image-wrap"><img src="image-20220120143331428.png" srcset="/img/loading.gif" lazyload alt="lock" style="zoom:40%;" /></div></div></div>
+<h4 id="缓存池元数据">缓存池元数据</h4>
+<p>缓存池必须维护某些元数据，以便有效和正确地使用：</p>
+<ul>
+<li><p><strong>page table</strong></p>
+<p>页表（page
+table）是一个内存中的哈希表，用于跟踪当前内存中的页。它将页id映射到缓冲池中的帧位置。因为缓冲池中的页顺序不一定反映磁盘上的顺序，所以这个额外的间接层允许标识池中的页位置。页表还维护每页的额外元数据、脏标记和引脚/引用计数器。</p>
+<p>注：不要将页表与页目录混淆，后者是数据库文件中从页id到页位置的映射。</p></li>
+<li><p><strong>dirty-flag</strong></p>
+<p>dirty-flag是由线程在修改页时设置的，这指示存储管理器必须将该页写回磁盘。</p></li>
+<li><p><strong>pin/reference Counter</strong></p>
+<p>用来跟踪当前访问该页面(读取或修改该页面)的线程数。线程在访问该页之前必须增加计数器。如果一个页的计数大于零，那么存储管理器就不允许从内存中删除该页。</p></li>
+</ul>
+<h4 id="内存分配策略">内存分配策略</h4>
+<p>数据库中的内存根据两种策略分配给缓存池：</p>
+<p><strong>全局策略</strong>：统一安排所有事物需要的所有数据页，缓存的位置。处理DBMS应该做出的有利于正在执行的整个工作负载的决策。它考虑所有活动事务，以找到分配内存的最佳决策。</p>
+<p><strong>本地策略</strong>：为每一个事物需要缓存的文件页有单独的策略。将使单个查询或事务运行得更快，即使这对整个工作负载不利。本地策略将帧分配给特定的事务而不考虑并发事务的行为。</p>
+<h2 id="缓存池优化策略">4. 缓存池优化策略</h2>
+<h4 id="多缓存池">4.1 多缓存池</h4>
+<p>DBMS可以为不同的目的维护多个缓冲池（即每个数据库的缓冲池，每个页面类型的缓冲池）。文件页是不一样的，有些是存储索引，有些是存储数据的。为不同存储分类使用不同的缓存池。同时也可以一个数据库实例使用多个缓存池，一个数据库一个缓存池或者一个页一个缓存池都可以。缓存池只有一个时，向缓存池添加数据时需要先把那个位置锁住，多个缓存池可以降低锁冲突和竞争。</p>
+<p>具体的实现方法有两种：</p>
+<p><strong>Object id</strong></p>
+<p>记录哪条数据去了那个缓存池，例id=123存储在一号缓存池中，维护从object到特定缓存池的映射</p>
+<center>
+<img src="image-20220428223934250.png" srcset="/img/loading.gif" lazyload alt="Object id" style="zoom:50%;" />
+</center>
+<p><strong>Hashing</strong></p>
+<p>对page id进行哈希，已选择要访问的缓存池</p>
+<center>
+<img src="image-20220428224003070.png" srcset="/img/loading.gif" lazyload alt="Hashing" style="zoom:50%;" />
+</center>
+<h4 id="预先抓取pre-fetching">4.2 预先抓取（PRE-FETCHING)</h4>
+<p>DBMS还可以根据查询计划预取页来进行优化。在处理第一组页时，可以将第二组页预取到缓冲池中。</p>
+<p><strong>全表扫描</strong></p>
+<p>例：如果要进行全表扫描，需要将表中的数据从第0条到第N条全部遍历一遍，缓存池就知道需要将数据全部遍历。首先将0号页读到缓存池中，然后陆续是1号页，2号页…….在读1号页的时候，已经明确地知道接下来要读取的是2号页，那么在进行处理1号的同时，可以提前将0号页淘汰，2号和3号页读到缓存池中。执行器可以不必等待便可读取2和3号页，有点”先人一步“的意思。</p>
+<center>
+<img src="image-20220428225918009.png" srcset="/img/loading.gif" lazyload alt="table scan" style="zoom:50%;" />
+</center>
+<p><strong>索引扫描</strong></p>
+<p>例：需要查找值在100到250之间的数据，索引大多是树状结构，所有的数据在叶子节点上，首先读取根节点，判断要读取左子树还是右子树，确定了范围就可以预先抓取3号页到5号页。</p>
+<center>
+<img src="image-20220428230238203.png" srcset="/img/loading.gif" lazyload alt="index scan" style="zoom:67%;" />
+</center>
+<p>这种方法是数据库管理系统(DBMS)在连续访问多个页面时常用的方法。</p>
+<h4 id="扫描共享scan-sharing">4.3 扫描共享（SCAN SHARING）</h4>
+<p>如果发现有两个事务同时读取一个表，则可以让他们同步扫描。</p>
+<p>SQL A需要A和B join的结果，SQL
+B也需要该结果。A和B请求几乎同时到达数据库，如果没有进行优化，DBMS会进行两遍相同的查询并返回给AB。如果使用共享扫描，AB可以共享扫描结果。</p>
+<p>扫描共享和结果缓存（result caching）是不同的，
+扫描共享中请求是并行的，可以在执行过程中就可以判断两个事务有共同的请求；而结果缓存是A先执行语句，将结果缓存，等到B执行的时候就可以直接读取缓存。</p>
+<h5 id="同步扫描">同步扫描</h5>
+<p>需要计算val这一列全部数据的值，所以需要全表扫描：</p>
+<center>
+<img src="image-20220428230434458.png" srcset="/img/loading.gif" lazyload alt="syn scan" style="zoom:67%;" />
+</center>
+<h4 id="buffer-pool-bypass">4.4 BUFFER POOL BYPASS</h4>
+<p>旁路策略：扫描过来的数据不进内存池，直接放到内存中没有池化的区域，执行器使用后把这块内存进行GC。</p>
+<p>好处：对没有必要加入缓存池的数据避免开销，不必考虑后续如何对它进行替换淘汰。当操作符需要读取磁盘上连续的大量页面时，这很可能是一次全表扫描操作，只读取一次就不再使用，这种情况可使用旁路策略。缓冲池旁路也可以用于临时数据(排序、连接)。A
+join B 直接给用户不必放在内存池中。这种不进内存池的扫描方法被称为"Light
+Scans"。</p>
+<p><strong>OS pages cache</strong></p>
+<p>操作系统读写磁盘时，对于文件页进行缓存。但这种时候一般需要操作系统绕过这层缓存，OS不知道缓存的策略，需要保存多久，什么时候淘汰。而且与数据本地的缓存还是冗余的，操作系统的页缓存需要bypass掉，大多数数据库使用直接I/O(O_DIRECT)来绕过操作系统缓存页，自己管理缓存。</p>
+<p>问题：冗余存储页；不同的淘汰策略；失去对IO的控制，DB没法去优化IO。</p>
+<h2 id="缓存替换策略">5. 缓存替换策略</h2>
+<p>为什么需要进行替换呢？因为buffer
+pool的空间是有限的，要清空一部分帧来给新的文件页腾出空间，因此需要制定一些策略来驱逐内存中的旧页。</p>
+<p>替换策略是DBMS实现的一种算法，它在需要空间时决定从缓冲池中删除哪些页。</p>
+<p>设计目标：正确，不能把正在使用的页替换掉；准确，速度快，不能为了决定替换那一页使用很长时间的算法；缓存元数据的开销，元数据存储内容为哪些页在缓存池中哪些页不在，如果进行了页的替换，同时也需要维这些元数据。</p>
+<h4 id="lru">5.1 LRU</h4>
+<p>最近-最少使用算法(LEAST-RECENTLY
+USED)：给每一个页都维护一个单独的时间戳，记录上次读取这个页是什么时间。驱逐调很久都没有被读过的文件页。</p>
+<p>实现方式：使页面变成有序，减少淘汰的搜索时间，但这种方法排序的时间太长，效率较差。</p>
+<h4 id="clock">5.2 CLOCK</h4>
+<p>顺时针算法：它是一个模糊且快速，开销比较小的LRU改进算法。在CLOCK策略中，将页组织成一个循环缓冲区，每个页都有一个标志位ref。当这个页面被访问一次，就将ref设置为1。扫描检查时，如果页的ref为1，则将其减一，设为零，如果ref=0，则驱逐该页。</p>
+<p>比如内存池中有四个页，做了一个环形的数据结构（内存中不是环形），每个页有一个标志位ref。取了一下page1，将其ref至1。时针转到1，ref清空但是不追逐。时针转到2，ref=0表示没有任何人读过，所以从内存中驱逐，替换成别的页page。</p>
+<ol type="1">
+<li>每个页有一个标志位ref</li>
+</ol>
+<p><img src="image-20220503132710028.png" srcset="/img/loading.gif" lazyload alt="clock-1" style="zoom:50%;" /></p>
+<ol start="2" type="1">
+<li>执行器取了page1</li>
+</ol>
+<p><img src="image-20220503132823543.png" srcset="/img/loading.gif" lazyload alt="clock-2" style="zoom:50%;" /></p>
+<ol start="3" type="1">
+<li>将其ref设置为1，意味着有人读取了page1一次</li>
+</ol>
+<p><img src="image-20220503132900930.png" srcset="/img/loading.gif" lazyload alt="clock-3" style="zoom:50%;" /></p>
+<ol start="4" type="1">
+<li>此时有一个时针在转动，发现page1的ref为1，将其设置为0但是不清空。</li>
+</ol>
+<p><img src="image-20220503132932793.png" srcset="/img/loading.gif" lazyload alt="clock-4" style="zoom:50%;" /></p>
+<ol start="5" type="1">
+<li>将ref置0</li>
+</ol>
+<p><img src="image-20220503133122934.png" srcset="/img/loading.gif" lazyload alt="clock-5" style="zoom:50%;" /></p>
+<ol start="6" type="1">
+<li>时针转到page2的时候，ref为0，则清空page2的缓存</li>
+</ol>
+<p><img src="image-20220503133219260.png" srcset="/img/loading.gif" lazyload alt="clock-6" style="zoom:50%;" /></p>
+<ol start="7" type="1">
+<li>并再将page5的内容读进缓存池</li>
+</ol>
+<p><img src="image-20220503133252679.png" srcset="/img/loading.gif" lazyload alt="clock-7" style="zoom:50%;" /></p>
+<ol start="8" type="1">
+<li>驱逐page1</li>
+</ol>
+<p><img src="image-20220503133335312.png" srcset="/img/loading.gif" lazyload alt="clock-8" style="zoom:50%;" /></p>
+<h4 id="lru的问题">LRU的问题</h4>
+<p>LRU和时钟替换策略有很多问题：</p>
+<ul>
+<li>对于sequential
+flooding来讲性能是比较差的，最近使用的页面可能实际上是最不需要的页面。</li>
+<li>如果做一个全表扫描，不知道要不要替换内存中的哪个页。</li>
+</ul>
+<p>例：sequential flooding情况下的LRU</p>
+<ol type="1">
+<li>第一个SQL语句为点查询，从page0开始将数据读到内存池中</li>
+</ol>
+<center>
+<img src="image-20220503133920418.png" srcset="/img/loading.gif" lazyload alt="lru-1" style="zoom:50%;" />
+</center>
+<ol start="2" type="1">
+<li>此时出现第二个SQL语句Q2，进行全表扫描</li>
+</ol>
+<center>
+<img src="image-20220503134050627.png" srcset="/img/loading.gif" lazyload alt="lru-2" style="zoom:50%;" />
+</center>
+<ol start="3" type="1">
+<li>Q2进行线性扫描，此时缓存池已经装满</li>
+</ol>
+<center>
+<img src="image-20220503134112451.png" srcset="/img/loading.gif" lazyload alt="lru-3" style="zoom:50%;" />
+</center>
+<ol start="4" type="1">
+<li>读取page3，按照LRU算法来看需要用page3来替换page0，此时内存池中的数据page0最有用，因为它刚刚被Q1点查询过，是热点数据，对于全表扫描来说，这些页都只扫描一次，它们的权重都是一样的。这种情况下说明，page0比page1和page2重要一些。</li>
+</ol>
+<center>
+<img src="image-20220503134137166.png" srcset="/img/loading.gif" lazyload alt="lru-4" style="zoom:50%;" />
+</center>
+<ol start="5" type="1">
+<li>按照LRU算法使用page3替换掉page0</li>
+</ol>
+<center>
+<img src="image-20220503134157363.png" srcset="/img/loading.gif" lazyload alt="lru-5" style="zoom:50%;" />
+</center>
+<ol start="6" type="1">
+<li>此时Q3再次进行点查询，可是缓存池内再也没有了page0，于是又到disk中再次读取page0。</li>
+</ol>
+<center>
+<img src="image-20220503134230843.png" srcset="/img/loading.gif" lazyload alt="lru-6" style="zoom:50%;" />
+</center>
+<ol start="7" type="1">
+<li>用page0替换掉page1</li>
+</ol>
+<center>
+<img src="image-20220503134254772.png" srcset="/img/loading.gif" lazyload alt="lru-7" style="zoom:50%;" />
+</center>
+<p>有三种解决方案可以改进LRU和CLOCK策略的缺点：</p>
+<h4 id="lru-k">5.3 LRU-K</h4>
+<p>LRU会记录每一个页上次的访问时间，驱逐最老的访问时间。改进策略为记住上K次的访问时间，如果K=5则会记录前五次的访问时间，从中计算出规律，用于预测页下次被访问的时间。</p>
+<h4 id="localization">5.4 LOCALIZATION</h4>
+<p>本地化策略，以事务或SQL语句为单位进行驱逐，这将减少每个查询对缓冲池的污染，即与本人相关的页可以驱逐，但是与别人相关的数据要慎重驱逐。</p>
+<p>例：记录page1是Q1这条语句读过的，Q2执行是发现page1不仅被自己读过也被前面的语句读过，这个页出现的频率更高，将其保留。</p>
+<h4 id="priority-hints">5.5 PRIORITY HINTS</h4>
+<p>优先级提醒，执行器在执行的时候，可以给缓存池一些指示告诉缓冲池页面是否重要。
+对于树状的索引来讲，它的根节点更为重要，根节点的缓存不要去清理，基本上一开机就读到内存中，永远不清理。</p>
+<p>例：</p>
+<ol type="1">
+<li>SQL1插入数据</li>
+</ol>
+<center>
+<img src="image-20220503145752398.png" srcset="/img/loading.gif" lazyload alt="proprity hints-1" style="zoom:67%;" />
+</center>
+<ol start="2" type="1">
+<li>SQL2查询数据</li>
+</ol>
+<center>
+<img src="image-20220503145829478.png" srcset="/img/loading.gif" lazyload alt="proprity hints-2" style="zoom:67%;" />
+</center>
+<p>只要遍历索引，就必须从根节点开始，所以缓存根节点是非常有必要的。</p>
+<h5 id="dirty-page">DIRTY PAGE</h5>
+<p>什么是脏页？怎么将内存中文件的变化写回磁盘，而脏页就是修改了但是还没存到磁盘中的文件。</p>
+<p>两种方法可以处理脏页：</p>
+<ul>
+<li>最快：删除缓冲池中未被脏化的任何页</li>
+<li>最慢：将脏页写回磁盘，以确保其更改被持久化</li>
+</ul>
+<p>这两种方法说明了快速驱逐和脏页之间的权衡，如果这个脏页如果以后都用不到了，可以写回；如果这个脏页还要用到，就暂时先不写回磁盘。如果将脏页一直放在内存中，不写入磁盘，存在持久化的问题，大多数据库使用WAL方案解决脏页持久化。为了减少磁盘IO，需要定期将脏页刷盘，如果修改后断电了怎么办？其中WAL日志是先写入磁盘的。</p>
+<h5 id="background-writing">BACKGROUND WRITING</h5>
+<p>通过异步刷脏，DBMS可以周期性地遍历页表并将脏页写入磁盘。当一个脏页被安全地写入时，就可以驱逐这个脏页，或直接设置一个不是脏页的标志位，可能以后还有用处。此外，还要小心对待脏页和WAL之间的顺序，如果没有刷脏，那么至少需要将日志进行持久化，否则掉电将会失去数据。</p>
+<h2 id="其他缓存数据">6. 其他缓存数据</h2>
+<p>内存中除了保存元组和索引，还需要在内存池中保存其他的内容：</p>
+<ul>
+<li>Sorting +Join Buffers</li>
+<li>Query Cache，缓存热点的SQL语句的执行结果。</li>
+<li>Maintenance Buffers</li>
+<li>Log Buffers</li>
+<li>Dictionary Cache</li>
+</ul>
+<h3 id="conclusion">7. CONCLUSION</h3>
+<p>数据库自己去处理缓存永远比操作系统帮助我们处理这些缓存要好，因为数据库知道哪一个页是做什么的，会不会再用到，而OS是不清楚这一点的。同时缓存池可以根据执行计划做一些优化，比如：驱逐，分配以及预抓取策略以提升效率。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Buffer Pool</div>
+      <div>https://chakkk309.github.io/2022/03/19/BufferPool/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Jiaqi</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>March 19, 2022</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/03/19/JoinAlgorithms/" title="Join Algorithms">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Join Algorithms</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/03/01/hello-world/" title="Hello World">
+                        <span class="hidden-mobile">Hello World</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.1/es5/tex-mml-chtml.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
