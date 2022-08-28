@@ -1,0 +1,706 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/images/chakkk.jpg">
+  <link rel="icon" href="/images/chakkk.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Jiaqi">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="记录一下Nginx的安装过程和实例练习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nginx安装记录">
+<meta property="og:url" content="https://chakkk309.github.io/2020/03/28/NginxRecord/index.html">
+<meta property="og:site_name" content="Chakkk">
+<meta property="og:description" content="记录一下Nginx的安装过程和实例练习">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://chakkk309.github.io/2020/03/28/NginxRecord/正向代理.jpg">
+<meta property="og:image" content="https://chakkk309.github.io/2020/03/28/NginxRecord/overall.png">
+<meta property="og:image" content="https://chakkk309.github.io/2020/03/28/NginxRecord/90_get.png">
+<meta property="og:image" content="https://chakkk309.github.io/2020/03/28/NginxRecord/126_ok.png">
+<meta property="article:published_time" content="2020-03-28T12:57:08.000Z">
+<meta property="article:modified_time" content="2022-08-27T14:10:43.088Z">
+<meta property="article:author" content="Jiaqi">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://chakkk309.github.io/2020/03/28/NginxRecord/正向代理.jpg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Nginx安装记录 - Chakkk</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"chakkk309.github.io","root":"/","version":"1.9.2","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Chakkk</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/images/ta.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">Nginx安装记录</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2020-03-28 20:57" pubdate>
+          March 28, 2020 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.1k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          11 mins
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> views
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Nginx安装记录</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>记录一下Nginx的安装过程和实例练习</p>
+<span id="more"></span>
+<h3 id="编译安装">编译安装</h3>
+<p><strong>下载</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">yum -y install wget<br>cd /usr/local &amp;&amp; wget http://nginx.org/download/nginx-1.16.1.tar.gz<br></code></pre></td></tr></table></figure>
+<p><strong>环境准备</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">yum install -y gcc-c++<br>yum install -y pcre pcre-devel<br>yum install -y zlib zlib-devel<br>yum install -y openssl openssl-devel<br></code></pre></td></tr></table></figure>
+<p><strong>解压</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd /usr/local &amp;&amp; tar -zxvf nginx-1.16.1.tar.gz<br></code></pre></td></tr></table></figure>
+<p><strong>编译安装</strong>：<code>./configure</code>是个shell脚本，用来检测安装平台的目标特征的。比如它会检测你是不是有CC或GCC，并不是需要CC或GCC；make从Makefile中读取指令然后编译；make
+install同样也从Makefile中读取指令，安装到指定位置。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd /usr/local/nginx-1.16.1 &amp;&amp; ./configure --prefix=/usr/local/nginx<br>make<br>make install<br></code></pre></td></tr></table></figure>
+<p><strong>配置环境变量</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">vi /etc/profile<br><span class="hljs-meta prompt_"># </span><span class="language-bash">最下面新起一行，插入如下</span><br>nginx=/usr/local/nginx/sbin<br>export PATH=$PATH:$nginx<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">使配置文件生效</span><br>source /etc/profile<br></code></pre></td></tr></table></figure>
+<p><strong>启动</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">nginx<br></code></pre></td></tr></table></figure>
+<p><strong>访问测试</strong></p>
+<p><strong>关闭</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">快速停止</span><br>nginx -s stop<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">平缓停止</span><br>nginx -s quit<br></code></pre></td></tr></table></figure>
+<p>重启：重新加载配置文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">nginx -s reload<br></code></pre></td></tr></table></figure>
+<p>检测配置文件语法是否正确</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">指定需要检查的配置文件</span><br>nginx -t -c  /usr/local/nginx/conf/nginx.conf<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">不加 -c 参数，默认检测nginx.conf配置文件（常用）</span><br>nginx -t <br></code></pre></td></tr></table></figure>
+<hr />
+<h3 id="yum安装">yum安装</h3>
+<p>下载</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">yum -y install nginx<br></code></pre></td></tr></table></figure>
+<p>常用操作</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">设置开机启动</span><br>systemctl enable nginx<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">启动nginx服务</span><br>service nginx start<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">停止nginx服务</span><br>service nginx stop<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">重启nginx服务</span><br>service nginx restart<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">重新加载配置，一般是在修改过nginx配置文件时使用</span><br>service nginx reload<br></code></pre></td></tr></table></figure>
+<p>常用文件</p>
+<ul>
+<li>配置文件：/etc/nginx/nginx.conf</li>
+<li>自定义的配置文件：/etc/nginx/conf.d</li>
+<li>项目文件：/usr/share/nginx/html/</li>
+<li>日志文件：/var/log/nginx/</li>
+<li>其他安装文件都在/etc/nginx</li>
+<li>使用<code>find  /  -name  nginx*</code>
+全局查找与nginx相关的文件</li>
+</ul>
+<p>安装网络工具</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">yum -y install net-tools<br></code></pre></td></tr></table></figure>
+<p>查看80端口</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">netstat -anpt|grep 80<br></code></pre></td></tr></table></figure>
+<hr />
+<h3 id="正向代理">正向代理</h3>
+<p>比如科学上网VPN就是一个典型的例子，正向代理服务器位于客户端和服务器之间，为了向服务器获取数据，客户端要向代理服务器发送一个请求，并指定目标服务器，代理服务器将目标服务器返回的数据转交给客户端。</p>
+<p><img src="正向代理.jpg" srcset="/img/loading.gif" lazyload /></p>
+<hr />
+<h3 id="反向代理">反向代理</h3>
+<blockquote>
+<p>实例目标：使用 nginx 反向代理 <code>www.123.com</code>
+直接跳转到<code>192.168.0.103:8080</code></p>
+</blockquote>
+<p>启动tomcat<code>（192.168.0.103:8080）</code></p>
+<p>修改windows本地host文件，添加映射关系。hosts一般在<code>C:\Windows\System32\drivers\etc\hosts</code>目录下，它是一个没有扩展名的系统文件，IP解析优先级比DNS要高。若没有修改权限，可右键-&gt;属性-&gt;安全-&gt;修改权限；或将hosts移动到桌面，修改后复制回原文件夹。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">192.168.0.103  www.123.com<br></code></pre></td></tr></table></figure>
+<p>此时，可以通过<code>www.123.com:8080</code>访问tomcat了</p>
+<p>使用Nginx反向代理</p>
+<ul>
+<li>找到nginx.conf，并编辑</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">vi /usr/local/nginx/conf/nginx.conf<br></code></pre></td></tr></table></figure>
+<ul>
+<li>nginx.conf核心配置如下</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs shell">server &#123;<br>    listen       80;                           # 监听80端口（默认）<br>    server_name  www.123.com;                  # 虚拟主机名（用来指定IP地址或者域名，多个域名之间用空格分开）<br><br>    location / &#123;                               # 访问根目录（如果有多个location，会从最长前缀开始匹配，此location匹配http://www.123.com/）<br>        proxy_pass http://192.168.0.103:8080;<br>        root   html;                           # 用于指定虚拟主机的网页根目录，这个目录可以是相对路径，也可以是绝对路径<br>        index  index.html index.htm index.jsp; # 用于设置网站的默认首页，后面的文件名称可以有多个，中间用空格隔开，第一个找不到，则找第二个，以此类推<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>重新加载nginx配置文件</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">nginx -s reload<br></code></pre></td></tr></table></figure>
+<p>实例结果：访问<code>www.123.com</code>
+直接跳转到<code>192.168.0.103:8080</code>也就是tomcat启动页面</p>
+<blockquote>
+<p>Nginx搭建在192.168.0.103这台虚拟机上，在本机也就是客户端，访问<code>www.123.com</code>，会发生什么？</p>
+</blockquote>
+<p>实例分析：</p>
+<p>1.检查本地hosts文件，发现有该域名的解析，拿到解析的ip：192.168.0.103</p>
+<p>2.http请求连接到了192.168.0.103的80端口</p>
+<p>3.Nginx的80端口一直在被监听，服务器发现请求的uri为/，host为<code>www.123.com</code>，进而匹配到server_name
+·<code>www.123.com</code>，并且转到了location / 也就是代理服务器
+<code>http://192.168.0.103:8080</code>，至此访问成功。</p>
+<p>在这个反向代理过程中，客户端把请求交给Nginx，由Nginx的配置文件制定一些规则把请求转发给服务器，客户端并不知道谁为自己提供了服务，<strong>反向代理，其实代理的是服务器</strong>。</p>
+<p>抓个包来理一下思路，进行报文过滤，只留下相关的http传输作为重点进行分析。</p>
+<p><img src="overall.png" srcset="/img/loading.gif" lazyload /></p>
+<p>三次握手建立连接之后，客户端向Nginx服务器发起请求。</p>
+<p><img src="90_get.png" srcset="/img/loading.gif" lazyload /></p>
+<p>可以看到客户端请求使用HTTP1.1协议Get方法访问根目录内容，请求的域名为<code>www.123.com</code>。</p>
+<p><img src="126_ok.png" srcset="/img/loading.gif" lazyload /></p>
+<p>服务器响应了请求，状态码200OK，回应的Web服务器为Nginx。</p>
+<p>又相继传输了HTML和CSS样式以及加载页面所需要的图片，可以看到这个过程中，没有出现被代理服务器的任何信息，也与”反向代理，其实代理的是服务器“这句话相呼应。</p>
+<h3 id="负载均衡">负载均衡</h3>
+<p>负载均衡主要通过专门的硬件设备或者软件算法实现。而通过软件实现的负载均衡主要依赖于均衡算法的选择和程序的健壮性。均衡算法又主要分为两大类：</p>
+<ul>
+<li><p>静态负载均衡算法：主要包括轮询算法、基于比率的加权轮询算法或者基于优先级的加权轮询算法。</p></li>
+<li><p>动态负载均衡算法：主要包括基于任务量的最少连接优化算法、基于性能的最快响应优先算法、预测算法及动态性能分配算法等。</p></li>
+</ul>
+<p>前期准备</p>
+<ul>
+<li>复制3个tomcat，分别命名8081、8082、8083作为区分。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">cp -r /usr/local/apache-tomcat-8.5.53/ /usr/local/tomcat8081<br></code></pre></td></tr></table></figure>
+<ul>
+<li>修改相应<code>conf/server.xml</code>中的端口号</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">&lt;Server port=&quot;8006&quot; shutdown=&quot;SHUTDOWN&quot;&gt;<br>&lt;Connector port=&quot;8081&quot; protocol=&quot;HTTP/1.1&quot;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>修改相应的h1标题作为区分</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">&lt;h1&gt;$&#123;pageContext.servletContext.serverInfo&#125;-【192.168.0.102:8081】&lt;/h1&gt;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>启动3个tomcat服务</li>
+</ul>
+<h4 id="普通轮询算法">普通轮询算法</h4>
+<p>实现内容：输入<code>www.123.com</code>
+在3个tomcat服务之间进行切换</p>
+<ul>
+<li><p>编辑配置文件<code>nginx.conf</code></p></li>
+<li><p>核心内容</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs shell">upstream OrdinaryPolling &#123;                     # 主要用于负载均衡，设置一系列的后端服务器<br>       server 192.168.0.102:8081;<br>       server 192.168.0.102:8082;<br>       server 192.168.0.102:8083;<br>   &#125;<br>  <br>   server &#123;<br>       listen       80;                           # 监听80端口（默认）<br>       server_name  www.123.com;                  # 虚拟主机名（用来指定IP地址或者域名，多个域名之间用空格分开）<br>  <br>       location / &#123;                               # 访问根目录（如果有多个location，会从最长前缀开始匹配，此location匹配http://www.123.com/）<br>           proxy_pass http://OrdinaryPolling;<br>           root   html;                           # 用于指定虚拟主机的网页根目录，这个目录可以是相对路径，也可以是绝对路径<br>           index  index.html index.htm index.jsp; # 用于设置网站的默认首页，后面的文件名称可以有多个，中间用空格隔开，第一个找不到，则找第二个，以此类推<br>       &#125;<br>   &#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>重新加载配置文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">nginx -s reload<br></code></pre></td></tr></table></figure></li>
+</ul>
+<p>实例访问成功</p>
+<h4 id="基于比例加权轮询">基于比例加权轮询</h4>
+<p>某台服务器性能更高，根据他的自身能力可以处理更多的请求</p>
+<ul>
+<li><p>编辑nginx.conf文件，在负载均衡设置中添加weight选项。该指令用于配置前面请求处理的权重，默认值为
+1。也就是说，上文不加权的普通轮询，其实其加权值 weight 都为 1。</p></li>
+<li><pre class="shell"><code>  server 192.168.0.102:8081 weight=6;
+  server 192.168.0.102:8082 weight=2
+  server 192.168.0.102:8083 weight=2;</code></pre></li>
+<li><p>重新加载配置文件</p></li>
+<li><p>实例结果：访问 <code>www.123.com</code>
+跳转到<code>192.168.0.102:8081</code>次数增多。</p></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Nginx安装记录</div>
+      <div>https://chakkk309.github.io/2020/03/28/NginxRecord/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Jiaqi</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>March 28, 2020</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/03/28/BigdataRecord/" title="大数据科学与应用课程记录">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">大数据科学与应用课程记录</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/03/24/RedisRecord/" title="Redis安装记录">
+                        <span class="hidden-mobile">Redis安装记录</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.1/es5/tex-mml-chtml.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
