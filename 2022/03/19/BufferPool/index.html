@@ -19,41 +19,41 @@
     <meta name="description" content="问题：存储引擎如何管理内存与磁盘间的数据流动？ buffer pool：在内存中开辟一片区域作为缓存，存储数据库文件。 1.简介 DBMS负责管理数据在内存和在磁盘上的移动。 在大多数情况下，数据不能直接在磁盘中操作，任何数据库都必须能够有效地将磁盘上表示为文件的数据移动到内存中，以便使用。 缓存池存在于内存中，而且一定是比磁盘小的多。数据库的执行器想要读取2号页时，首先会查询缓存池中是否存在该页">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Buffer Pool">
-<meta property="og:url" content="https://chakkk309.github.io/2022/03/19/BufferPool/index.html">
+<meta property="og:url" content="https://chakkk309.github.io/2022/03/19/bufferpool/index.html">
 <meta property="og:site_name" content="Chakkk">
 <meta property="og:description" content="问题：存储引擎如何管理内存与磁盘间的数据流动？ buffer pool：在内存中开辟一片区域作为缓存，存储数据库文件。 1.简介 DBMS负责管理数据在内存和在磁盘上的移动。 在大多数情况下，数据不能直接在磁盘中操作，任何数据库都必须能够有效地将磁盘上表示为文件的数据移动到内存中，以便使用。 缓存池存在于内存中，而且一定是比磁盘小的多。数据库的执行器想要读取2号页时，首先会查询缓存池中是否存在该页">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220125005537858.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220428222157638.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220120143247987.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220120143331428.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220428223934250.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220428224003070.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220428225918009.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220428230238203.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220428230434458.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220503132710028.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220503132823543.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220503132900930.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220503132932793.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220503133122934.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220503133219260.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220503133252679.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220503133335312.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220503133920418.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220503134050627.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220503134112451.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220503134137166.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220503134157363.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220503134230843.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220503134254772.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220503145752398.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220503145829478.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/bufferpool/image-20220125005537858.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/bufferpool/image-20220428222157638.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/bufferpool/image-20220120143247987.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/bufferpool/image-20220120143331428.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/bufferpool/image-20220428223934250.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/bufferpool/image-20220428224003070.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/bufferpool/image-20220428225918009.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/bufferpool/image-20220428230238203.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/bufferpool/image-20220428230434458.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/bufferpool/image-20220503132710028.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/bufferpool/image-20220503132823543.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/bufferpool/image-20220503132900930.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/bufferpool/image-20220503132932793.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/bufferpool/image-20220503133122934.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/bufferpool/image-20220503133219260.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/bufferpool/image-20220503133252679.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/bufferpool/image-20220503133335312.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/bufferpool/image-20220503133920418.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/bufferpool/image-20220503134050627.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/bufferpool/image-20220503134112451.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/bufferpool/image-20220503134137166.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/bufferpool/image-20220503134157363.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/bufferpool/image-20220503134230843.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/bufferpool/image-20220503134254772.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/bufferpool/image-20220503145752398.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/bufferpool/image-20220503145829478.png">
 <meta property="article:published_time" content="2022-03-18T16:00:00.000Z">
 <meta property="article:modified_time" content="2022-08-26T16:55:09.106Z">
 <meta property="article:author" content="Jiaqi">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://chakkk309.github.io/2022/03/19/BufferPool/image-20220125005537858.png">
+<meta name="twitter:image" content="https://chakkk309.github.io/2022/03/19/bufferpool/image-20220125005537858.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -110,7 +110,8 @@
 
 
   
-<meta name="generator" content="Hexo 6.2.0"></head>
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Chakkk" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -123,7 +124,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Chakkk</strong>
+      <strong>Chakkk ‘s blog</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -169,6 +170,46 @@
                 <i class="iconfont icon-user-fill"></i>
                 About
               </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-books"></i>
+                Others
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/books">
+                    
+                    Books
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/movies">
+                    
+                    Movies
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/icon/">
+                    
+                    Graph
+                  </a>
+                
+              </div>
             </li>
           
         
@@ -542,7 +583,7 @@ flooding来讲性能是比较差的，最近使用的页面可能实际上是最
   <div class="license-box my-3">
     <div class="license-title">
       <div>Buffer Pool</div>
-      <div>https://chakkk309.github.io/2022/03/19/BufferPool/</div>
+      <div>https://chakkk309.github.io/2022/03/19/bufferpool/</div>
     </div>
     <div class="license-meta">
       
@@ -584,9 +625,9 @@ flooding来讲性能是比较差的，最近使用的页面可能实际上是最
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/03/19/HashTables/" title="Hash Table">
+                      <a href="/2022/03/19/joinalgorithms/" title="Join Algorithms">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Hash Table</span>
+                        <span class="hidden-mobile">Join Algorithms</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     

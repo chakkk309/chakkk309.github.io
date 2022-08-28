@@ -16,20 +16,20 @@
   <meta name="author" content="Jiaqi">
   <meta name="keywords" content="">
   
-    <meta name="description" content="2022&#x2F;04&#x2F;01 github pages绑定自定义域名，并启用https加密 ref: Custom domains on GitHub Pages gain support for HTTPS 2022&#x2F;02&#x2F;10 最近发现了一个比较喜欢的主题Fluid，于是又回归了hexo。于是从：  变为了：  以及今年会更专注于数据库系统的学习记录。  2022&#x2F;01&#x2F;06 使用halo作为博客工">
+    <meta name="description" content="2022&#x2F;08&#x2F;28 增加了Fluid的主题配置，记录下用到的插件：  RSS支持：hexo-generator-feed 豆瓣书影音界面：hexo-douban 加密：hexo-blog-encrypt 将文章链接从中文转换成拼音：hexo-permalink-pinyin 自动对source路径下的图片进行压缩：hexo-all-minifier  TODO: 希望之后做一下SEO的相关优化">
 <meta property="og:type" content="article">
 <meta property="og:title" content="博客维护日志">
-<meta property="og:url" content="https://chakkk309.github.io/2022/01/06/BlogMaintain/index.html">
+<meta property="og:url" content="https://chakkk309.github.io/2022/01/06/blogmaintain/index.html">
 <meta property="og:site_name" content="Chakkk">
-<meta property="og:description" content="2022&#x2F;04&#x2F;01 github pages绑定自定义域名，并启用https加密 ref: Custom domains on GitHub Pages gain support for HTTPS 2022&#x2F;02&#x2F;10 最近发现了一个比较喜欢的主题Fluid，于是又回归了hexo。于是从：  变为了：  以及今年会更专注于数据库系统的学习记录。  2022&#x2F;01&#x2F;06 使用halo作为博客工">
+<meta property="og:description" content="2022&#x2F;08&#x2F;28 增加了Fluid的主题配置，记录下用到的插件：  RSS支持：hexo-generator-feed 豆瓣书影音界面：hexo-douban 加密：hexo-blog-encrypt 将文章链接从中文转换成拼音：hexo-permalink-pinyin 自动对source路径下的图片进行压缩：hexo-all-minifier  TODO: 希望之后做一下SEO的相关优化">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://chakkk309.github.io/2022/01/06/BlogMaintain/image-20220316233124438.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/01/06/BlogMaintain/image-20220316233213881.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/01/06/blogmaintain/image-20220316233124438.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/01/06/blogmaintain/image-20220316233213881.png">
 <meta property="article:published_time" content="2022-01-06T15:25:49.000Z">
-<meta property="article:modified_time" content="2022-08-25T18:44:03.480Z">
+<meta property="article:modified_time" content="2022-08-28T14:33:02.179Z">
 <meta property="article:author" content="Jiaqi">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://chakkk309.github.io/2022/01/06/BlogMaintain/image-20220316233124438.png">
+<meta name="twitter:image" content="https://chakkk309.github.io/2022/01/06/blogmaintain/image-20220316233124438.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -86,7 +86,8 @@
 
 
   
-<meta name="generator" content="Hexo 6.2.0"></head>
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Chakkk" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -99,7 +100,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Chakkk</strong>
+      <strong>Chakkk ‘s blog</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -148,6 +149,46 @@
             </li>
           
         
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-books"></i>
+                Others
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/books">
+                    
+                    Books
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/movies">
+                    
+                    Movies
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/icon/">
+                    
+                    Graph
+                  </a>
+                
+              </div>
+            </li>
+          
+        
         
         
           <li class="nav-item" id="color-toggle-btn">
@@ -192,7 +233,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          723 words
+          912 words
         
       </span>
     
@@ -203,7 +244,7 @@
         
         
         
-          2 mins
+          3 mins
         
       </span>
     
@@ -255,19 +296,33 @@
               <div class="markdown-body">
                 
                 <p><br/></p>
-<h2 id="section">2022/04/01</h2>
+<h2 id="section">2022/08/28</h2>
+<p>增加了Fluid的主题配置，记录下用到的插件：</p>
+<ul>
+<li>RSS支持：<a
+target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-generator-feed">hexo-generator-feed</a></li>
+<li>豆瓣书影音界面：<a
+target="_blank" rel="noopener" href="https://github.com/mythsman/hexo-douban">hexo-douban</a></li>
+<li>加密：<a
+target="_blank" rel="noopener" href="https://github.com/D0n9X1n/hexo-blog-encrypt">hexo-blog-encrypt</a></li>
+<li>将文章链接从中文转换成拼音：<a
+target="_blank" rel="noopener" href="https://github.com/viko16/hexo-permalink-pinyin">hexo-permalink-pinyin</a></li>
+<li>自动对source路径下的图片进行压缩：<a
+target="_blank" rel="noopener" href="https://github.com/chenzhutian/hexo-all-minifier">hexo-all-minifier</a></li>
+</ul>
+<p>TODO: 希望之后做一下SEO的相关优化</p>
+<h2 id="section-1">2022/04/01</h2>
 <p>github pages绑定自定义域名，并启用https加密</p>
 <p>ref: <a
 target="_blank" rel="noopener" href="https://github.blog/2018-05-01-github-pages-custom-domains-https/">Custom
 domains on GitHub Pages gain support for HTTPS</a></p>
-<h2 id="section-1">2022/02/10</h2>
+<h2 id="section-2">2022/02/10</h2>
 <p>最近发现了一个比较喜欢的主题Fluid，于是又回归了hexo。于是从：</p>
 <p><img src="image-20220316233124438.png" srcset="/img/loading.gif" lazyload /></p>
 <p>变为了：</p>
 <p><img src="image-20220316233213881.png" srcset="/img/loading.gif" lazyload /></p>
 <p>以及今年会更专注于数据库系统的学习记录。</p>
-<p><br/></p>
-<h2 id="section-2">2022/01/06</h2>
+<h2 id="section-3">2022/01/06</h2>
 <p>使用halo作为博客工具已经有一年多的时间了，驱动力不足，最近才做了一下对于blog的维护工作，大概从以下几个方面着手：</p>
 <h4 id="halo版本升级">Halo版本升级</h4>
 <p>看了一下当前使用的halo还停留在1.4.8，最新的版本已经升级到1.4.16，主要是升级了部分依赖中的
@@ -288,12 +343,10 @@ target="_blank" rel="noopener" href="https://dhjdd.cn/archives/257">参考文章
 </ul>
 <h4 id="更新了about-this-site">更新了【About this site】</h4>
 <h4 id="站点添加https证书todo">站点添加HTTPS证书（TODO）</h4>
-<p><br/></p>
-<h2 id="section-3">2021-06-09</h2>
-<p>一次比较惨痛的 #<a href="/2021/06/09/Backup/" title="记一次服务器被入侵后的问题分析与数据备份">记一次服务器被入侵后的问题分析与数据备份</a></p>
-<p><br/></p>
-<h2 id="section-4">2020-03-22</h2>
-<p>重装系统后的 #<a href="/2020/03/22/retriveHexo/" title="Hexo Installation">Hexo Installation</a></p>
+<h2 id="section-4">2021/06/09</h2>
+<p>一次比较惨痛的 #<a href="/2021/06/09/backup/" title="记一次服务器被入侵后的问题分析与数据备份">记一次服务器被入侵后的问题分析与数据备份</a></p>
+<h2 id="section-5">2020/03/22</h2>
+<p>重装系统后的 #<a href="/2020/03/22/retrivehexo/" title="Hexo Installation">Hexo Installation</a></p>
 
                 
               </div>
@@ -312,7 +365,7 @@ target="_blank" rel="noopener" href="https://dhjdd.cn/archives/257">参考文章
   <div class="license-box my-3">
     <div class="license-title">
       <div>博客维护日志</div>
-      <div>https://chakkk309.github.io/2022/01/06/BlogMaintain/</div>
+      <div>https://chakkk309.github.io/2022/01/06/blogmaintain/</div>
     </div>
     <div class="license-meta">
       
@@ -354,7 +407,7 @@ target="_blank" rel="noopener" href="https://dhjdd.cn/archives/257">参考文章
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/28/Redis%E5%A4%9A%E6%9C%BA/" title="Redis 多机">
+                      <a href="/2022/02/28/redis-duo-ji/" title="Redis 多机">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">Redis 多机</span>
                         <span class="visible-mobile">Previous</span>
@@ -364,7 +417,7 @@ target="_blank" rel="noopener" href="https://dhjdd.cn/archives/257">参考文章
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/06/24/picConfiguration/" title="Typora + PicGo + Kodo 配置图片自动上传">
+                      <a href="/2021/06/24/picconfiguration/" title="Typora + PicGo + Kodo 配置图片自动上传">
                         <span class="hidden-mobile">Typora + PicGo + Kodo 配置图片自动上传</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>

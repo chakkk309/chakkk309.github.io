@@ -19,40 +19,40 @@
     <meta name="description" content="1.哈希表 哈希表的本质是存储了键和值的无序的关联数组，是可重复的map。哈希表对于一个给定的key执行哈希函数，输出一个整数。这个值就是键值对在表中的位置。 空间复杂度为\(O (n)\)，哈希表的空间和存储的数据量是线性相关的；平均时间复杂度为\(O(1)\)，对一个键算哈希直接就能找到这个key在数组中的位置；最坏时间复杂度为\(O (n)\)，所有key的哈希值都一样，这些key全部冲突，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hash Table">
-<meta property="og:url" content="https://chakkk309.github.io/2022/03/19/HashTables/index.html">
+<meta property="og:url" content="https://chakkk309.github.io/2022/03/19/hashtables/index.html">
 <meta property="og:site_name" content="Chakkk">
 <meta property="og:description" content="1.哈希表 哈希表的本质是存储了键和值的无序的关联数组，是可重复的map。哈希表对于一个给定的key执行哈希函数，输出一个整数。这个值就是键值对在表中的位置。 空间复杂度为\(O (n)\)，哈希表的空间和存储的数据量是线性相关的；平均时间复杂度为\(O(1)\)，对一个键算哈希直接就能找到这个key在数组中的位置；最坏时间复杂度为\(O (n)\)，所有key的哈希值都一样，这些key全部冲突，">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220127220304130.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220127214053847.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220127220936782.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220127221424562.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220127221712094.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220127222046966.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220127222632528.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220127222751707.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220127222904008.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220127223048801.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/hashtables/image-20220127220304130.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/hashtables/image-20220127214053847.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/hashtables/image-20220127220936782.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/hashtables/image-20220127221424562.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/hashtables/image-20220127221712094.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/hashtables/image-20220127222046966.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/hashtables/image-20220127222632528.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/hashtables/image-20220127222751707.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/hashtables/image-20220127222904008.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/hashtables/image-20220127223048801.png">
 <meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/15445/06%20Hash%20Tables/image-20220127223148595.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220127223227776.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220128150625315.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220128150758494.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220128150906362.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220128151807095.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220128151904305.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220128152655834.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220128152758600.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220128153047519.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220128153204895.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220128153527529.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220128153719853.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220128153806574.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220128154539295.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/hashtables/image-20220127223227776.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/hashtables/image-20220128150625315.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/hashtables/image-20220128150758494.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/hashtables/image-20220128150906362.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/hashtables/image-20220128151807095.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/hashtables/image-20220128151904305.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/hashtables/image-20220128152655834.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/hashtables/image-20220128152758600.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/hashtables/image-20220128153047519.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/hashtables/image-20220128153204895.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/hashtables/image-20220128153527529.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/hashtables/image-20220128153719853.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/hashtables/image-20220128153806574.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/hashtables/image-20220128154539295.png">
 <meta property="article:published_time" content="2022-03-18T16:00:00.000Z">
 <meta property="article:modified_time" content="2022-08-26T16:54:40.469Z">
 <meta property="article:author" content="Jiaqi">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220127220304130.png">
+<meta name="twitter:image" content="https://chakkk309.github.io/2022/03/19/hashtables/image-20220127220304130.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -109,7 +109,8 @@
 
 
   
-<meta name="generator" content="Hexo 6.2.0"></head>
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Chakkk" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -122,7 +123,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Chakkk</strong>
+      <strong>Chakkk ‘s blog</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -168,6 +169,46 @@
                 <i class="iconfont icon-user-fill"></i>
                 About
               </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-books"></i>
+                Others
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/books">
+                    
+                    Books
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/movies">
+                    
+                    Movies
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/icon/">
+                    
+                    Graph
+                  </a>
+                
+              </div>
             </li>
           
         
@@ -469,7 +510,7 @@ chain。</p>
   <div class="license-box my-3">
     <div class="license-title">
       <div>Hash Table</div>
-      <div>https://chakkk309.github.io/2022/03/19/HashTables/</div>
+      <div>https://chakkk309.github.io/2022/03/19/hashtables/</div>
     </div>
     <div class="license-meta">
       
@@ -511,9 +552,9 @@ chain。</p>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/03/19/JoinAlgorithms/" title="Join Algorithms">
+                      <a href="/2022/03/19/databasestorage/" title="Database Storage">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Join Algorithms</span>
+                        <span class="hidden-mobile">Database Storage</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -521,8 +562,8 @@ chain。</p>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/03/19/BufferPool/" title="Buffer Pool">
-                        <span class="hidden-mobile">Buffer Pool</span>
+                      <a href="/2022/03/19/joinalgorithms/" title="Join Algorithms">
+                        <span class="hidden-mobile">Join Algorithms</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
