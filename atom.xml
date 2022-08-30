@@ -18,8 +18,8 @@
   
   <entry>
     <title>开源项目申请</title>
-    <link href="https://chakkk309.github.io/2022/08/26/projectlist/"/>
-    <id>https://chakkk309.github.io/2022/08/26/projectlist/</id>
+    <link href="https://chakkk309.github.io/2022/08/26/projectList/"/>
+    <id>https://chakkk309.github.io/2022/08/26/projectList/</id>
     <published>2022-08-26T12:42:33.309Z</published>
     <updated>2022-08-25T19:25:32.540Z</updated>
     
@@ -40,8 +40,8 @@
   
   <entry>
     <title>Database Storage</title>
-    <link href="https://chakkk309.github.io/2022/03/19/databasestorage/"/>
-    <id>https://chakkk309.github.io/2022/03/19/databasestorage/</id>
+    <link href="https://chakkk309.github.io/2022/03/19/DatabaseStorage/"/>
+    <id>https://chakkk309.github.io/2022/03/19/DatabaseStorage/</id>
     <published>2022-03-19T09:26:00.000Z</published>
     <updated>2022-08-26T16:55:14.231Z</updated>
     
@@ -62,8 +62,8 @@
   
   <entry>
     <title>Join Algorithms</title>
-    <link href="https://chakkk309.github.io/2022/03/19/joinalgorithms/"/>
-    <id>https://chakkk309.github.io/2022/03/19/joinalgorithms/</id>
+    <link href="https://chakkk309.github.io/2022/03/19/JoinAlgorithms/"/>
+    <id>https://chakkk309.github.io/2022/03/19/JoinAlgorithms/</id>
     <published>2022-03-18T16:00:00.000Z</published>
     <updated>2022-08-26T16:55:37.542Z</updated>
     
@@ -79,8 +79,8 @@
   
   <entry>
     <title>Hash Table</title>
-    <link href="https://chakkk309.github.io/2022/03/19/hashtables/"/>
-    <id>https://chakkk309.github.io/2022/03/19/hashtables/</id>
+    <link href="https://chakkk309.github.io/2022/03/19/HashTables/"/>
+    <id>https://chakkk309.github.io/2022/03/19/HashTables/</id>
     <published>2022-03-18T16:00:00.000Z</published>
     <updated>2022-08-26T16:54:40.469Z</updated>
     
@@ -101,8 +101,8 @@
   
   <entry>
     <title>Buffer Pool</title>
-    <link href="https://chakkk309.github.io/2022/03/19/bufferpool/"/>
-    <id>https://chakkk309.github.io/2022/03/19/bufferpool/</id>
+    <link href="https://chakkk309.github.io/2022/03/19/BufferPool/"/>
+    <id>https://chakkk309.github.io/2022/03/19/BufferPool/</id>
     <published>2022-03-18T16:00:00.000Z</published>
     <updated>2022-08-26T16:55:09.106Z</updated>
     
@@ -146,8 +146,8 @@ first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&
   
   <entry>
     <title>Query Optimization</title>
-    <link href="https://chakkk309.github.io/2022/02/28/query-execution-optimization/"/>
-    <id>https://chakkk309.github.io/2022/02/28/query-execution-optimization/</id>
+    <link href="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&amp;%20Optimization/"/>
+    <id>https://chakkk309.github.io/2022/02/28/Query%20Execution%20&amp;%20Optimization/</id>
     <published>2022-02-28T08:42:39.000Z</published>
     <updated>2022-08-27T13:57:23.172Z</updated>
     
@@ -169,8 +169,8 @@ first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&
   
   <entry>
     <title>Redis 多机</title>
-    <link href="https://chakkk309.github.io/2022/02/28/redis-duo-ji/"/>
-    <id>https://chakkk309.github.io/2022/02/28/redis-duo-ji/</id>
+    <link href="https://chakkk309.github.io/2022/02/28/Redis%E5%A4%9A%E6%9C%BA/"/>
+    <id>https://chakkk309.github.io/2022/02/28/Redis%E5%A4%9A%E6%9C%BA/</id>
     <published>2022-02-28T05:36:24.000Z</published>
     <updated>2022-02-28T05:42:30.000Z</updated>
     
@@ -195,12 +195,12 @@ first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&
   
   <entry>
     <title>博客维护日志</title>
-    <link href="https://chakkk309.github.io/2022/01/06/blogmaintain/"/>
-    <id>https://chakkk309.github.io/2022/01/06/blogmaintain/</id>
+    <link href="https://chakkk309.github.io/2022/01/06/BlogMaintain/"/>
+    <id>https://chakkk309.github.io/2022/01/06/BlogMaintain/</id>
     <published>2022-01-06T15:25:49.000Z</published>
     <updated>2022-08-28T14:33:02.179Z</updated>
     
-    <content type="html"><![CDATA[<p><br/></p><h2 id="section">2022/08/28</h2><p>增加了Fluid的主题配置，记录下用到的插件：</p><ul><li>RSS支持：<ahref="https://github.com/hexojs/hexo-generator-feed">hexo-generator-feed</a></li><li>豆瓣书影音界面：<ahref="https://github.com/mythsman/hexo-douban">hexo-douban</a></li><li>加密：<ahref="https://github.com/D0n9X1n/hexo-blog-encrypt">hexo-blog-encrypt</a></li><li>将文章链接从中文转换成拼音：<ahref="https://github.com/viko16/hexo-permalink-pinyin">hexo-permalink-pinyin</a></li><li>自动对source路径下的图片进行压缩：<ahref="https://github.com/chenzhutian/hexo-all-minifier">hexo-all-minifier</a></li></ul><p>TODO: 希望之后做一下SEO的相关优化</p><h2 id="section-1">2022/04/01</h2><p>github pages绑定自定义域名，并启用https加密</p><p>ref: <ahref="https://github.blog/2018-05-01-github-pages-custom-domains-https/">Customdomains on GitHub Pages gain support for HTTPS</a></p><h2 id="section-2">2022/02/10</h2><p>最近发现了一个比较喜欢的主题Fluid，于是又回归了hexo。于是从：</p><p><img src="image-20220316233124438.png" /></p><p>变为了：</p><p><img src="image-20220316233213881.png" /></p><p>以及今年会更专注于数据库系统的学习记录。</p><h2 id="section-3">2022/01/06</h2><p>使用halo作为博客工具已经有一年多的时间了，驱动力不足，最近才做了一下对于blog的维护工作，大概从以下几个方面着手：</p><h4 id="halo版本升级">Halo版本升级</h4><p>看了一下当前使用的halo还停留在1.4.8，最新的版本已经升级到1.4.16，主要是升级了部分依赖中的log4j2 版本。我是使用docker部署，只需要重新拉取镜像重新运行即可，可参考<ahref="https://docs.halo.run/getting-started/upgrade">官网文档</a>更新。</p><h4 id="设置定时备份">设置定时备份</h4><p>数据备份是一种非常重要的事情，毕竟俺就这么点数字遗产了，<ahref="https://dhjdd.cn/archives/257">参考文章</a>新建定时任务实现自动备份到github。</p><h4 id="关于图床">关于图床</h4><p>之前一直使用七牛云作为图床，但备案很麻烦，所以暂时使用qiniu的测试域名，30天自动过期，这就导致时不时文章中的图片会裂开......目前有以下下几个关于图床的想法：</p><ul><li>自建图床：自建图床固然是最安全的方式，但由于服务器配置不高且文章配图确实很多，综合考虑不太符合当下场景</li><li>继续使用七牛云：使用公有云，性价比比较高。但需要解决域名过期问题（<strong>TODO</strong>）</li><li>使用halo api上传图片：同样使用服务器带宽，不是很推荐</li><li>使用Nginx代理OSS：思路待完善</li></ul><h4 id="更新了about-this-site">更新了【About this site】</h4><h4 id="站点添加https证书todo">站点添加HTTPS证书（TODO）</h4><h2 id="section-4">2021/06/09</h2><p>一次比较惨痛的 #<a href="/2021/06/09/backup/" title="记一次服务器被入侵后的问题分析与数据备份">记一次服务器被入侵后的问题分析与数据备份</a></p><h2 id="section-5">2020/03/22</h2><p>重装系统后的 #<a href="/2020/03/22/retrivehexo/" title="Hexo Installation">Hexo Installation</a></p>]]></content>
+    <content type="html"><![CDATA[<p><br/></p><h2 id="section">2022/08/28</h2><p>增加了Fluid的主题配置，记录下用到的插件：</p><ul><li>RSS支持：<ahref="https://github.com/hexojs/hexo-generator-feed">hexo-generator-feed</a></li><li>豆瓣书影音界面：<ahref="https://github.com/mythsman/hexo-douban">hexo-douban</a></li><li>加密：<ahref="https://github.com/D0n9X1n/hexo-blog-encrypt">hexo-blog-encrypt</a></li><li>将文章链接从中文转换成拼音：<ahref="https://github.com/viko16/hexo-permalink-pinyin">hexo-permalink-pinyin</a></li><li>自动对source路径下的图片进行压缩：<ahref="https://github.com/chenzhutian/hexo-all-minifier">hexo-all-minifier</a></li></ul><p>TODO: 希望之后做一下SEO的相关优化</p><h2 id="section-1">2022/04/01</h2><p>github pages绑定自定义域名，并启用https加密</p><p>ref: <ahref="https://github.blog/2018-05-01-github-pages-custom-domains-https/">Customdomains on GitHub Pages gain support for HTTPS</a></p><h2 id="section-2">2022/02/10</h2><p>最近发现了一个比较喜欢的主题Fluid，于是又回归了hexo。于是从：</p><p><img src="image-20220316233124438.png" /></p><p>变为了：</p><p><img src="image-20220316233213881.png" /></p><p>以及今年会更专注于数据库系统的学习记录。</p><h2 id="section-3">2022/01/06</h2><p>使用halo作为博客工具已经有一年多的时间了，驱动力不足，最近才做了一下对于blog的维护工作，大概从以下几个方面着手：</p><h4 id="halo版本升级">Halo版本升级</h4><p>看了一下当前使用的halo还停留在1.4.8，最新的版本已经升级到1.4.16，主要是升级了部分依赖中的log4j2 版本。我是使用docker部署，只需要重新拉取镜像重新运行即可，可参考<ahref="https://docs.halo.run/getting-started/upgrade">官网文档</a>更新。</p><h4 id="设置定时备份">设置定时备份</h4><p>数据备份是一种非常重要的事情，毕竟俺就这么点数字遗产了，<ahref="https://dhjdd.cn/archives/257">参考文章</a>新建定时任务实现自动备份到github。</p><h4 id="关于图床">关于图床</h4><p>之前一直使用七牛云作为图床，但备案很麻烦，所以暂时使用qiniu的测试域名，30天自动过期，这就导致时不时文章中的图片会裂开......目前有以下下几个关于图床的想法：</p><ul><li>自建图床：自建图床固然是最安全的方式，但由于服务器配置不高且文章配图确实很多，综合考虑不太符合当下场景</li><li>继续使用七牛云：使用公有云，性价比比较高。但需要解决域名过期问题（<strong>TODO</strong>）</li><li>使用halo api上传图片：同样使用服务器带宽，不是很推荐</li><li>使用Nginx代理OSS：思路待完善</li></ul><h4 id="更新了about-this-site">更新了【About this site】</h4><h4 id="站点添加https证书todo">站点添加HTTPS证书（TODO）</h4><h2 id="section-4">2021/06/09</h2><p>一次比较惨痛的 #<a href="/2021/06/09/Backup/" title="记一次服务器被入侵后的问题分析与数据备份">记一次服务器被入侵后的问题分析与数据备份</a></p><h2 id="section-5">2020/03/22</h2><p>重装系统后的 #<a href="/2020/03/22/retriveHexo/" title="Hexo Installation">Hexo Installation</a></p>]]></content>
     
     
       
@@ -220,8 +220,8 @@ href=&quot;https://github.com/hexojs/hexo-generato</summary>
   
   <entry>
     <title>Typora + PicGo + Kodo 配置图片自动上传</title>
-    <link href="https://chakkk309.github.io/2021/06/24/picconfiguration/"/>
-    <id>https://chakkk309.github.io/2021/06/24/picconfiguration/</id>
+    <link href="https://chakkk309.github.io/2021/06/24/picConfiguration/"/>
+    <id>https://chakkk309.github.io/2021/06/24/picConfiguration/</id>
     <published>2021-06-24T01:09:00.000Z</published>
     <updated>2022-08-25T18:38:16.544Z</updated>
     
@@ -242,8 +242,8 @@ Mean，所见即所得，让用户更关注写作本身。而写作时避免</su
   
   <entry>
     <title>域名备案与证书申请</title>
-    <link href="https://chakkk309.github.io/2021/06/19/domaingenerate/"/>
-    <id>https://chakkk309.github.io/2021/06/19/domaingenerate/</id>
+    <link href="https://chakkk309.github.io/2021/06/19/domainGenerate/"/>
+    <id>https://chakkk309.github.io/2021/06/19/domainGenerate/</id>
     <published>2021-06-19T09:26:00.000Z</published>
     <updated>2022-08-25T18:36:58.410Z</updated>
     
@@ -262,8 +262,8 @@ Mean，所见即所得，让用户更关注写作本身。而写作时避免</su
   
   <entry>
     <title>记一次服务器被入侵后的问题分析与数据备份</title>
-    <link href="https://chakkk309.github.io/2021/06/09/backup/"/>
-    <id>https://chakkk309.github.io/2021/06/09/backup/</id>
+    <link href="https://chakkk309.github.io/2021/06/09/Backup/"/>
+    <id>https://chakkk309.github.io/2021/06/09/Backup/</id>
     <published>2021-06-09T14:49:00.000Z</published>
     <updated>2022-08-25T18:35:07.268Z</updated>
     
@@ -283,8 +283,8 @@ Mean，所见即所得，让用户更关注写作本身。而写作时避免</su
   
   <entry>
     <title>websocket</title>
-    <link href="https://chakkk309.github.io/2021/04/24/websocket/"/>
-    <id>https://chakkk309.github.io/2021/04/24/websocket/</id>
+    <link href="https://chakkk309.github.io/2021/04/24/Websocket/"/>
+    <id>https://chakkk309.github.io/2021/04/24/Websocket/</id>
     <published>2021-04-24T15:36:00.000Z</published>
     <updated>2022-08-25T18:32:47.253Z</updated>
     
@@ -303,8 +303,8 @@ Mean，所见即所得，让用户更关注写作本身。而写作时避免</su
   
   <entry>
     <title>Echarts+JQuery</title>
-    <link href="https://chakkk309.github.io/2020/08/07/echarts-jquery/"/>
-    <id>https://chakkk309.github.io/2020/08/07/echarts-jquery/</id>
+    <link href="https://chakkk309.github.io/2020/08/07/Echarts+JQuery/"/>
+    <id>https://chakkk309.github.io/2020/08/07/Echarts+JQuery/</id>
     <published>2020-08-07T12:42:33.309Z</published>
     <updated>2021-07-03T05:40:59.609Z</updated>
     
@@ -323,8 +323,8 @@ href=&quot;https://echarts.apache.org/examples/zh/editor.html?c=bar-background&q
   
   <entry>
     <title>MyEcplise2015环境配置（JDK+Tomcat）</title>
-    <link href="https://chakkk309.github.io/2020/07/29/ecpliseconfigration/"/>
-    <id>https://chakkk309.github.io/2020/07/29/ecpliseconfigration/</id>
+    <link href="https://chakkk309.github.io/2020/07/29/EcpliseConfigration/"/>
+    <id>https://chakkk309.github.io/2020/07/29/EcpliseConfigration/</id>
     <published>2020-07-29T13:15:36.513Z</published>
     <updated>2022-01-07T10:24:28.299Z</updated>
     
@@ -342,8 +342,8 @@ href=&quot;https://echarts.apache.org/examples/zh/editor.html?c=bar-background&q
   
   <entry>
     <title>Linux下的软件安装</title>
-    <link href="https://chakkk309.github.io/2020/05/11/linuxconfigration/"/>
-    <id>https://chakkk309.github.io/2020/05/11/linuxconfigration/</id>
+    <link href="https://chakkk309.github.io/2020/05/11/LinuxConfigration/"/>
+    <id>https://chakkk309.github.io/2020/05/11/LinuxConfigration/</id>
     <published>2020-05-11T10:46:06.000Z</published>
     <updated>2022-08-25T18:10:04.167Z</updated>
     
@@ -359,8 +359,8 @@ href=&quot;https://echarts.apache.org/examples/zh/editor.html?c=bar-background&q
   
   <entry>
     <title>PowerDesigner逆向工程</title>
-    <link href="https://chakkk309.github.io/2020/04/22/powerdesignerreverse/"/>
-    <id>https://chakkk309.github.io/2020/04/22/powerdesignerreverse/</id>
+    <link href="https://chakkk309.github.io/2020/04/22/PowerDesignerReverse/"/>
+    <id>https://chakkk309.github.io/2020/04/22/PowerDesignerReverse/</id>
     <published>2020-04-22T07:54:31.000Z</published>
     <updated>2022-01-07T10:25:11.838Z</updated>
     
@@ -378,8 +378,8 @@ href=&quot;https://echarts.apache.org/examples/zh/editor.html?c=bar-background&q
   
   <entry>
     <title>Gitbook Configuration</title>
-    <link href="https://chakkk309.github.io/2020/04/03/gitbookconfigration/"/>
-    <id>https://chakkk309.github.io/2020/04/03/gitbookconfigration/</id>
+    <link href="https://chakkk309.github.io/2020/04/03/GitbookConfigration/"/>
+    <id>https://chakkk309.github.io/2020/04/03/GitbookConfigration/</id>
     <published>2020-04-03T03:20:38.000Z</published>
     <updated>2022-01-07T12:18:30.777Z</updated>
     
@@ -403,8 +403,8 @@ href=&quot;https://legacy.gitbook.com&quot;&gt;gitbook旧版本&lt;/a&gt;已经�
   
   <entry>
     <title>大数据科学与应用课程记录</title>
-    <link href="https://chakkk309.github.io/2020/03/28/bigdatarecord/"/>
-    <id>https://chakkk309.github.io/2020/03/28/bigdatarecord/</id>
+    <link href="https://chakkk309.github.io/2020/03/28/BigdataRecord/"/>
+    <id>https://chakkk309.github.io/2020/03/28/BigdataRecord/</id>
     <published>2020-03-28T13:51:48.000Z</published>
     <updated>2022-08-27T14:04:38.480Z</updated>
     
@@ -420,8 +420,8 @@ href=&quot;https://legacy.gitbook.com&quot;&gt;gitbook旧版本&lt;/a&gt;已经�
   
   <entry>
     <title>Nginx安装记录</title>
-    <link href="https://chakkk309.github.io/2020/03/28/nginxrecord/"/>
-    <id>https://chakkk309.github.io/2020/03/28/nginxrecord/</id>
+    <link href="https://chakkk309.github.io/2020/03/28/NginxRecord/"/>
+    <id>https://chakkk309.github.io/2020/03/28/NginxRecord/</id>
     <published>2020-03-28T12:57:08.000Z</published>
     <updated>2022-08-27T14:10:43.088Z</updated>
     
@@ -437,8 +437,8 @@ href=&quot;https://legacy.gitbook.com&quot;&gt;gitbook旧版本&lt;/a&gt;已经�
   
   <entry>
     <title>Redis安装记录</title>
-    <link href="https://chakkk309.github.io/2020/03/24/redisrecord/"/>
-    <id>https://chakkk309.github.io/2020/03/24/redisrecord/</id>
+    <link href="https://chakkk309.github.io/2020/03/24/RedisRecord/"/>
+    <id>https://chakkk309.github.io/2020/03/24/RedisRecord/</id>
     <published>2020-03-24T08:27:17.000Z</published>
     <updated>2022-08-27T14:18:50.973Z</updated>
     
@@ -461,8 +461,8 @@ href=&quot;https://legacy.gitbook.com&quot;&gt;gitbook旧版本&lt;/a&gt;已经�
   
   <entry>
     <title>Hexo Installation</title>
-    <link href="https://chakkk309.github.io/2020/03/22/retrivehexo/"/>
-    <id>https://chakkk309.github.io/2020/03/22/retrivehexo/</id>
+    <link href="https://chakkk309.github.io/2020/03/22/retriveHexo/"/>
+    <id>https://chakkk309.github.io/2020/03/22/retriveHexo/</id>
     <published>2020-03-22T13:34:01.000Z</published>
     <updated>2022-08-25T18:11:25.814Z</updated>
     
@@ -478,8 +478,8 @@ href=&quot;https://legacy.gitbook.com&quot;&gt;gitbook旧版本&lt;/a&gt;已经�
   
   <entry>
     <title>Hi! 2020</title>
-    <link href="https://chakkk309.github.io/2020/02/01/hi2020/"/>
-    <id>https://chakkk309.github.io/2020/02/01/hi2020/</id>
+    <link href="https://chakkk309.github.io/2020/02/01/Hi2020/"/>
+    <id>https://chakkk309.github.io/2020/02/01/Hi2020/</id>
     <published>2020-01-31T16:40:49.000Z</published>
     <updated>2022-08-28T05:15:26.343Z</updated>
     

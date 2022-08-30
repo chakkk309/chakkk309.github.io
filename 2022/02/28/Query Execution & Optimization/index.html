@@ -19,79 +19,79 @@
     <meta name="description" content="Query Execution I   Query Plan  DBMS将SQL语句转换为查询计划。查询计划中的操作符被安排在一个树中。查询计划，也叫做查询树，有一些列操作符组成，它们按照一定的运算关系构成查询的一个执行方案。从形式上看是一颗二叉树，树叶是每个单表对象，两个树叶的父节点是一个连接操作符。据从这棵树的叶结点流向根结点。树中根节点的输出是查询的结果。通常操作符是二进制的(1-2个孩子)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Query Optimization">
-<meta property="og:url" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/index.html">
+<meta property="og:url" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/index.html">
 <meta property="og:site_name" content="Chakkk">
 <meta property="og:description" content="Query Execution I   Query Plan  DBMS将SQL语句转换为查询计划。查询计划中的操作符被安排在一个树中。查询计划，也叫做查询树，有一些列操作符组成，它们按照一定的运算关系构成查询的一个执行方案。从形式上看是一颗二叉树，树叶是每个单表对象，两个树叶的父节点是一个连接操作符。据从这棵树的叶结点流向根结点。树中根节点的输出是查询的结果。通常操作符是二进制的(1-2个孩子)">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220302161405827.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220302163542147.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220302164924479.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220302165555099.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220302170709275.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220302171253958.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220302171639632.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220302211604658.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220302212003306.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220302212706236.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220302212815174.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220302214204517.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220302214307195.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220302214419660.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220302214500136.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220302214608182.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220302214648095.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220302214741734.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220316175331395.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220316175351745.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220316175536308.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220316190452118.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220316190716521.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220316190821959.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220228164438227.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220228164455957.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220228164715735.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220228165849552.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220228165903262.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220228165916856.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220228165933228.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220228170002965.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220228170434208.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220228170543816.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220308001135635.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220308001204145.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220308001222917.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220308001237050.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220308001321955.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220308001334787.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220308001352699.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220308001407955.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220228193647161.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220228194003342.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220308113559837.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220228194348899.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220228194548433.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220228194557407.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220228194612646.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220308114114487.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220308115402679.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220317161140126.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220317161154903.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220317185059607.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220316125735936.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220317195006144.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220316130959726.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220316131027116.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220316131423939.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220316131506266.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220316133130219.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220316133245135.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220316133319674.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220316133609092.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220302161405827.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220302163542147.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220302164924479.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220302165555099.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220302170709275.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220302171253958.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220302171639632.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220302211604658.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220302212003306.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220302212706236.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220302212815174.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220302214204517.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220302214307195.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220302214419660.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220302214500136.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220302214608182.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220302214648095.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220302214741734.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220316175331395.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220316175351745.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220316175536308.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220316190452118.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220316190716521.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220316190821959.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220228164438227.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220228164455957.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220228164715735.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220228165849552.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220228165903262.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220228165916856.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220228165933228.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220228170002965.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220228170434208.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220228170543816.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220308001135635.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220308001204145.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220308001222917.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220308001237050.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220308001321955.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220308001334787.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220308001352699.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220308001407955.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220228193647161.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220228194003342.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220308113559837.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220228194348899.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220228194548433.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220228194557407.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220228194612646.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220308114114487.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220308115402679.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220317161140126.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220317161154903.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220317185059607.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220316125735936.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220317195006144.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220316130959726.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220316131027116.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220316131423939.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220316131506266.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220316133130219.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220316133245135.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220316133319674.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220316133609092.png">
 <meta property="article:published_time" content="2022-02-28T08:42:39.000Z">
 <meta property="article:modified_time" content="2022-08-27T13:57:23.172Z">
 <meta property="article:author" content="Jiaqi">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://chakkk309.github.io/2022/02/28/query-execution-optimization/image-20220302161405827.png">
+<meta name="twitter:image" content="https://chakkk309.github.io/2022/02/28/Query%20Execution%20&%20Optimization/image-20220302161405827.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -1006,7 +1006,7 @@ src="image-20220316131621862.png" srcset="/img/loading.gif" lazyload alt="Candid
   <div class="license-box my-3">
     <div class="license-title">
       <div>Query Optimization</div>
-      <div>https://chakkk309.github.io/2022/02/28/query-execution-optimization/</div>
+      <div>https://chakkk309.github.io/2022/02/28/Query Execution &amp; Optimization/</div>
     </div>
     <div class="license-meta">
       
@@ -1058,7 +1058,7 @@ src="image-20220316131621862.png" srcset="/img/loading.gif" lazyload alt="Candid
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/28/redis-duo-ji/" title="Redis 多机">
+                      <a href="/2022/02/28/Redis%E5%A4%9A%E6%9C%BA/" title="Redis 多机">
                         <span class="hidden-mobile">Redis 多机</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
