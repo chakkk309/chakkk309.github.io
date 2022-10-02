@@ -316,8 +316,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">npm install hexo-deployer-git –save<br></code></pre></td></tr></table></figure>
 <h4 id="配置git信息">配置git信息</h4>
 <ul>
-<li><p>blog文件夹中右键 -&gt;Git Bash Here
-，设置信息（用户名和密码）</p>
+<li><p>blog文件夹中右键 -&gt;Git Bash Here ，设置信息（用户名和密码）</p>
 <p>这里也可以将其参数设置为global，表示这台电脑上所有的Git仓库都会使用这个配置，也可以对某个仓库指定不同的用户名和Email地址。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs git">git config  (--global) user.name &quot;你的GitHub用户名&quot;<br>git config  (--global) user.email &quot;你的GitHub注册邮箱&quot;<br></code></pre></td></tr></table></figure></li>
 </ul>
@@ -325,30 +324,22 @@
 <ul>
 <li><p>生成ssh秘钥，直接Enter*3默认不需要密码。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">ssh-keygen -t rsa -C &quot;你的GitHub注册邮箱&quot;<br></code></pre></td></tr></table></figure></li>
-<li><p>找到生成的.ssh的文件夹中的id_rsa.pub密钥，将内容复制，进入<a
-href="https://link.zhihu.com/?target=https%3A//github.com/settings/ssh">https://github.com/settings/ssh</a>
-中</p></li>
-<li><p>点击New SSH key，title随意，key填入刚才复制的公钥，Add SSH
-key即可。</p></li>
+<li><p>找到生成的.ssh的文件夹中的id_rsa.pub密钥，将内容复制，进入<a href="https://link.zhihu.com/?target=https%3A//github.com/settings/ssh">https://github.com/settings/ssh</a> 中</p></li>
+<li><p>点击New SSH key，title随意，key填入刚才复制的公钥，Add SSH key即可。</p></li>
 <li><p>回到Git Bash中检测GitHub公钥设置是否成功</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">ssh git@github.com<br></code></pre></td></tr></table></figure>
 <p>可能会出现以下错误：</p>
 <figure>
-<img src="error.png" srcset="/img/loading.gif" lazyload alt="error.png" />
-<figcaption aria-hidden="true">error.png</figcaption>
+<img src="error.png" srcset="/img/loading.gif" lazyload alt="error.png" /><figcaption aria-hidden="true">error.png</figcaption>
 </figure>
 <p>因为.ssh文件夹中缺少一个<code>known_hosts</code>文件，选择yes继续连接就会自动生成该文件。</p>
 <figure>
-<img src="host.png" srcset="/img/loading.gif" lazyload alt="host.png" />
-<figcaption aria-hidden="true">host.png</figcaption>
+<img src="host.png" srcset="/img/loading.gif" lazyload alt="host.png" /><figcaption aria-hidden="true">host.png</figcaption>
 </figure>
-<p>ssh会把每个访问过计算机的公钥(public
-key)都记录在known_hosts。当下次访问相同计算机时，OpenSSH会核对公钥。如果公钥不同，OpenSSH会发出警告，
-避免受到DNS Hijack之类的攻击。</p>
+<p>ssh会把每个访问过计算机的公钥(public key)都记录在known_hosts。当下次访问相同计算机时，OpenSSH会核对公钥。如果公钥不同，OpenSSH会发出警告， 避免受到DNS Hijack之类的攻击。</p>
 <p>文件补齐后，下次再登录时就可以进行正常操作啦~</p>
 <figure>
-<img src="normal.png" srcset="/img/loading.gif" lazyload alt="normal.png" />
-<figcaption aria-hidden="true">normal.png</figcaption>
+<img src="normal.png" srcset="/img/loading.gif" lazyload alt="normal.png" /><figcaption aria-hidden="true">normal.png</figcaption>
 </figure></li>
 </ul>
 

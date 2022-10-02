@@ -306,8 +306,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">yum install -y gcc-c++<br>yum install -y pcre pcre-devel<br>yum install -y zlib zlib-devel<br>yum install -y openssl openssl-devel<br></code></pre></td></tr></table></figure>
 <p><strong>解压</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd /usr/local &amp;&amp; tar -zxvf nginx-1.16.1.tar.gz<br></code></pre></td></tr></table></figure>
-<p><strong>编译安装</strong>：<code>./configure</code>是个shell脚本，用来检测安装平台的目标特征的。比如它会检测你是不是有CC或GCC，并不是需要CC或GCC；make从Makefile中读取指令然后编译；make
-install同样也从Makefile中读取指令，安装到指定位置。</p>
+<p><strong>编译安装</strong>：<code>./configure</code>是个shell脚本，用来检测安装平台的目标特征的。比如它会检测你是不是有CC或GCC，并不是需要CC或GCC；make从Makefile中读取指令然后编译；make install同样也从Makefile中读取指令，安装到指定位置。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd /usr/local/nginx-1.16.1 &amp;&amp; ./configure --prefix=/usr/local/nginx<br>make<br>make install<br></code></pre></td></tr></table></figure>
 <p><strong>配置环境变量</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">vi /etc/profile<br><span class="hljs-meta prompt_"># </span><span class="language-bash">最下面新起一行，插入如下</span><br>nginx=/usr/local/nginx/sbin<br>export PATH=$PATH:$nginx<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">使配置文件生效</span><br>source /etc/profile<br></code></pre></td></tr></table></figure>
@@ -333,8 +332,7 @@ install同样也从Makefile中读取指令，安装到指定位置。</p>
 <li>项目文件：/usr/share/nginx/html/</li>
 <li>日志文件：/var/log/nginx/</li>
 <li>其他安装文件都在/etc/nginx</li>
-<li>使用<code>find  /  -name  nginx*</code>
-全局查找与nginx相关的文件</li>
+<li>使用<code>find  /  -name  nginx*</code> 全局查找与nginx相关的文件</li>
 </ul>
 <p>安装网络工具</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">yum -y install net-tools<br></code></pre></td></tr></table></figure>
@@ -347,8 +345,7 @@ install同样也从Makefile中读取指令，安装到指定位置。</p>
 <hr />
 <h3 id="反向代理">反向代理</h3>
 <blockquote>
-<p>实例目标：使用 nginx 反向代理 <code>www.123.com</code>
-直接跳转到<code>192.168.0.103:8080</code></p>
+<p>实例目标：使用 nginx 反向代理 <code>www.123.com</code> 直接跳转到<code>192.168.0.103:8080</code></p>
 </blockquote>
 <p>启动tomcat<code>（192.168.0.103:8080）</code></p>
 <p>修改windows本地host文件，添加映射关系。hosts一般在<code>C:\Windows\System32\drivers\etc\hosts</code>目录下，它是一个没有扩展名的系统文件，IP解析优先级比DNS要高。若没有修改权限，可右键-&gt;属性-&gt;安全-&gt;修改权限；或将hosts移动到桌面，修改后复制回原文件夹。</p>
@@ -367,17 +364,14 @@ install同样也从Makefile中读取指令，安装到指定位置。</p>
 <li>重新加载nginx配置文件</li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">nginx -s reload<br></code></pre></td></tr></table></figure>
-<p>实例结果：访问<code>www.123.com</code>
-直接跳转到<code>192.168.0.103:8080</code>也就是tomcat启动页面</p>
+<p>实例结果：访问<code>www.123.com</code> 直接跳转到<code>192.168.0.103:8080</code>也就是tomcat启动页面</p>
 <blockquote>
 <p>Nginx搭建在192.168.0.103这台虚拟机上，在本机也就是客户端，访问<code>www.123.com</code>，会发生什么？</p>
 </blockquote>
 <p>实例分析：</p>
 <p>1.检查本地hosts文件，发现有该域名的解析，拿到解析的ip：192.168.0.103</p>
 <p>2.http请求连接到了192.168.0.103的80端口</p>
-<p>3.Nginx的80端口一直在被监听，服务器发现请求的uri为/，host为<code>www.123.com</code>，进而匹配到server_name
-·<code>www.123.com</code>，并且转到了location / 也就是代理服务器
-<code>http://192.168.0.103:8080</code>，至此访问成功。</p>
+<p>3.Nginx的80端口一直在被监听，服务器发现请求的uri为/，host为<code>www.123.com</code>，进而匹配到server_name ·<code>www.123.com</code>，并且转到了location / 也就是代理服务器 <code>http://192.168.0.103:8080</code>，至此访问成功。</p>
 <p>在这个反向代理过程中，客户端把请求交给Nginx，由Nginx的配置文件制定一些规则把请求转发给服务器，客户端并不知道谁为自己提供了服务，<strong>反向代理，其实代理的是服务器</strong>。</p>
 <p>抓个包来理一下思路，进行报文过滤，只留下相关的http传输作为重点进行分析。</p>
 <p><img src="overall.png" srcset="/img/loading.gif" lazyload /></p>
@@ -410,8 +404,7 @@ install同样也从Makefile中读取指令，安装到指定位置。</p>
 <li>启动3个tomcat服务</li>
 </ul>
 <h4 id="普通轮询算法">普通轮询算法</h4>
-<p>实现内容：输入<code>www.123.com</code>
-在3个tomcat服务之间进行切换</p>
+<p>实现内容：输入<code>www.123.com</code> 在3个tomcat服务之间进行切换</p>
 <ul>
 <li><p>编辑配置文件<code>nginx.conf</code></p></li>
 <li><p>核心内容</p>
@@ -423,14 +416,12 @@ install同样也从Makefile中读取指令，安装到指定位置。</p>
 <h4 id="基于比例加权轮询">基于比例加权轮询</h4>
 <p>某台服务器性能更高，根据他的自身能力可以处理更多的请求</p>
 <ul>
-<li><p>编辑nginx.conf文件，在负载均衡设置中添加weight选项。该指令用于配置前面请求处理的权重，默认值为
-1。也就是说，上文不加权的普通轮询，其实其加权值 weight 都为 1。</p></li>
+<li><p>编辑nginx.conf文件，在负载均衡设置中添加weight选项。该指令用于配置前面请求处理的权重，默认值为 1。也就是说，上文不加权的普通轮询，其实其加权值 weight 都为 1。</p></li>
 <li><pre class="shell"><code>  server 192.168.0.102:8081 weight=6;
   server 192.168.0.102:8082 weight=2
   server 192.168.0.102:8083 weight=2;</code></pre></li>
 <li><p>重新加载配置文件</p></li>
-<li><p>实例结果：访问 <code>www.123.com</code>
-跳转到<code>192.168.0.102:8081</code>次数增多。</p></li>
+<li><p>实例结果：访问 <code>www.123.com</code> 跳转到<code>192.168.0.102:8081</code>次数增多。</p></li>
 </ul>
 
                 

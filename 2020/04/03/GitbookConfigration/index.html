@@ -297,28 +297,22 @@
                 
                 <h2 id="关于">关于</h2>
 <ul>
-<li>gitbook.com 提供托管，协作功能和易于使用的编辑器，具体操作在<a
-target="_blank" rel="noopener" href="https://docs.gitbook.com/">docs</a>上有详尽说明</li>
+<li>gitbook.com 提供托管，协作功能和易于使用的编辑器，具体操作在<a target="_blank" rel="noopener" href="https://docs.gitbook.com/">docs</a>上有详尽说明</li>
 <li>提供内容导出功能，格式可以是PDF, ePub 或 Mobi</li>
-<li><a
-target="_blank" rel="noopener" href="https://legacy.gitbook.com">gitbook旧版本</a>已经弃用，访问自动跳转
-<a href="gitbook.com">gitbook新官网</a></li>
+<li><a target="_blank" rel="noopener" href="https://legacy.gitbook.com">gitbook旧版本</a>已经弃用，访问自动跳转 <a href="gitbook.com">gitbook新官网</a></li>
 </ul>
 <span id="more"></span>
 <hr />
 <p>注：由于Gitbook进行了改版，之前的某些安装命令已不再适用，故在2022/1更新一版安装手册，适用目前的Gitbook版本。</p>
 <h2 id="安装步骤">安装步骤</h2>
 <h3 id="安装node.js">安装Node.js</h3>
-<p><a
-target="_blank" rel="noopener" href="https://nodejs.org/en/">官网</a>下载，确认版本，v4.0.0及以上可用。</p>
+<p><a target="_blank" rel="noopener" href="https://nodejs.org/en/">官网</a>下载，确认版本，v4.0.0及以上可用。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">C:\Users\Administrator&gt;node -v<br>v12.16.1<br></code></pre></td></tr></table></figure>
 <p>注：windows用户推荐下载.msi文件，仅点击node.exe是不会安装npm包的（所以在后续使用npm安装时会发现根本没有）</p>
 <h3 id="npm安装gitbook">npm安装Gitbook</h3>
 <p>npm在Node.js下载时也已经安装完毕，直接进行Gitbook安装</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">npm install gitbook-cli -g<br></code></pre></td></tr></table></figure>
-<p>注：如果出现以下错误，应该降低node版本，卸载重新安装低版本或者使用<a
-target="_blank" rel="noopener" href="https://github.com/coreybutler/nvm-windows">nvm</a>进行node版本管理（但是需要注意也有很多坑），推荐对node进行多版本管理，因为Gitbook支持的node及相关npm版本是在是有点低......有时使用npm
-install时会提示node版本过低需要升级......</p>
+<p>注：如果出现以下错误，应该降低node版本，卸载重新安装低版本或者使用<a target="_blank" rel="noopener" href="https://github.com/coreybutler/nvm-windows">nvm</a>进行node版本管理（但是需要注意也有很多坑），推荐对node进行多版本管理，因为Gitbook支持的node及相关npm版本是在是有点低......有时使用npm install时会提示node版本过低需要升级......</p>
 <h3 id="检查版本">检查版本</h3>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">C:\Users\Administrator&gt;gitbook -V<br>CLI version: 2.3.2<br>GitBook version: 3.2.3<br></code></pre></td></tr></table></figure>
 <h2 id="基本使用">基本使用</h2>
@@ -334,13 +328,10 @@ install时会提示node版本过低需要升级......</p>
 <p>该命令实际上会先调用<code>gitbook build</code>编译书籍，完成之后打开服务，监听在4000端口上。也可以使用<code>gitbook build</code>命令来生成网页而不开启服务器。</p>
 <p>浏览器搜索<code>http://localhost:4000</code>查看当前效果:</p>
 <figure>
-<img src="serve.png" srcset="/img/loading.gif" lazyload alt="serve.png" />
-<figcaption aria-hidden="true">serve.png</figcaption>
+<img src="serve.png" srcset="/img/loading.gif" lazyload alt="serve.png" /><figcaption aria-hidden="true">serve.png</figcaption>
 </figure>
-<p>基本的搜索、字体、主题以及分享都已经存在，且页面非常简洁，符合我对于Gitbook的期待
-:)</p>
-<p>运行serve命令会自动生成一个<code>_book</code>文件夹
-，里面是一些配置文件 <img src="overall.png" srcset="/img/loading.gif" lazyload alt="overall.png" /></p>
+<p>基本的搜索、字体、主题以及分享都已经存在，且页面非常简洁，符合我对于Gitbook的期待 :)</p>
+<p>运行serve命令会自动生成一个<code>_book</code>文件夹 ，里面是一些配置文件 <img src="overall.png" srcset="/img/loading.gif" lazyload alt="overall.png" /></p>
 <h2 id="配置">配置</h2>
 <p>初始化后生成两个md文件，<code>README.md</code>和<code>SUMMARY.md</code></p>
 <p><code>SUMMARY.md</code>中只有两行：二级标题和一个跳转到README.md的链接</p>
@@ -353,10 +344,7 @@ install时会提示node版本过低需要升级......</p>
 <li>README.md</li>
 <li>book.json</li>
 </ul>
-<p>可以理解为<strong>SUMMARY</strong>
-是gitbook的骨架结构或章节目录，<strong>README</strong>
-则是每章填充的内容，<strong>book.json</strong>
-作为主体配置文件，有各种插件供用户使用。</p>
+<p>可以理解为<strong>SUMMARY</strong> 是gitbook的骨架结构或章节目录，<strong>README</strong> 则是每章填充的内容，<strong>book.json</strong> 作为主体配置文件，有各种插件供用户使用。</p>
 <h2 id="常用命令">常用命令</h2>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">预览编译</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">gitbook serve</span> <br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">列出当前正在使用的gitbook版本</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">gitbook current</span> <br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">列出gitbook可用命令</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">gitbook <span class="hljs-built_in">help</span></span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">安装当前项目所需插件</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">gitbook install</span> <br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">默认输出epub 到当前项目（电子书，可能需要ebook-convert插件）</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">gitbook pdf</span> <br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">默认输出mobi 到当前项目</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">gitbook mobi</span> <br></code></pre></td></tr></table></figure>
 <h2 id="部署方式">部署方式</h2>
@@ -369,20 +357,16 @@ install时会提示node版本过低需要升级......</p>
 <h4 id="关联仓库主页域名">关联仓库主页/域名</h4>
 <p>点击<code>Setting</code>找到<code>GitHub Pages</code>选项，选择下Source，master或者自己再新拉一个分支都可。</p>
 <p>设置完毕，可以通过<code>github.io/仓库名</code>这种方式进行访问。</p>
-<p>如果之前已经将github.io绑定域名，github非常友好地自动将新建的仓库放到相应的二级域名下，提示<strong>Your
-site is published at http://绑定的域名/该仓库名/</strong>
-，把github默认的仓库主页替换成绑定的域名进行访问就可以看到相应页面了。</p>
+<p>如果之前已经将github.io绑定域名，github非常友好地自动将新建的仓库放到相应的二级域名下，提示<strong>Your site is published at http://绑定的域名/该仓库名/</strong> ，把github默认的仓库主页替换成绑定的域名进行访问就可以看到相应页面了。</p>
 <h4 id="关联hexo页面">关联hexo页面</h4>
 <p>既然绑了二级域名，索性在博客里也显示出来，新建一个页面就好</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">hexo new page &quot;gitbook&quot;	//新建页面<br></code></pre></td></tr></table></figure>
-<p>首先查看一下站点配置文件中<code>relative_link: false</code>选项是否设置为false，主题的配置文件找到<code>menu</code>，新建一个子目录<code>gitbook:二级域名</code>
-，重新生成部署即可</p>
+<p>首先查看一下站点配置文件中<code>relative_link: false</code>选项是否设置为false，主题的配置文件找到<code>menu</code>，新建一个子目录<code>gitbook:二级域名</code> ，重新生成部署即可</p>
 <h3 id="服务器nginx">2.服务器（Nginx）</h3>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">创建gitbook目录</span><br>mkdir -p /usr/local/nginx/gitbook<br>cd /usr/local/nginx/gitbook<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">上传gitbook</span><br>rz（_book.tar.gz）<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">解压</span><br>tar -zxvf _book.tar.gz<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">编辑配置文件</span><br>vi /usr/local/nginx/conf/nginx.conf<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">部分配置如下</span><br> server &#123;<br>        listen       开放的端口号;<br>        server_name  localhost;<br><br>        location / &#123;<br>           # 内容<br>        &#125;<br><br>        location /gitbook/&#123;<br>            alias /usr/local/nginx/gitbook/_book/;<br>            index index.html;<br>        &#125;<br>        <br><span class="hljs-meta prompt_"># </span><span class="language-bash">访问ip:端口号/gitbook/目录即可</span><br></code></pre></td></tr></table></figure>
 <h3 id="gitbook.com社区公开">3.gitbook.com社区公开</h3>
 <hr />
-<p>对于使用存在疑问，可以先访问<a
-target="_blank" rel="noopener" href="https://github.com/GitbookIO/gitbook/blob/master/docs/faq.md">FAQ</a>进行问题查找</p>
+<p>对于使用存在疑问，可以先访问<a target="_blank" rel="noopener" href="https://github.com/GitbookIO/gitbook/blob/master/docs/faq.md">FAQ</a>进行问题查找</p>
 <p><br></p>
 <blockquote>
 <p>参考文章：</p>

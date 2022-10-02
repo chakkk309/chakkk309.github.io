@@ -301,10 +301,8 @@
                 
                 <p>记录一下Redis安装过程：</p>
 <blockquote>
-<p>选择一个<a target="_blank" rel="noopener" href="https://redis.io/documentation">Redis</a>
-稳定版本下载</p>
-<p><a target="_blank" rel="noopener" href="https://redisdesktop.com/">Redis Desktop Manager</a>
-作为管理工具</p>
+<p>选择一个<a target="_blank" rel="noopener" href="https://redis.io/documentation">Redis</a> 稳定版本下载</p>
+<p><a target="_blank" rel="noopener" href="https://redisdesktop.com/">Redis Desktop Manager</a> 作为管理工具</p>
 </blockquote>
 <h3 id="虚拟机centos-7.7设置静态ip">虚拟机CentOS 7.7设置静态ip</h3>
 <p>1.使用ipconfig查看并记录本机的<strong>ip</strong>、<strong>子网掩码</strong>和<strong>网关</strong>。</p>
@@ -313,48 +311,35 @@
 <p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd /etc/sysconfig/network-scripts/&amp;&amp;ls<br></code></pre></td></tr></table></figure></p>
 <p><img src="ens33.png" srcset="/img/loading.gif" lazyload /></p>
 <p>3.编辑网卡的配置文件 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">vi ifcfg-ens33<br></code></pre></td></tr></table></figure> <img src="content.png" srcset="/img/loading.gif" lazyload /></p>
-<p>4.具体增添的配置内容如下，BOOTPROTO修改为静态ip，并添加ip，子网掩码和网关。
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">BOOTPROTO=&quot;static&quot;<br>IPADDR=192.168.0.105<br>NETMASK=255.255.255.0<br>GATEWAY=192.168.0.1<br></code></pre></td></tr></table></figure></p>
+<p>4.具体增添的配置内容如下，BOOTPROTO修改为静态ip，并添加ip，子网掩码和网关。 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">BOOTPROTO=&quot;static&quot;<br>IPADDR=192.168.0.105<br>NETMASK=255.255.255.0<br>GATEWAY=192.168.0.1<br></code></pre></td></tr></table></figure></p>
 <p>5.保存修改并使重启网络服务 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">systemctl restart network.service<br></code></pre></td></tr></table></figure></p>
 <p>验证接口是否配置正确： <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ip add<br></code></pre></td></tr></table></figure> <img src="ok.png" srcset="/img/loading.gif" lazyload /></p>
 <p>也可以ping一下本机或者任意网站进行测试</p>
 <h3 id="编译安装redis2.8.17">编译安装Redis2.8.17</h3>
 <p>1.安装<code>wget</code> <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">yum install wget<br></code></pre></td></tr></table></figure></p>
-<p>使用wget下载，并在<code>\usr\local</code> 目录下载redis并解压
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd /usr/local<br>wget http://download.redis.io/releases/redis-2.8.17.tar.gz<br>tar xzf redis-2.8.17.tar.gz<br></code></pre></td></tr></table></figure></p>
+<p>使用wget下载，并在<code>\usr\local</code> 目录下载redis并解压 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd /usr/local<br>wget http://download.redis.io/releases/redis-2.8.17.tar.gz<br>tar xzf redis-2.8.17.tar.gz<br></code></pre></td></tr></table></figure></p>
 <p>2.安装gcc <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">yum install gcc-c++<br></code></pre></td></tr></table></figure></p>
 <p>3.在redis目录下进行make操作</p>
-<p>src目录下，会生成编译后的redis服务程序<strong>redis-server</strong>和用于测试的客户端程序<strong>redis-cli</strong>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sell">cd redis-2.8.17<br>make<br></code></pre></td></tr></table></figure> 也可以使用make test
-，是为了验证make是否成功，是否完整。</p>
+<p>src目录下，会生成编译后的redis服务程序<strong>redis-server</strong>和用于测试的客户端程序<strong>redis-cli</strong> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sell">cd redis-2.8.17<br>make<br></code></pre></td></tr></table></figure> 也可以使用make test ，是为了验证make是否成功，是否完整。</p>
 <p>4.启动redis服务 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd src<br>./redis-server<br></code></pre></td></tr></table></figure></p>
 <p>5.使用测试客户端程序redis-cli和redis服务交互</p>
 <p>启动客户端之后可以执行<code>PING</code>命令来检测服务是否启动。</p>
-<p>在redis-cli 后面加上
---raw即<code>redis-cli --raw</code>可以有效避免中文乱码。</p>
+<p>在redis-cli 后面加上 --raw即<code>redis-cli --raw</code>可以有效避免中文乱码。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd /usr/local/redis-2.8.17/src &amp;&amp; ./redis-server<br>./redis-cli<br>set foo bar<br>get foo<br></code></pre></td></tr></table></figure>
 <p>6.查看运行状态并关闭进程 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">ps -ef|grep redis<br>kill 9 pid<br></code></pre></td></tr></table></figure></p>
-<p>7.开启守护进程（Daemon Process），是 Linux
-中的后台服务进程。它脱离终端，为了避免进程被任何终端所产生的信息所打断，其在执行过程中的信息也不在任何终端上显示。</p>
+<p>7.开启守护进程（Daemon Process），是 Linux 中的后台服务进程。它脱离终端，为了避免进程被任何终端所产生的信息所打断，其在执行过程中的信息也不在任何终端上显示。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd /usr/local/redis-2.8.17<br>vi redis.conf<br>修改daemonize no为daemonize yes<br>ps -ef|grep redis<br>kill 9 (pid)<br>cd src<br>./redis-server ../redis.conf<br></code></pre></td></tr></table></figure>
 <h3 id="编译安装redis主从配置">编译安装Redis主从配置</h3>
 <p>例：现在有两个虚拟机：ip分别为192.168.0.105（主机）和192.168.0.103（从机）</p>
 <p><strong>从节点配置</strong> <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd /usr/local/redis-2.8.17<br>vi redis.conf<br></code></pre></td></tr></table></figure></p>
-<p>修改daemonize no为<strong>daemonize yes</strong>
-修改bind127.0.0.1为<strong>192.168.0.105</strong></p>
+<p>修改daemonize no为<strong>daemonize yes</strong> 修改bind127.0.0.1为<strong>192.168.0.105</strong></p>
 <p><strong>主节点配置</strong> <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd /usr/local/redis-2.8.17<br>vi redis.conf<br></code></pre></td></tr></table></figure></p>
-<p>修改daemonize no 为 <strong>daemonize yes</strong> ，即开启守护进程。
-修改# slaveof <masterip> <masterport> 取消注释，设置为 <strong>slaveof
-192.168.0.105 6379</strong> ，当设置当本机为 slav 服务时，设置 master
-服务的 IP 地址及端口，在 Redis 启动时，它会自动从 master
-进行数据同步。</p>
-<p>修改# repl-ping-slave-period 10，取消注释，设置为
-<strong>repl-ping-slave-period 10</strong></p>
+<p>修改daemonize no 为 <strong>daemonize yes</strong> ，即开启守护进程。 修改# slaveof <masterip> <masterport> 取消注释，设置为 <strong>slaveof 192.168.0.105 6379</strong> ，当设置当本机为 slav 服务时，设置 master 服务的 IP 地址及端口，在 Redis 启动时，它会自动从 master 进行数据同步。</p>
+<p>修改# repl-ping-slave-period 10，取消注释，设置为 <strong>repl-ping-slave-period 10</strong></p>
 <p><strong>两台机器全部启动redis服务</strong><br />
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd /usr/local/redis-2.8.17/src<br>./redis-server ../redis.conf<br>ps -ef|grep redis  # 查看进程<br></code></pre></td></tr></table></figure></p>
 <p><strong>启动redis客户端</strong></p>
-<p>主机启动，因为已经绑定了ip，所以要指定主机使用参数h
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">./redis-cli -h 192.168.0.105<br></code></pre></td></tr></table></figure></p>
+<p>主机启动，因为已经绑定了ip，所以要指定主机使用参数h <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">./redis-cli -h 192.168.0.105<br></code></pre></td></tr></table></figure></p>
 <p>从机启动 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">./redis-cli<br></code></pre></td></tr></table></figure></p>
 <p>确认连接情况，观察是否role已经正确设置为master/slave</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">INFO replication<br></code></pre></td></tr></table></figure>
@@ -377,28 +362,19 @@
 <p>6.同步测试</p>
 <h3 id="一些问题">一些问题</h3>
 <h4 id="产生swap文件">产生swap文件</h4>
-<p>vi命令操作配置文件的时候：
-中途意外退出，会产生临时文件【.配置文件名.swp】</p>
+<p>vi命令操作配置文件的时候： 中途意外退出，会产生临时文件【.配置文件名.swp】</p>
 <p>再次使用，可以直接【rm -f .配置文件名.swp】，然后正常编辑。</p>
-<p>例：<code>rm -f /etc/.redis.conf.swp</code> ，直接删除或者进行覆盖。
-<img src="swp.png" srcset="/img/loading.gif" lazyload /></p>
+<p>例：<code>rm -f /etc/.redis.conf.swp</code> ，直接删除或者进行覆盖。 <img src="swp.png" srcset="/img/loading.gif" lazyload /></p>
 <h4 id="版本不一致">版本不一致</h4>
 <p>不同版本的Redis不要搭建主从，以免发生问题。比如通过yum安装的版本和编译下载的版本就不一致，配置主从同步需要版本一致！最好不要同时使用两种方法安装，以免混淆！</p>
 <h4 id="卸载文件不彻底">卸载文件不彻底</h4>
-<p>问题：执行了<code>yum remove redis</code>命令。此时，redis.conf
-被vi等打开，删除的时候会出现警告： 警告：/etc/redis.conf 已另存为
-/etc/redis.conf.rpmsave 。此时，保留了
-/etc/redis.conf.rpmsave文件，再次yum install
-redis的时候，/etc/redis.conf会被创建为一个新的空文件，导致问题出现。</p>
+<p>问题：执行了<code>yum remove redis</code>命令。此时，redis.conf 被vi等打开，删除的时候会出现警告： 警告：/etc/redis.conf 已另存为 /etc/redis.conf.rpmsave 。此时，保留了 /etc/redis.conf.rpmsave文件，再次yum install redis的时候，/etc/redis.conf会被创建为一个新的空文件，导致问题出现。</p>
 <p>解决方法： 删除/etc/redis.conf.rpmsave等文件</p>
-<h4
-id="配置静态ip后无法ping通外部网络">配置静态ip后无法ping通外部网络</h4>
-<p>1.未知的名称或服务 <img src="DNS_error.png" srcset="/img/loading.gif" lazyload />
-一般是域名解析没有成功，在配置文件中设置DNS服务器，默认与网关ip相同。</p>
+<h4 id="配置静态ip后无法ping通外部网络">配置静态ip后无法ping通外部网络</h4>
+<p>1.未知的名称或服务 <img src="DNS_error.png" srcset="/img/loading.gif" lazyload /> 一般是域名解析没有成功，在配置文件中设置DNS服务器，默认与网关ip相同。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">DNS1 = XXX;<br></code></pre></td></tr></table></figure>
 <p>重新加载配置文件并启动网络即可。</p>
-<p>2.启动网卡报错 Failed to start LSB: Bring up/down networking
-禁用NetworkManager <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">systemctl stop NetworkManager<br>systemctl disable NetworkManager<br></code></pre></td></tr></table></figure> 重新启动网络即可。</p>
+<p>2.启动网卡报错 Failed to start LSB: Bring up/down networking 禁用NetworkManager <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">systemctl stop NetworkManager<br>systemctl disable NetworkManager<br></code></pre></td></tr></table></figure> 重新启动网络即可。</p>
 
                 
               </div>

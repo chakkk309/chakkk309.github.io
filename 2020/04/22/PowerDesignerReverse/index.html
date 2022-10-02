@@ -311,8 +311,7 @@
 <li>需要转储的数据库文件（.sql），一般为UTF8-无签名格式</li>
 <li>使用Navicat连接MySQL，运行sql文件生成表结构</li>
 <li>安装Visual C++库 <strong>(vc_redist.x86.exe)</strong></li>
-<li>安装ODBC驱动包
-<strong>(mysql-connector-odbc-8.0.19-win32.msi)</strong></li>
+<li>安装ODBC驱动包 <strong>(mysql-connector-odbc-8.0.19-win32.msi)</strong></li>
 </ul>
 <h2 id="具体步骤">具体步骤</h2>
 <h3 id="创建模型">创建模型</h3>
@@ -325,8 +324,7 @@
 <p><img src="4.png" srcset="/img/loading.gif" lazyload /></p>
 <p>选择驱动程序<code>Unicode Driver</code></p>
 <p><img src="5.png" srcset="/img/loading.gif" lazyload /></p>
-<p>选择保存的路径，注意新建文件名称为<code>XXX.dsn</code>
-，点击下一步-&gt;完成</p>
+<p>选择保存的路径，注意新建文件名称为<code>XXX.dsn</code> ，点击下一步-&gt;完成</p>
 <p><img src="6.png" srcset="/img/loading.gif" lazyload /></p>
 <h3 id="数据库连接并导入数据源">数据库连接并导入数据源</h3>
 <p>连接MySQL，输入主机名、用户名、密码，选择要连接的数据库，填好后点击<code>Test</code>进行连接测试。</p>
@@ -336,15 +334,13 @@
 <h3 id="生成逆向工程">生成逆向工程</h3>
 <p>菜单栏选择<code>Database-Update Model For Database</code>，选择<code>Options</code>设置编码格式为<strong>UTF8</strong></p>
 <p><img src="9.png" srcset="/img/loading.gif" lazyload /></p>
-<p>返回<code>Selection</code>，查看当前DBMS，选择刚才生成的数据源<code>test.dsn</code>
-，检查无误后进入下一步</p>
+<p>返回<code>Selection</code>，查看当前DBMS，选择刚才生成的数据源<code>test.dsn</code> ，检查无误后进入下一步</p>
 <p><img src="12.png" srcset="/img/loading.gif" lazyload /></p>
 <p>默认当前所有数据库中所有表都被选中，首先点击<code>Deselect All</code>取消全选，下拉列表选择需要生成的数据库中的表，右下角<code>Object(s) Selected</code>可查看已选中的表张数，确认后点击ok，开始生成工程。(一定一定要先取消全选，再选择要生成的表，要不然就会.......emmm很辣眼睛）</p>
 <p><img src="10.png" srcset="/img/loading.gif" lazyload /></p>
 <p>创建成功就可以看到数据模型了</p>
 <p><br/></p>
-<p>注：可以使用快捷键<code>Ctrl+Shift+X</code>
-执行一些VB脚本用于调整模型表的结构等。</p>
+<p>注：可以使用快捷键<code>Ctrl+Shift+X</code> 执行一些VB脚本用于调整模型表的结构等。</p>
 
                 
               </div>
