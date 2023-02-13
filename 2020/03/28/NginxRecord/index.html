@@ -23,15 +23,15 @@
 <meta property="og:site_name" content="Chakkk">
 <meta property="og:description" content="记录一下Nginx的安装过程和实例练习">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://chakkk309.github.io/2020/03/28/NginxRecord/正向代理.jpg">
-<meta property="og:image" content="https://chakkk309.github.io/2020/03/28/NginxRecord/overall.png">
-<meta property="og:image" content="https://chakkk309.github.io/2020/03/28/NginxRecord/90_get.png">
-<meta property="og:image" content="https://chakkk309.github.io/2020/03/28/NginxRecord/126_ok.png">
+<meta property="og:image" content="https://chakkk309.github.io/%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86.jpg">
+<meta property="og:image" content="https://chakkk309.github.io/overall.png">
+<meta property="og:image" content="https://chakkk309.github.io/90_get.png">
+<meta property="og:image" content="https://chakkk309.github.io/126_ok.png">
 <meta property="article:published_time" content="2020-03-28T12:57:08.000Z">
 <meta property="article:modified_time" content="2022-08-27T14:10:43.088Z">
 <meta property="article:author" content="Jiaqi">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://chakkk309.github.io/2020/03/28/NginxRecord/正向代理.jpg">
+<meta name="twitter:image" content="https://chakkk309.github.io/%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -75,7 +75,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"chakkk309.github.io","root":"/","version":"1.9.2","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"chakkk309.github.io","root":"/","version":"1.9.4","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -88,8 +88,7 @@
 
 
   
-<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Chakkk" type="application/atom+xml">
-</head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 
 <body>
@@ -122,7 +121,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
-                Home
+                <span>Home</span>
               </a>
             </li>
           
@@ -134,7 +133,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
-                Archives
+                <span>Archives</span>
               </a>
             </li>
           
@@ -146,7 +145,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
-                About
+                <span>About</span>
               </a>
             </li>
           
@@ -159,7 +158,7 @@
               <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="iconfont icon-books"></i>
-                Others
+                <span>Others</span>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 
@@ -168,7 +167,7 @@
                   
                   <a class="dropdown-item" href="/books">
                     
-                    Books
+                    <span>Books</span>
                   </a>
                 
                   
@@ -176,7 +175,7 @@
                   
                   <a class="dropdown-item" href="/movies">
                     
-                    Movies
+                    <span>Movies</span>
                   </a>
                 
                   
@@ -184,7 +183,7 @@
                   
                   <a class="dropdown-item" href="/life">
                     
-                    Life
+                    <span>Life</span>
                   </a>
                 
                   
@@ -192,7 +191,7 @@
                   
                   <a class="dropdown-item" href="/graph">
                     
-                    (WIP)
+                    <span>(WIP)</span>
                   </a>
                 
               </div>
@@ -202,8 +201,9 @@
         
         
           <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
           </li>
         
       </ul>
@@ -243,7 +243,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.1k words
+          4.2k words
         
       </span>
     
@@ -307,129 +307,152 @@
                 
                 <p>记录一下Nginx的安装过程和实例练习</p>
 <span id="more"></span>
-<h3 id="编译安装">编译安装</h3>
-<p><strong>下载</strong></p>
+
+<h3 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h3><p><strong>下载</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">yum -y install wget<br>cd /usr/local &amp;&amp; wget http://nginx.org/download/nginx-1.16.1.tar.gz<br></code></pre></td></tr></table></figure>
+
 <p><strong>环境准备</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">yum install -y gcc-c++<br>yum install -y pcre pcre-devel<br>yum install -y zlib zlib-devel<br>yum install -y openssl openssl-devel<br></code></pre></td></tr></table></figure>
+
 <p><strong>解压</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd /usr/local &amp;&amp; tar -zxvf nginx-1.16.1.tar.gz<br></code></pre></td></tr></table></figure>
+
 <p><strong>编译安装</strong>：<code>./configure</code>是个shell脚本，用来检测安装平台的目标特征的。比如它会检测你是不是有CC或GCC，并不是需要CC或GCC；make从Makefile中读取指令然后编译；make install同样也从Makefile中读取指令，安装到指定位置。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd /usr/local/nginx-1.16.1 &amp;&amp; ./configure --prefix=/usr/local/nginx<br>make<br>make install<br></code></pre></td></tr></table></figure>
+
 <p><strong>配置环境变量</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">vi /etc/profile<br><span class="hljs-meta prompt_"># </span><span class="language-bash">最下面新起一行，插入如下</span><br>nginx=/usr/local/nginx/sbin<br>export PATH=$PATH:$nginx<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">使配置文件生效</span><br>source /etc/profile<br></code></pre></td></tr></table></figure>
+
 <p><strong>启动</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">nginx<br></code></pre></td></tr></table></figure>
-<p><strong>访问测试</strong></p>
-<p><strong>关闭</strong></p>
+
+<p><strong>访问测试</strong> </p>
+<p><strong>关闭</strong> </p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">快速停止</span><br>nginx -s stop<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">平缓停止</span><br>nginx -s quit<br></code></pre></td></tr></table></figure>
+
 <p>重启：重新加载配置文件</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">nginx -s reload<br></code></pre></td></tr></table></figure>
+
 <p>检测配置文件语法是否正确</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">指定需要检查的配置文件</span><br>nginx -t -c  /usr/local/nginx/conf/nginx.conf<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">不加 -c 参数，默认检测nginx.conf配置文件（常用）</span><br>nginx -t <br></code></pre></td></tr></table></figure>
-<hr />
-<h3 id="yum安装">yum安装</h3>
-<p>下载</p>
+
+<hr>
+<h3 id="yum安装"><a href="#yum安装" class="headerlink" title="yum安装"></a>yum安装</h3><p>下载</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">yum -y install nginx<br></code></pre></td></tr></table></figure>
+
 <p>常用操作</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">设置开机启动</span><br>systemctl enable nginx<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">启动nginx服务</span><br>service nginx start<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">停止nginx服务</span><br>service nginx stop<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">重启nginx服务</span><br>service nginx restart<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">重新加载配置，一般是在修改过nginx配置文件时使用</span><br>service nginx reload<br></code></pre></td></tr></table></figure>
+
 <p>常用文件</p>
 <ul>
-<li>配置文件：/etc/nginx/nginx.conf</li>
-<li>自定义的配置文件：/etc/nginx/conf.d</li>
-<li>项目文件：/usr/share/nginx/html/</li>
-<li>日志文件：/var/log/nginx/</li>
-<li>其他安装文件都在/etc/nginx</li>
+<li>配置文件：&#x2F;etc&#x2F;nginx&#x2F;nginx.conf</li>
+<li>自定义的配置文件：&#x2F;etc&#x2F;nginx&#x2F;conf.d</li>
+<li>项目文件：&#x2F;usr&#x2F;share&#x2F;nginx&#x2F;html&#x2F;</li>
+<li>日志文件：&#x2F;var&#x2F;log&#x2F;nginx&#x2F;</li>
+<li>其他安装文件都在&#x2F;etc&#x2F;nginx</li>
 <li>使用<code>find  /  -name  nginx*</code> 全局查找与nginx相关的文件</li>
 </ul>
 <p>安装网络工具</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">yum -y install net-tools<br></code></pre></td></tr></table></figure>
+
 <p>查看80端口</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">netstat -anpt|grep 80<br></code></pre></td></tr></table></figure>
-<hr />
-<h3 id="正向代理">正向代理</h3>
-<p>比如科学上网VPN就是一个典型的例子，正向代理服务器位于客户端和服务器之间，为了向服务器获取数据，客户端要向代理服务器发送一个请求，并指定目标服务器，代理服务器将目标服务器返回的数据转交给客户端。</p>
-<p><img src="正向代理.jpg" srcset="/img/loading.gif" lazyload /></p>
-<hr />
-<h3 id="反向代理">反向代理</h3>
-<blockquote>
+
+<hr>
+<h3 id="正向代理"><a href="#正向代理" class="headerlink" title="正向代理"></a>正向代理</h3><p>比如科学上网VPN就是一个典型的例子，正向代理服务器位于客户端和服务器之间，为了向服务器获取数据，客户端要向代理服务器发送一个请求，并指定目标服务器，代理服务器将目标服务器返回的数据转交给客户端。</p>
+<p><img src="/%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86.jpg" srcset="/img/loading.gif" lazyload> </p>
+<hr>
+<h3 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h3><blockquote>
 <p>实例目标：使用 nginx 反向代理 <code>www.123.com</code> 直接跳转到<code>192.168.0.103:8080</code></p>
 </blockquote>
 <p>启动tomcat<code>（192.168.0.103:8080）</code></p>
 <p>修改windows本地host文件，添加映射关系。hosts一般在<code>C:\Windows\System32\drivers\etc\hosts</code>目录下，它是一个没有扩展名的系统文件，IP解析优先级比DNS要高。若没有修改权限，可右键-&gt;属性-&gt;安全-&gt;修改权限；或将hosts移动到桌面，修改后复制回原文件夹。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">192.168.0.103  www.123.com<br></code></pre></td></tr></table></figure>
+
 <p>此时，可以通过<code>www.123.com:8080</code>访问tomcat了</p>
 <p>使用Nginx反向代理</p>
 <ul>
 <li>找到nginx.conf，并编辑</li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">vi /usr/local/nginx/conf/nginx.conf<br></code></pre></td></tr></table></figure>
+
 <ul>
 <li>nginx.conf核心配置如下</li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs shell">server &#123;<br>    listen       80;                           # 监听80端口（默认）<br>    server_name  www.123.com;                  # 虚拟主机名（用来指定IP地址或者域名，多个域名之间用空格分开）<br><br>    location / &#123;                               # 访问根目录（如果有多个location，会从最长前缀开始匹配，此location匹配http://www.123.com/）<br>        proxy_pass http://192.168.0.103:8080;<br>        root   html;                           # 用于指定虚拟主机的网页根目录，这个目录可以是相对路径，也可以是绝对路径<br>        index  index.html index.htm index.jsp; # 用于设置网站的默认首页，后面的文件名称可以有多个，中间用空格隔开，第一个找不到，则找第二个，以此类推<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <ul>
 <li>重新加载nginx配置文件</li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">nginx -s reload<br></code></pre></td></tr></table></figure>
-<p>实例结果：访问<code>www.123.com</code> 直接跳转到<code>192.168.0.103:8080</code>也就是tomcat启动页面</p>
+
+<p>实例结果：访问<code> www.123.com</code> 直接跳转到<code>192.168.0.103:8080</code>也就是tomcat启动页面</p>
 <blockquote>
 <p>Nginx搭建在192.168.0.103这台虚拟机上，在本机也就是客户端，访问<code>www.123.com</code>，会发生什么？</p>
 </blockquote>
 <p>实例分析：</p>
 <p>1.检查本地hosts文件，发现有该域名的解析，拿到解析的ip：192.168.0.103</p>
 <p>2.http请求连接到了192.168.0.103的80端口</p>
-<p>3.Nginx的80端口一直在被监听，服务器发现请求的uri为/，host为<code>www.123.com</code>，进而匹配到server_name ·<code>www.123.com</code>，并且转到了location / 也就是代理服务器 <code>http://192.168.0.103:8080</code>，至此访问成功。</p>
+<p>3.Nginx的80端口一直在被监听，服务器发现请求的uri为&#x2F;，host为<code>www.123.com</code>，进而匹配到server_name ·<code>www.123.com</code>，并且转到了location &#x2F; 也就是代理服务器 <code>http://192.168.0.103:8080</code>，至此访问成功。</p>
 <p>在这个反向代理过程中，客户端把请求交给Nginx，由Nginx的配置文件制定一些规则把请求转发给服务器，客户端并不知道谁为自己提供了服务，<strong>反向代理，其实代理的是服务器</strong>。</p>
 <p>抓个包来理一下思路，进行报文过滤，只留下相关的http传输作为重点进行分析。</p>
-<p><img src="overall.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="/overall.png" srcset="/img/loading.gif" lazyload> </p>
 <p>三次握手建立连接之后，客户端向Nginx服务器发起请求。</p>
-<p><img src="90_get.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="/90_get.png" srcset="/img/loading.gif" lazyload> </p>
 <p>可以看到客户端请求使用HTTP1.1协议Get方法访问根目录内容，请求的域名为<code>www.123.com</code>。</p>
-<p><img src="126_ok.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="/126_ok.png" srcset="/img/loading.gif" lazyload> </p>
 <p>服务器响应了请求，状态码200OK，回应的Web服务器为Nginx。</p>
 <p>又相继传输了HTML和CSS样式以及加载页面所需要的图片，可以看到这个过程中，没有出现被代理服务器的任何信息，也与”反向代理，其实代理的是服务器“这句话相呼应。</p>
-<h3 id="负载均衡">负载均衡</h3>
-<p>负载均衡主要通过专门的硬件设备或者软件算法实现。而通过软件实现的负载均衡主要依赖于均衡算法的选择和程序的健壮性。均衡算法又主要分为两大类：</p>
+<h3 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h3><p>负载均衡主要通过专门的硬件设备或者软件算法实现。而通过软件实现的负载均衡主要依赖于均衡算法的选择和程序的健壮性。均衡算法又主要分为两大类：</p>
 <ul>
-<li><p>静态负载均衡算法：主要包括轮询算法、基于比率的加权轮询算法或者基于优先级的加权轮询算法。</p></li>
-<li><p>动态负载均衡算法：主要包括基于任务量的最少连接优化算法、基于性能的最快响应优先算法、预测算法及动态性能分配算法等。</p></li>
+<li><p>静态负载均衡算法：主要包括轮询算法、基于比率的加权轮询算法或者基于优先级的加权轮询算法。</p>
+</li>
+<li><p>动态负载均衡算法：主要包括基于任务量的最少连接优化算法、基于性能的最快响应优先算法、预测算法及动态性能分配算法等。</p>
+</li>
 </ul>
 <p>前期准备</p>
 <ul>
 <li>复制3个tomcat，分别命名8081、8082、8083作为区分。</li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">cp -r /usr/local/apache-tomcat-8.5.53/ /usr/local/tomcat8081<br></code></pre></td></tr></table></figure>
+
 <ul>
 <li>修改相应<code>conf/server.xml</code>中的端口号</li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">&lt;Server port=&quot;8006&quot; shutdown=&quot;SHUTDOWN&quot;&gt;<br>&lt;Connector port=&quot;8081&quot; protocol=&quot;HTTP/1.1&quot;<br></code></pre></td></tr></table></figure>
+
 <ul>
 <li>修改相应的h1标题作为区分</li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">&lt;h1&gt;$&#123;pageContext.servletContext.serverInfo&#125;-【192.168.0.102:8081】&lt;/h1&gt;<br></code></pre></td></tr></table></figure>
+
 <ul>
 <li>启动3个tomcat服务</li>
 </ul>
-<h4 id="普通轮询算法">普通轮询算法</h4>
-<p>实现内容：输入<code>www.123.com</code> 在3个tomcat服务之间进行切换</p>
+<h4 id="普通轮询算法"><a href="#普通轮询算法" class="headerlink" title="普通轮询算法"></a>普通轮询算法</h4><p>实现内容：输入<code>www.123.com</code> 在3个tomcat服务之间进行切换</p>
 <ul>
-<li><p>编辑配置文件<code>nginx.conf</code></p></li>
+<li><p>编辑配置文件<code>nginx.conf</code></p>
+</li>
 <li><p>核心内容</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs shell">upstream OrdinaryPolling &#123;                     # 主要用于负载均衡，设置一系列的后端服务器<br>       server 192.168.0.102:8081;<br>       server 192.168.0.102:8082;<br>       server 192.168.0.102:8083;<br>   &#125;<br>  <br>   server &#123;<br>       listen       80;                           # 监听80端口（默认）<br>       server_name  www.123.com;                  # 虚拟主机名（用来指定IP地址或者域名，多个域名之间用空格分开）<br>  <br>       location / &#123;                               # 访问根目录（如果有多个location，会从最长前缀开始匹配，此location匹配http://www.123.com/）<br>           proxy_pass http://OrdinaryPolling;<br>           root   html;                           # 用于指定虚拟主机的网页根目录，这个目录可以是相对路径，也可以是绝对路径<br>           index  index.html index.htm index.jsp; # 用于设置网站的默认首页，后面的文件名称可以有多个，中间用空格隔开，第一个找不到，则找第二个，以此类推<br>       &#125;<br>   &#125;<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs shell">upstream OrdinaryPolling &#123;                     # 主要用于负载均衡，设置一系列的后端服务器<br>       server 192.168.0.102:8081;<br>       server 192.168.0.102:8082;<br>       server 192.168.0.102:8083;<br>   &#125;<br>  <br>   server &#123;<br>       listen       80;                           # 监听80端口（默认）<br>       server_name  www.123.com;                  # 虚拟主机名（用来指定IP地址或者域名，多个域名之间用空格分开）<br>  <br>       location / &#123;                               # 访问根目录（如果有多个location，会从最长前缀开始匹配，此location匹配http://www.123.com/）<br>           proxy_pass http://OrdinaryPolling;<br>           root   html;                           # 用于指定虚拟主机的网页根目录，这个目录可以是相对路径，也可以是绝对路径<br>           index  index.html index.htm index.jsp; # 用于设置网站的默认首页，后面的文件名称可以有多个，中间用空格隔开，第一个找不到，则找第二个，以此类推<br>       &#125;<br>   &#125;<br></code></pre></td></tr></table></figure>
+</li>
 <li><p>重新加载配置文件</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">nginx -s reload<br></code></pre></td></tr></table></figure></li>
 </ul>
 <p>实例访问成功</p>
-<h4 id="基于比例加权轮询">基于比例加权轮询</h4>
-<p>某台服务器性能更高，根据他的自身能力可以处理更多的请求</p>
+<h4 id="基于比例加权轮询"><a href="#基于比例加权轮询" class="headerlink" title="基于比例加权轮询"></a>基于比例加权轮询</h4><p>某台服务器性能更高，根据他的自身能力可以处理更多的请求</p>
 <ul>
-<li><p>编辑nginx.conf文件，在负载均衡设置中添加weight选项。该指令用于配置前面请求处理的权重，默认值为 1。也就是说，上文不加权的普通轮询，其实其加权值 weight 都为 1。</p></li>
-<li><pre class="shell"><code>  server 192.168.0.102:8081 weight=6;
-  server 192.168.0.102:8082 weight=2
-  server 192.168.0.102:8083 weight=2;</code></pre></li>
-<li><p>重新加载配置文件</p></li>
-<li><p>实例结果：访问 <code>www.123.com</code> 跳转到<code>192.168.0.102:8081</code>次数增多。</p></li>
+<li><p>编辑nginx.conf文件，在负载均衡设置中添加weight选项。该指令用于配置前面请求处理的权重，默认值为 1。也就是说，上文不加权的普通轮询，其实其加权值 weight 都为 1。</p>
+</li>
+<li><pre><code class="shell">server 192.168.0.102:8081 weight=6;
+server 192.168.0.102:8082 weight=2
+server 192.168.0.102:8083 weight=2;
+</code></pre>
+</li>
+<li><p>重新加载配置文件</p>
+</li>
+<li><p>实例结果：访问 <code>www.123.com</code> 跳转到<code>192.168.0.102:8081</code>次数增多。</p>
+</li>
 </ul>
 
                 
@@ -465,21 +488,23 @@
         </div>
       
       
-      <div class="license-meta-item">
-        <div>Licensed under</div>
-        <div>
-          
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
             
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
             
-              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
-                <i class="iconfont icon-by"></i>
-              </span>
-              </a>
-            
-          
+          </div>
         </div>
-      </div>
+      
     </div>
     <div class="license-icon iconfont"></div>
   </div>
@@ -522,7 +547,10 @@
       
   <aside class="sidebar" style="margin-left: -1rem">
     <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -634,22 +662,34 @@
     var boardCtn = jQuery('#board-ctn');
     var boardTop = boardCtn.offset().top;
 
-    window.tocbot.init({
+    window.tocbot.init(Object.assign({
       tocSelector     : '#toc-body',
       contentSelector : '.markdown-body',
-      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
       linkClass       : 'tocbot-link',
       activeLinkClass : 'tocbot-active-link',
       listClass       : 'tocbot-list',
       isCollapsedClass: 'tocbot-is-collapsed',
       collapsibleClass: 'tocbot-is-collapsible',
-      collapseDepth   : CONFIG.toc.collapseDepth || 0,
       scrollSmooth    : true,
-      headingsOffset  : -boardTop
-    });
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
     if (toc.find('.toc-list-item').length > 0) {
       toc.css('visibility', 'visible');
     }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
   });
 </script>
 
@@ -678,6 +718,21 @@
       window.anchors.options.class = 'anchorjs-link-left';
     }
     window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
   });
 </script>
 
@@ -721,6 +776,15 @@
           MathJax.typeset();
           MathJax.typesetPromise();
         }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
       </script>
     
 

@@ -16,44 +16,44 @@
   <meta name="author" content="Jiaqi">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1.哈希表 哈希表的本质是存储了键和值的无序的关联数组，是可重复的map。哈希表对于一个给定的key执行哈希函数，输出一个整数。这个值就是键值对在表中的位置。 空间复杂度为\(O (n)\)，哈希表的空间和存储的数据量是线性相关的；平均时间复杂度为\(O(1)\)，对一个键算哈希直接就能找到这个key在数组中的位置；最坏时间复杂度为\(O (n)\)，所有key的哈希值都一样，这些key全部冲突，">
+    <meta name="description" content="1.哈希表哈希表的本质是存储了键和值的无序的关联数组，是可重复的map。哈希表对于一个给定的key执行哈希函数，输出一个整数。这个值就是键值对在表中的位置。 空间复杂度为$O (n)$，哈希表的空间和存储的数据量是线性相关的；平均时间复杂度为$O(1)$，对一个键算哈希直接就能找到这个key在数组中的位置；最坏时间复杂度为$O (n)$，所有key的哈希值都一样，这些key全部冲突，它们都存储在一">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hash Table">
 <meta property="og:url" content="https://chakkk309.github.io/2022/03/19/HashTables/index.html">
 <meta property="og:site_name" content="Chakkk">
-<meta property="og:description" content="1.哈希表 哈希表的本质是存储了键和值的无序的关联数组，是可重复的map。哈希表对于一个给定的key执行哈希函数，输出一个整数。这个值就是键值对在表中的位置。 空间复杂度为\(O (n)\)，哈希表的空间和存储的数据量是线性相关的；平均时间复杂度为\(O(1)\)，对一个键算哈希直接就能找到这个key在数组中的位置；最坏时间复杂度为\(O (n)\)，所有key的哈希值都一样，这些key全部冲突，">
+<meta property="og:description" content="1.哈希表哈希表的本质是存储了键和值的无序的关联数组，是可重复的map。哈希表对于一个给定的key执行哈希函数，输出一个整数。这个值就是键值对在表中的位置。 空间复杂度为$O (n)$，哈希表的空间和存储的数据量是线性相关的；平均时间复杂度为$O(1)$，对一个键算哈希直接就能找到这个key在数组中的位置；最坏时间复杂度为$O (n)$，所有key的哈希值都一样，这些key全部冲突，它们都存储在一">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220127220304130.png">
 <meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220127214053847.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220127220936782.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220127221011346.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220127221050468.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220127221312658.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220127221424562.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220127221450124.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220127221712094.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220127221804810.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220127222046966.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220127222102409.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220127222139681.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220127220936782.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220127221011346.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220127221050468.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220127221312658.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220127221424562.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220127221450124.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220127221712094.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220127221804810.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220127222046966.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220127222102409.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220127222139681.png">
 <meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220127222632528.png">
 <meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220127222751707.png">
 <meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220127222904008.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220127223048801.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220127223113883.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220127223048801.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220127223113883.png">
 <meta property="og:image" content="http://r756b90r8.hb-bkt.clouddn.com/15445/06%20Hash%20Tables/image-20220127223148595.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220127223227776.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220127223312417.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220128150625315.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220128150656325.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220128150758494.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220128150835920.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220128150906362.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220128150951549.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220128151807095.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220128151841531.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220128151904305.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220128151925343.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220127223227776.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220127223312417.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220128150625315.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220128150656325.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220128150758494.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220128150835920.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220128150906362.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220128150951549.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220128151807095.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220128151841531.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220128151904305.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220128151925343.png">
 <meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220128152655834.png">
 <meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220128152758600.png">
 <meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220128153047519.png">
@@ -61,7 +61,7 @@
 <meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220128153527529.png">
 <meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220128153719853.png">
 <meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220128153806574.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/HashTables/image-20220128154539295.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220128154539295.png">
 <meta property="article:published_time" content="2022-03-18T16:00:00.000Z">
 <meta property="article:modified_time" content="2022-12-29T07:01:47.607Z">
 <meta property="article:author" content="Jiaqi">
@@ -110,7 +110,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"chakkk309.github.io","root":"/","version":"1.9.2","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"chakkk309.github.io","root":"/","version":"1.9.4","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -123,8 +123,7 @@
 
 
   
-<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Chakkk" type="application/atom+xml">
-</head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 
 <body>
@@ -157,7 +156,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
-                Home
+                <span>Home</span>
               </a>
             </li>
           
@@ -169,7 +168,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
-                Archives
+                <span>Archives</span>
               </a>
             </li>
           
@@ -181,7 +180,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
-                About
+                <span>About</span>
               </a>
             </li>
           
@@ -194,7 +193,7 @@
               <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="iconfont icon-books"></i>
-                Others
+                <span>Others</span>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 
@@ -203,7 +202,7 @@
                   
                   <a class="dropdown-item" href="/books">
                     
-                    Books
+                    <span>Books</span>
                   </a>
                 
                   
@@ -211,7 +210,7 @@
                   
                   <a class="dropdown-item" href="/movies">
                     
-                    Movies
+                    <span>Movies</span>
                   </a>
                 
                   
@@ -219,7 +218,7 @@
                   
                   <a class="dropdown-item" href="/life">
                     
-                    Life
+                    <span>Life</span>
                   </a>
                 
                   
@@ -227,7 +226,7 @@
                   
                   <a class="dropdown-item" href="/graph">
                     
-                    (WIP)
+                    <span>(WIP)</span>
                   </a>
                 
               </div>
@@ -237,8 +236,9 @@
         
         
           <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
           </li>
         
       </ul>
@@ -340,144 +340,133 @@
             
               <div class="markdown-body">
                 
-                <h1 id="哈希表">1.哈希表</h1>
-<p>哈希表的本质是存储了键和值的无序的关联数组，是可重复的map。哈希表对于一个给定的key执行哈希函数，输出一个整数。这个值就是键值对在表中的位置。</p>
-<p>空间复杂度为<span class="math inline">\(O (n)\)</span>，哈希表的空间和存储的数据量是线性相关的；平均时间复杂度为<span class="math inline">\(O(1)\)</span>，对一个键算哈希直接就能找到这个key在数组中的位置；最坏时间复杂度为<span class="math inline">\(O (n)\)</span>，所有key的哈希值都一样，这些key全部冲突，它们都存储在一个槽（bucket）里，性能就和链表数组差不多了。</p>
+                <h1 id="1-哈希表"><a href="#1-哈希表" class="headerlink" title="1.哈希表"></a>1.哈希表</h1><p>哈希表的本质是存储了键和值的无序的关联数组，是可重复的map。哈希表对于一个给定的key执行哈希函数，输出一个整数。这个值就是键值对在表中的位置。</p>
+<p>空间复杂度为$O (n)$，哈希表的空间和存储的数据量是线性相关的；平均时间复杂度为$O(1)$，对一个键算哈希直接就能找到这个key在数组中的位置；最坏时间复杂度为$O (n)$，所有key的哈希值都一样，这些key全部冲突，它们都存储在一个槽（bucket）里，性能就和链表数组差不多了。</p>
 <p>一个哈希表的实现包括以下两部分：</p>
 <ul>
 <li><p><strong>哈希函数</strong>（Hash Function）</p>
 <p>哈希函数用于计算桶或槽数组的索引。key取值范围可能是非常大的，但哈希表的槽是比较少的。哈希函数将一个大的键空间映射到一个较小的域。</p>
-<p>需要考虑快速执行和碰撞率（fast vs. collision) 之间的权衡。往往速度比较快的哈希函数更容易碰撞，而“完美”的哈希函数虽然没有碰撞，但会花费非常长的计算时间。设计的关键是如何在两者间保持平衡。</p></li>
+<p>需要考虑快速执行和碰撞率（fast vs. collision) 之间的权衡。往往速度比较快的哈希函数更容易碰撞，而“完美”的哈希函数虽然没有碰撞，但会花费非常长的计算时间。设计的关键是如何在两者间保持平衡。</p>
+</li>
 <li><p><strong>哈希方案</strong>（Hashing Scheme）</p>
-<p>设计一些结构用以如何处理哈希后的键冲突。需要考虑在 分配一个大哈希表以减少冲突 和 在冲突发生时必须执行额外的指令 之间的权衡。</p></li>
+<p>设计一些结构用以如何处理哈希后的键冲突。需要考虑在 分配一个大哈希表以减少冲突 和 在冲突发生时必须执行额外的指令 之间的权衡。</p>
+</li>
 </ul>
-<h1 id="哈希函数">2.哈希函数</h1>
-<p>哈希函数接受任何键作为输入，最后返回该键的整数表示。函数的输出是确定性的，即相同的键应该总是生成相同的哈希输出。</p>
+<h1 id="2-哈希函数"><a href="#2-哈希函数" class="headerlink" title="2.哈希函数"></a>2.哈希函数</h1><p>哈希函数接受任何键作为输入，最后返回该键的整数表示。函数的输出是确定性的，即相同的键应该总是生成相同的哈希输出。</p>
 <p>DBMS不需要使用加密安全的哈希函数(例如 <code>SHA-256</code> )，因为不需要担心保护密钥的内容，函数主要在内部使用这些哈希函数。这样信息就不会泄露到系统之外。一般来说，我们只关心哈希函数的速度和碰撞率。</p>
 <p>常用的哈希函数一般有：CRC-64(1975): 用于底层通信和校验、MurmurHash(2008)、Google CityHash(2011)、Facebook XXHash(2012)、Google FarmHash(2014)。下图是这些哈希函数的Core i7上的表现，可以看到随着key size的增长，各函数吞吐量的变化（key越长性能越好）</p>
-<center>
-<img alt="hash function benmark" src="image-20220127220304130.png" srcset="/img/loading.gif" lazyload alt="image-20220127220304130" style="zoom:40%;" />
-</center>
-<h1 id="静态哈希表">3.静态哈希表</h1>
-<p>静态哈希表是一个数组，可以存储所有的键值。</p>
+<center><img alt="hash function benmark" src="image-20220127220304130.png" srcset="/img/loading.gif" lazyload alt="image-20220127220304130" style="zoom:40%;" /> </center>
+
+<h1 id="3-静态哈希表"><a href="#3-静态哈希表" class="headerlink" title="3.静态哈希表"></a>3.静态哈希表</h1><p>静态哈希表是一个数组，可以存储所有的键值。</p>
 <p>例：一个静态哈希表的长度为100，最简单的哈希函数就是把所有的key都%100，随后将它们落在数组中，<code>%100</code>这个操作保证了不管多大的数据进来都能找到他们的位置。</p>
-<center>
-<img alt="static hash" src="image-20220127214053847.png" srcset="/img/loading.gif" lazyload alt="image-20220127214053847" style="zoom:50%;" />
-</center>
+<center><img alt="static hash" src="image-20220127214053847.png" srcset="/img/loading.gif" lazyload alt="image-20220127214053847" style="zoom:50%;" /></center>
+
 <p>静态哈希方案是指哈希表的大小是固定的。这意味着如果DBMS运行哈希表的存储空间不足，那么它就必须从头开始重建一个更大的哈希表，比较耗费资源。通常新建哈希表的大小是原来哈希表的两倍。减少比较次数的浪费，重点是要避免哈希键的冲突。通常使用两倍的槽数作为预期的元素数。</p>
 <p>一下理想情况在现实中是不成立的：</p>
-<ol type="1">
+<ol>
 <li>提前得知元素数量</li>
 <li>每个键都是唯一的</li>
-<li>存在一个完美的哈希函数， IF key1不等于key2， then hash(key1) 不等于hash(key2)，即永远不会出现哈希碰撞</li>
+<li>存在一个完美的哈希函数，  IF key1不等于key2， then hash(key1) 不等于hash(key2)，即永远不会出现哈希碰撞</li>
 </ol>
 <p>重点讨论三种静态哈希函数：</p>
-<h2 id="linear-probe-hashing">3.1 Linear Probe Hashing</h2>
-<p>线性探测哈希，又叫开放地址哈希法，它是一个超大数组中存了一堆哈希槽。这是最基本的哈希方案，通常也是最快的，它使用数组槽的循环缓冲区。哈希函数将键映射到槽。当冲突发生时，线性搜索相邻的插槽，直到找到一个开放的可插入的插槽。对于查找，可以检查键散列所指向的槽，线性搜索，直到找到所需的条目(或者一个空槽，在这种情况下键不在表中)。</p>
+<h2 id="3-1-Linear-Probe-Hashing"><a href="#3-1-Linear-Probe-Hashing" class="headerlink" title="3.1 Linear Probe Hashing"></a>3.1 Linear Probe Hashing</h2><p>线性探测哈希，又叫开放地址哈希法，它是一个超大数组中存了一堆哈希槽。这是最基本的哈希方案，通常也是最快的，它使用数组槽的循环缓冲区。哈希函数将键映射到槽。当冲突发生时，线性搜索相邻的插槽，直到找到一个开放的可插入的插槽。对于查找，可以检查键散列所指向的槽，线性搜索，直到找到所需的条目(或者一个空槽，在这种情况下键不在表中)。</p>
 <p>注意，必须将key存储在槽中，以便检查某个数据是否是所需的数据。删除则更加棘手。对于仅仅从槽中删除条目，必须非常小心，因为这可能会防止以后的查找 查找已经放在现在空槽下面的条目。这个问题有两种解决方案:</p>
-<p>如果遇到哈希碰撞，就把kv存到下一个槽里，一个槽/桶只能放一个kv/指针，插入算法例：</p>
-<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="image-20220127220936782.png" srcset="/img/loading.gif" lazyload alt="INSERT1" /></div><div class="group-image-wrap"><img src="image-20220127221011346.png" srcset="/img/loading.gif" lazyload alt="INSERT2" /></div></div><div class="group-image-row"><div class="group-image-wrap"><img src="image-20220127221050468.png" srcset="/img/loading.gif" lazyload alt="INSERT3" /></div><div class="group-image-wrap"><img src="image-20220127221312658.png" srcset="/img/loading.gif" lazyload alt="INSERT4" /></div></div></div>
+<p>如果遇到哈希碰撞，就把kv存到下一个槽里，一个槽&#x2F;桶只能放一个kv&#x2F;指针，插入算法例：</p>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/image-20220127220936782.png" srcset="/img/loading.gif" lazyload alt="INSERT1"></div><div class="group-image-wrap"><img src="/image-20220127221011346.png" srcset="/img/loading.gif" lazyload alt="INSERT2"></div></div><div class="group-image-row"><div class="group-image-wrap"><img src="/image-20220127221050468.png" srcset="/img/loading.gif" lazyload alt="INSERT3"></div><div class="group-image-wrap"><img src="/image-20220127221312658.png" srcset="/img/loading.gif" lazyload alt="INSERT4"></div></div></div>
+
 <p>删除算法，要删除C：</p>
-<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="image-20220127221424562.png" srcset="/img/loading.gif" lazyload alt="DELETE1" /></div><div class="group-image-wrap"><img src="image-20220127221450124.png" srcset="/img/loading.gif" lazyload alt="DELETE2" /></div></div></div>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/image-20220127221424562.png" srcset="/img/loading.gif" lazyload alt="DELETE1"></div><div class="group-image-wrap"><img src="/image-20220127221450124.png" srcset="/img/loading.gif" lazyload alt="DELETE2"></div></div></div>
+
 <p>但是查找D会出现问题，原来是有数据现在没有，可能会怀疑没有D：</p>
 <p><strong>- Approach 1: Tombstone</strong></p>
 <p>设置一个墓碑，类似于死亡标记，说明这个位置原来有数据，但是它被删除了，所以会接着向下一个位置寻找D。</p>
-<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="image-20220127221712094.png" srcset="/img/loading.gif" lazyload alt="TOMBSTONE1" /></div><div class="group-image-wrap"><img src="image-20220127221804810.png" srcset="/img/loading.gif" lazyload alt="TOMBSTONE2" /></div></div></div>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/image-20220127221712094.png" srcset="/img/loading.gif" lazyload alt="TOMBSTONE1"></div><div class="group-image-wrap"><img src="/image-20220127221804810.png" srcset="/img/loading.gif" lazyload alt="TOMBSTONE2"></div></div></div>
+
+
 <p><strong>- Approach 2: Movement</strong></p>
 <p>对数据重新进行整理，但是需要进行有逻辑的整理。需要注意数据正确的位置，如果是环形链表需要注意B的位置。</p>
-<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="image-20220127222046966.png" srcset="/img/loading.gif" lazyload alt="MOVEMENT1" /></div><div class="group-image-wrap"><img src="image-20220127222102409.png" srcset="/img/loading.gif" lazyload alt="MOVEMENT2" /></div><div class="group-image-wrap"><img src="image-20220127222139681.png" srcset="/img/loading.gif" lazyload alt="MOVEMENT3" /></div></div></div>
-<h5 id="non-unique-keys-问题">NON-UNIQUE KEYS 问题</h5>
-<p>在hashmap中是不允许有重复的键出现的，但在数据库的索引中是有可能有重复的键出现，有两种解决思路：</p>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/image-20220127222046966.png" srcset="/img/loading.gif" lazyload alt="MOVEMENT1"></div><div class="group-image-wrap"><img src="/image-20220127222102409.png" srcset="/img/loading.gif" lazyload alt="MOVEMENT2"></div><div class="group-image-wrap"><img src="/image-20220127222139681.png" srcset="/img/loading.gif" lazyload alt="MOVEMENT3"></div></div></div>
+
+<h5 id="NON-UNIQUE-KEYS-问题"><a href="#NON-UNIQUE-KEYS-问题" class="headerlink" title="NON-UNIQUE KEYS 问题"></a>NON-UNIQUE KEYS 问题</h5><p>在hashmap中是不允许有重复的键出现的，但在数据库的索引中是有可能有重复的键出现，有两种解决思路：</p>
 <p><strong>- Choice 1: Separate Linked List</strong></p>
 <p>不是用键存储值，而是存储一个指向单独存储区域的指针，该区域包含所有值的链表。</p>
-<center>
-<img alt="Separate Linked List" src="image-20220127222632528.png" srcset="/img/loading.gif" lazyload alt="image-20220127222632528" style="zoom:50%;" />
-</center>
+<center><img alt="Separate Linked List" src="image-20220127222632528.png" srcset="/img/loading.gif" lazyload alt="image-20220127222632528" style="zoom:50%;" /> </center>
+
 <p><strong>- Choice 2: Redundant Keys</strong></p>
 <p>把值和键拼接在一块，当成一个新的键。将相同的键多次存储在表。</p>
-<center>
-<img alt="Redundant Keys" src="image-20220127222751707.png" srcset="/img/loading.gif" lazyload alt="image-20220127222751707" style="zoom:50%;" />
-</center>
-<h2 id="robin-hood-hashing">3.2 <strong>Robin Hood Hashing</strong></h2>
-<p>”罗宾汉哈希“是开放地址哈希的一种扩展，旨在减少每个键从其在哈希表中的最佳位置(即它们被哈希到的原始槽)的最大距离。这种策略从“丰富”的key中窃取插槽，然后将它们给“贫乏”的key。在这种变体中，每个条目也记录了它们与最佳位置之间的“距离”。在每次插入时，如果被插入的键在当前槽中的最佳位置比当前条目的距离更远，将替换当前条目，并继续尝试插入表中更远的旧条目。</p>
+<center><img alt="Redundant Keys" src="image-20220127222751707.png" srcset="/img/loading.gif" lazyload alt="image-20220127222751707" style="zoom:50%;" /> </center>
+
+<h2 id="3-2-Robin-Hood-Hashing"><a href="#3-2-Robin-Hood-Hashing" class="headerlink" title="3.2 Robin Hood Hashing"></a>3.2 <strong>Robin Hood Hashing</strong></h2><p>”罗宾汉哈希“是开放地址哈希的一种扩展，旨在减少每个键从其在哈希表中的最佳位置(即它们被哈希到的原始槽)的最大距离。这种策略从“丰富”的key中窃取插槽，然后将它们给“贫乏”的key。在这种变体中，每个条目也记录了它们与最佳位置之间的“距离”。在每次插入时，如果被插入的键在当前槽中的最佳位置比当前条目的距离更远，将替换当前条目，并继续尝试插入表中更远的旧条目。</p>
 <p>基本结构如下图，<code>[0]</code>是代表key A 被推了几格：</p>
-<center>
-<img src="image-20220127222904008.png" srcset="/img/loading.gif" lazyload alt="image-20220127222904008" style="zoom:35%;" />
-</center>
+<center><img src="image-20220127222904008.png" srcset="/img/loading.gif" lazyload alt="image-20220127222904008" style="zoom:35%;" /> </center>
+
 <p>在插入C的时候发现C和A碰撞了：</p>
-<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="image-20220127223048801.png" srcset="/img/loading.gif" lazyload alt="EG1" /></div><div class="group-image-wrap"><img src="image-20220127223113883.png" srcset="/img/loading.gif" lazyload alt="EG2" /></div></div></div>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/image-20220127223048801.png" srcset="/img/loading.gif" lazyload alt="EG1"></div><div class="group-image-wrap"><img src="/image-20220127223113883.png" srcset="/img/loading.gif" lazyload alt="EG2"></div></div></div>
+
 <p>在插入D的时候发生碰撞：</p>
-<center>
-<img src="http://r756b90r8.hb-bkt.clouddn.com/15445/06%20Hash%20Tables/image-20220127223148595.png" srcset="/img/loading.gif" lazyload style="zoom:33%;" />
-</center>
+<center><img src="http://r756b90r8.hb-bkt.clouddn.com/15445/06%20Hash%20Tables/image-20220127223148595.png" srcset="/img/loading.gif" lazyload style="zoom:33%;" /> </center>
+
 <p>在插入E的时候发现碰撞，它把D的位置抢了：</p>
-<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="image-20220127223227776.png" srcset="/img/loading.gif" lazyload alt="EG1" /></div><div class="group-image-wrap"><img src="image-20220127223312417.png" srcset="/img/loading.gif" lazyload alt="EG2" /></div></div></div>
-<h2 id="cuckoo-hashing">3.3 Cuckoo Hashing</h2>
-<p>这种方法不是使用单个哈希表，而是维护多个具有不同哈希函数的表。</p>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/image-20220127223227776.png" srcset="/img/loading.gif" lazyload alt="EG1"></div><div class="group-image-wrap"><img src="/image-20220127223312417.png" srcset="/img/loading.gif" lazyload alt="EG2"></div></div></div>
+
+<h2 id="3-3-Cuckoo-Hashing"><a href="#3-3-Cuckoo-Hashing" class="headerlink" title="3.3 Cuckoo Hashing"></a>3.3 Cuckoo Hashing</h2><p>这种方法不是使用单个哈希表，而是维护多个具有不同哈希函数的表。</p>
 <p>哈希函数是相同的算法(例如，XXHash, CityHash);它们通过使用不同的种子值为同一个键生成不同的哈希值。</p>
 <p>当插入时，检查每个表，并选择一个有空闲槽的表(如果多个表有一个空闲槽，可以比较load factor之类的东西，或者更常见的是，选择一个随机的表。</p>
 <p>如果没有表有空闲槽，我们选择(通常是随机的)并退出旧的条目，然后将旧条目重新散列到另一个表中。</p>
 <p>在极少数情况下，可能会陷入一个循环。如果出现这种情况，可以使用新的哈希函数种子(不太常见)重建所有哈希表，或者使用更大的表(更常见)重建哈希表。</p>
 <p>Cuckoo Hashing 保证了O(1)的查找和删除，但插入可能更昂贵。</p>
 <p>有多个哈希表，这里以两个哈希表为例（两个哈希表有两个哈希函数）：</p>
-<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="image-20220128150625315.png" srcset="/img/loading.gif" lazyload alt="EG1" /></div><div class="group-image-wrap"><img src="image-20220128150656325.png" srcset="/img/loading.gif" lazyload alt="EG2" /></div></div></div>
-<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="image-20220128150758494.png" srcset="/img/loading.gif" lazyload alt="EG1" /></div><div class="group-image-wrap"><img src="image-20220128150835920.png" srcset="/img/loading.gif" lazyload alt="EG2" /></div></div></div>
-<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="image-20220128150906362.png" srcset="/img/loading.gif" lazyload alt="EG1" /></div><div class="group-image-wrap"><img src="image-20220128150951549.png" srcset="/img/loading.gif" lazyload alt="EG2" /></div></div></div>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/image-20220128150625315.png" srcset="/img/loading.gif" lazyload alt="EG1"></div><div class="group-image-wrap"><img src="/image-20220128150656325.png" srcset="/img/loading.gif" lazyload alt="EG2"></div></div></div>
+
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/image-20220128150758494.png" srcset="/img/loading.gif" lazyload alt="EG1"></div><div class="group-image-wrap"><img src="/image-20220128150835920.png" srcset="/img/loading.gif" lazyload alt="EG2"></div></div></div> 
+
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/image-20220128150906362.png" srcset="/img/loading.gif" lazyload alt="EG1"></div><div class="group-image-wrap"><img src="/image-20220128150951549.png" srcset="/img/loading.gif" lazyload alt="EG2"></div></div></div> 
+
 <p><strong>思考</strong></p>
 <p>前几种静态哈希函数的问题在于存储的元素数量有限，当需要存储的数据大于能够存储的元素个数，需要重新创建一个更大的哈希表， 不能够动态伸缩。</p>
-<h1 id="动态哈希方案">4.动态哈希方案</h1>
-<p>静态哈希方案要求DBMS知道它想要存储的元素的数量。否则，如果需要增大/缩小表的大小，必须重建表。</p>
+<h1 id="4-动态哈希方案"><a href="#4-动态哈希方案" class="headerlink" title="4.动态哈希方案"></a>4.动态哈希方案</h1><p>静态哈希方案要求DBMS知道它想要存储的元素的数量。否则，如果需要增大&#x2F;缩小表的大小，必须重建表。</p>
 <p>动态哈希方案能够根据需要调整哈希表的大小，而不需要重建整个哈希表。这些方案以不同的方式执行这种调整，可以最大化读或写。</p>
-<h2 id="chained-hashing">4.1 Chained Hashing</h2>
-<p>拉链哈希是最常见的动态哈希方案。DBMS为哈希表中的每个槽维护一个桶的链表。散列到相同槽位的键被简单地插入到该槽位的链表中。</p>
-<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="image-20220128151807095.png" srcset="/img/loading.gif" lazyload alt="EG1" /></div><div class="group-image-wrap"><img src="image-20220128151841531.png" srcset="/img/loading.gif" lazyload alt="EG2" /></div></div></div>
-<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="image-20220128151904305.png" srcset="/img/loading.gif" lazyload alt="EG1" /></div><div class="group-image-wrap"><img src="image-20220128151925343.png" srcset="/img/loading.gif" lazyload alt="EG2" /></div></div></div>
+<h2 id="4-1-Chained-Hashing"><a href="#4-1-Chained-Hashing" class="headerlink" title="4.1 Chained Hashing"></a>4.1 Chained Hashing</h2><p>拉链哈希是最常见的动态哈希方案。DBMS为哈希表中的每个槽维护一个桶的链表。散列到相同槽位的键被简单地插入到该槽位的链表中。</p>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/image-20220128151807095.png" srcset="/img/loading.gif" lazyload alt="EG1"></div><div class="group-image-wrap"><img src="/image-20220128151841531.png" srcset="/img/loading.gif" lazyload alt="EG2"></div></div></div>
+
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/image-20220128151904305.png" srcset="/img/loading.gif" lazyload alt="EG1"></div><div class="group-image-wrap"><img src="/image-20220128151925343.png" srcset="/img/loading.gif" lazyload alt="EG2"></div></div></div>
+
 <p>-注：Java中的HashMap是拉链式哈希，但是第一个bucket里面只有一个值，是一个纯链表结构。数据多会导致链表很长，Java在1.8之后使用红黑树与链表结合。</p>
-<p>​ Go中的Map中，第一个桶里有8个位置，如果满了会链接到一个溢出桶。</p>
-<h2 id="extendible-hashing">4.2 Extendible Hashing</h2>
-<p>可扩展哈希，改进的链列哈希，拆分桶而不是让链永远增长。这种方法允许哈希表中的多个槽位置指向同一个bucket chain。</p>
+<p>​        Go中的Map中，第一个桶里有8个位置，如果满了会链接到一个溢出桶。</p>
+<h2 id="4-2-Extendible-Hashing"><a href="#4-2-Extendible-Hashing" class="headerlink" title="4.2 Extendible Hashing"></a>4.2 Extendible Hashing</h2><p>可扩展哈希，改进的链列哈希，拆分桶而不是让链永远增长。这种方法允许哈希表中的多个槽位置指向同一个bucket chain。</p>
 <p>左边的标志位【2】表示只看哈希值的前两个二进制位，会指向三个桶：第一桶只看第一位是0，第二桶看前两位是10，第三桶看前两位是11。</p>
-<center>
-<img src="image-20220128152655834.png" srcset="/img/loading.gif" lazyloadMstyle="zoom:33%;" />
-</center>
+<center><img src="image-20220128152655834.png" srcset="/img/loading.gif" lazyloadMstyle="zoom:33%;" /> </center>
+
 <p>查找A，插入B，插入C。</p>
-<center>
-<img src="image-20220128152758600.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />
-</center>
+<center><img src="image-20220128152758600.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" /> </center>
+
 <p>一系列操作后发现桶满了，将全局的标志位改成3，槽从4个变为8个，将原来桶中的数据进行进行rehash：</p>
-<center>
-<img src="image-20220128153047519.png" srcset="/img/loading.gif" lazyload style="zoom:40%;" />
-</center>
+<center><img src="image-20220128153047519.png" srcset="/img/loading.gif" lazyload style="zoom:40%;" />  </center>
+
 <p>再插入C：</p>
-<center>
-<img src="image-20220128153204895.png" srcset="/img/loading.gif" lazyload style="zoom:40%;" />
-</center>
+<center><img src="image-20220128153204895.png" srcset="/img/loading.gif" lazyload style="zoom:40%;" /> </center>
+
 <p>重新平衡哈希表的核心思想是在拆分时移动桶项，并增加比特数来检查哈希表中的条目。这意味着DBMS只需要在分割链的桶中移动数据;所有其他桶都保持原样。</p>
 <p>-DBMS维护一个全局和局部深度位计数，它决定在槽数组中查找bucket所需的位数</p>
 <p>-当存储桶满时，DBMS将存储桶拆分并重新洗牌其元素。如果拆分桶的局部深度小于全局深度，则新桶将被添加到现有的槽位数组中。否则，DBMS将插槽数组的大小翻倍以容纳新的存储桶，并增加全局深度计数器。</p>
-<h2 id="linear-hashing">4.3 Linear Hashing</h2>
-<p>这个方案不是在桶溢出时立即拆分桶，而是维护一个拆分指针来跟踪下一个要拆分的桶。无论该指针是否指向溢出的桶，DBMS总是分裂。溢出标准由实现决定。</p>
+<h2 id="4-3-Linear-Hashing"><a href="#4-3-Linear-Hashing" class="headerlink" title="4.3 Linear Hashing"></a>4.3 Linear Hashing</h2><p>这个方案不是在桶溢出时立即拆分桶，而是维护一个拆分指针来跟踪下一个要拆分的桶。无论该指针是否指向溢出的桶，DBMS总是分裂。溢出标准由实现决定。</p>
 <ul>
 <li>当任何桶溢出时，通过添加一个新的槽项在指针位置拆分桶，并创建一个新的哈希函数</li>
 <li>如果哈希函数映射到之前被指针指向的槽位，应用新的哈希函数</li>
 <li>当指针到达最后一个槽位时，删除原来的哈希函数，并用一个新的哈希函数替换它</li>
 </ul>
 <p>四个哈希槽，有一个分裂指针，哈希函数为</p>
-<center>
-<img src="image-20220128153527529.png" srcset="/img/loading.gif" lazyload style="zoom: 33%;" />
-</center>
-<center>
-<img src="image-20220128153719853.png" srcset="/img/loading.gif" lazyload style="zoom:33%;" />
-</center>
-<center>
-<img src="image-20220128153806574.png" srcset="/img/loading.gif" lazyload style="zoom:33%;" />
-</center>
-<figure>
-<img src="image-20220128154539295.png" srcset="/img/loading.gif" lazyload alt="SUMMARY" /><figcaption aria-hidden="true">SUMMARY</figcaption>
-</figure>
-<p>哈希表几乎不用于范围查询，这是因为key在哈希后丢失了一些数据，也就失去了原来的顺序。且hash索引也同样不能排序，以及<code>like 'XXX%'</code>这类的模糊查询；同样也不支持最左前缀排序。</p>
+<center><img src="image-20220128153527529.png" srcset="/img/loading.gif" lazyload style="zoom: 33%;" /> </center>
+
+<center><img src="image-20220128153719853.png" srcset="/img/loading.gif" lazyload style="zoom:33%;" /> </center>
+
+<center><img src="image-20220128153806574.png" srcset="/img/loading.gif" lazyload style="zoom:33%;" /> </center>
+
+<p><img src="/image-20220128154539295.png" srcset="/img/loading.gif" lazyload alt="SUMMARY"> </p>
+<p>哈希表几乎不用于范围查询，这是因为key在哈希后丢失了一些数据，也就失去了原来的顺序。且hash索引也同样不能排序，以及<code>like &#39;XXX%&#39;</code>这类的模糊查询；同样也不支持最左前缀排序。</p>
 <p>哈希索引多用于点查询，如<code>select age from table where age = 23</code>这类SQL语句，在不出现冲突的情况下，经过O(1)时间就可以找到相应的数据，查找效率比较高。如果非常不幸，哈希碰撞严重，查找效率就会变得极低。</p>
-<p><br/></p>
+<br/>
+
 <blockquote>
 <p>update: 2022-02-13</p>
 </blockquote>
@@ -515,21 +504,23 @@
         </div>
       
       
-      <div class="license-meta-item">
-        <div>Licensed under</div>
-        <div>
-          
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
             
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
             
-              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
-                <i class="iconfont icon-by"></i>
-              </span>
-              </a>
-            
-          
+          </div>
         </div>
-      </div>
+      
     </div>
     <div class="license-icon iconfont"></div>
   </div>
@@ -572,7 +563,10 @@
       
   <aside class="sidebar" style="margin-left: -1rem">
     <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -684,22 +678,34 @@
     var boardCtn = jQuery('#board-ctn');
     var boardTop = boardCtn.offset().top;
 
-    window.tocbot.init({
+    window.tocbot.init(Object.assign({
       tocSelector     : '#toc-body',
       contentSelector : '.markdown-body',
-      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
       linkClass       : 'tocbot-link',
       activeLinkClass : 'tocbot-active-link',
       listClass       : 'tocbot-list',
       isCollapsedClass: 'tocbot-is-collapsed',
       collapsibleClass: 'tocbot-is-collapsible',
-      collapseDepth   : CONFIG.toc.collapseDepth || 0,
       scrollSmooth    : true,
-      headingsOffset  : -boardTop
-    });
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
     if (toc.find('.toc-list-item').length > 0) {
       toc.css('visibility', 'visible');
     }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
   });
 </script>
 
@@ -728,6 +734,21 @@
       window.anchors.options.class = 'anchorjs-link-left';
     }
     window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
   });
 </script>
 
@@ -771,6 +792,15 @@
           MathJax.typeset();
           MathJax.typesetPromise();
         }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
       </script>
     
 

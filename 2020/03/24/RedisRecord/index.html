@@ -16,24 +16,24 @@
   <meta name="author" content="Jiaqi">
   <meta name="keywords" content="">
   
-    <meta name="description" content="记录一下Redis安装过程：  选择一个Redis 稳定版本下载 Redis Desktop Manager 作为管理工具  虚拟机CentOS 7.7设置静态ip 1.使用ipconfig查看并记录本机的ip、子网掩码和网关。  2.进入虚拟机网卡目录 1cd &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;&amp;&amp;ls  3.编辑网卡的配置文件 1vi ifcfg-e">
+    <meta name="description" content="记录一下Redis安装过程：  选择一个Redis 稳定版本下载 Redis Desktop Manager 作为管理工具  虚拟机CentOS 7.7设置静态ip1.使用ipconfig查看并记录本机的ip、子网掩码和网关。       2.进入虚拟机网卡目录    1cd &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;&amp;&amp;ls        3.编辑网卡的配置文">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redis安装记录">
 <meta property="og:url" content="https://chakkk309.github.io/2020/03/24/RedisRecord/index.html">
 <meta property="og:site_name" content="Chakkk">
-<meta property="og:description" content="记录一下Redis安装过程：  选择一个Redis 稳定版本下载 Redis Desktop Manager 作为管理工具  虚拟机CentOS 7.7设置静态ip 1.使用ipconfig查看并记录本机的ip、子网掩码和网关。  2.进入虚拟机网卡目录 1cd &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;&amp;&amp;ls  3.编辑网卡的配置文件 1vi ifcfg-e">
+<meta property="og:description" content="记录一下Redis安装过程：  选择一个Redis 稳定版本下载 Redis Desktop Manager 作为管理工具  虚拟机CentOS 7.7设置静态ip1.使用ipconfig查看并记录本机的ip、子网掩码和网关。       2.进入虚拟机网卡目录    1cd &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;&amp;&amp;ls        3.编辑网卡的配置文">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://chakkk309.github.io/2020/03/24/RedisRecord/ipconfig.png">
-<meta property="og:image" content="https://chakkk309.github.io/2020/03/24/RedisRecord/ens33.png">
-<meta property="og:image" content="https://chakkk309.github.io/2020/03/24/RedisRecord/content.png">
-<meta property="og:image" content="https://chakkk309.github.io/2020/03/24/RedisRecord/ok.png">
-<meta property="og:image" content="https://chakkk309.github.io/2020/03/24/RedisRecord/swp.png">
-<meta property="og:image" content="https://chakkk309.github.io/2020/03/24/RedisRecord/DNS_error.png">
+<meta property="og:image" content="https://chakkk309.github.io/ipconfig.png">
+<meta property="og:image" content="https://chakkk309.github.io/ens33.png">
+<meta property="og:image" content="https://chakkk309.github.io/content.png">
+<meta property="og:image" content="https://chakkk309.github.io/ok.png">
+<meta property="og:image" content="https://chakkk309.github.io/swp.png">
+<meta property="og:image" content="https://chakkk309.github.io/DNS_error.png">
 <meta property="article:published_time" content="2020-03-24T08:27:17.000Z">
 <meta property="article:modified_time" content="2022-08-27T14:18:50.973Z">
 <meta property="article:author" content="Jiaqi">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://chakkk309.github.io/2020/03/24/RedisRecord/ipconfig.png">
+<meta name="twitter:image" content="https://chakkk309.github.io/ipconfig.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -77,7 +77,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"chakkk309.github.io","root":"/","version":"1.9.2","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"chakkk309.github.io","root":"/","version":"1.9.4","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -90,8 +90,7 @@
 
 
   
-<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Chakkk" type="application/atom+xml">
-</head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 
 <body>
@@ -124,7 +123,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
-                Home
+                <span>Home</span>
               </a>
             </li>
           
@@ -136,7 +135,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
-                Archives
+                <span>Archives</span>
               </a>
             </li>
           
@@ -148,7 +147,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
-                About
+                <span>About</span>
               </a>
             </li>
           
@@ -161,7 +160,7 @@
               <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="iconfont icon-books"></i>
-                Others
+                <span>Others</span>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 
@@ -170,7 +169,7 @@
                   
                   <a class="dropdown-item" href="/books">
                     
-                    Books
+                    <span>Books</span>
                   </a>
                 
                   
@@ -178,7 +177,7 @@
                   
                   <a class="dropdown-item" href="/movies">
                     
-                    Movies
+                    <span>Movies</span>
                   </a>
                 
                   
@@ -186,7 +185,7 @@
                   
                   <a class="dropdown-item" href="/life">
                     
-                    Life
+                    <span>Life</span>
                   </a>
                 
                   
@@ -194,7 +193,7 @@
                   
                   <a class="dropdown-item" href="/graph">
                     
-                    (WIP)
+                    <span>(WIP)</span>
                   </a>
                 
               </div>
@@ -204,8 +203,9 @@
         
         
           <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
           </li>
         
       </ul>
@@ -256,7 +256,7 @@
         
         
         
-          7 mins
+          8 mins
         
       </span>
     
@@ -312,77 +312,104 @@
 <p>选择一个<a target="_blank" rel="noopener" href="https://redis.io/documentation">Redis</a> 稳定版本下载</p>
 <p><a target="_blank" rel="noopener" href="https://redisdesktop.com/">Redis Desktop Manager</a> 作为管理工具</p>
 </blockquote>
-<h3 id="虚拟机centos-7.7设置静态ip">虚拟机CentOS 7.7设置静态ip</h3>
-<p>1.使用ipconfig查看并记录本机的<strong>ip</strong>、<strong>子网掩码</strong>和<strong>网关</strong>。</p>
-<p><img src="ipconfig.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="虚拟机CentOS-7-7设置静态ip"><a href="#虚拟机CentOS-7-7设置静态ip" class="headerlink" title="虚拟机CentOS 7.7设置静态ip"></a>虚拟机CentOS 7.7设置静态ip</h3><p>1.使用ipconfig查看并记录本机的<strong>ip</strong>、<strong>子网掩码</strong>和<strong>网关</strong>。 </p>
+<p>   <img src="/ipconfig.png" srcset="/img/loading.gif" lazyload> </p>
 <p>2.进入虚拟机网卡目录</p>
-<p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd /etc/sysconfig/network-scripts/&amp;&amp;ls<br></code></pre></td></tr></table></figure></p>
-<p><img src="ens33.png" srcset="/img/loading.gif" lazyload /></p>
-<p>3.编辑网卡的配置文件 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">vi ifcfg-ens33<br></code></pre></td></tr></table></figure> <img src="content.png" srcset="/img/loading.gif" lazyload /></p>
-<p>4.具体增添的配置内容如下，BOOTPROTO修改为静态ip，并添加ip，子网掩码和网关。 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">BOOTPROTO=&quot;static&quot;<br>IPADDR=192.168.0.105<br>NETMASK=255.255.255.0<br>GATEWAY=192.168.0.1<br></code></pre></td></tr></table></figure></p>
-<p>5.保存修改并使重启网络服务 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">systemctl restart network.service<br></code></pre></td></tr></table></figure></p>
-<p>验证接口是否配置正确： <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ip add<br></code></pre></td></tr></table></figure> <img src="ok.png" srcset="/img/loading.gif" lazyload /></p>
-<p>也可以ping一下本机或者任意网站进行测试</p>
-<h3 id="编译安装redis2.8.17">编译安装Redis2.8.17</h3>
-<p>1.安装<code>wget</code> <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">yum install wget<br></code></pre></td></tr></table></figure></p>
-<p>使用wget下载，并在<code>\usr\local</code> 目录下载redis并解压 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd /usr/local<br>wget http://download.redis.io/releases/redis-2.8.17.tar.gz<br>tar xzf redis-2.8.17.tar.gz<br></code></pre></td></tr></table></figure></p>
-<p>2.安装gcc <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">yum install gcc-c++<br></code></pre></td></tr></table></figure></p>
+   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd /etc/sysconfig/network-scripts/&amp;&amp;ls<br></code></pre></td></tr></table></figure>
+
+<p>   <img src="/ens33.png" srcset="/img/loading.gif" lazyload>  </p>
+<p>3.编辑网卡的配置文件<br>   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">vi ifcfg-ens33<br></code></pre></td></tr></table></figure><br><img src="/content.png" srcset="/img/loading.gif" lazyload>  </p>
+<p>4.具体增添的配置内容如下，BOOTPROTO修改为静态ip，并添加ip，子网掩码和网关。<br>   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">BOOTPROTO=&quot;static&quot;<br>IPADDR=192.168.0.105<br>NETMASK=255.255.255.0<br>GATEWAY=192.168.0.1<br></code></pre></td></tr></table></figure></p>
+<p>5.保存修改并使重启网络服务<br>   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">systemctl restart network.service<br></code></pre></td></tr></table></figure></p>
+<p>   验证接口是否配置正确：<br>   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ip add<br></code></pre></td></tr></table></figure><br>   <img src="/ok.png" srcset="/img/loading.gif" lazyload>    </p>
+<p>   也可以ping一下本机或者任意网站进行测试</p>
+<h3 id="编译安装Redis2-8-17"><a href="#编译安装Redis2-8-17" class="headerlink" title="编译安装Redis2.8.17"></a>编译安装Redis2.8.17</h3><p>1.安装<code>wget</code> </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">yum install wget<br></code></pre></td></tr></table></figure>
+
+<p> 使用wget下载，并在<code>\usr\local</code> 目录下载redis并解压</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd /usr/local<br>wget http://download.redis.io/releases/redis-2.8.17.tar.gz<br>tar xzf redis-2.8.17.tar.gz<br></code></pre></td></tr></table></figure>
+
+<p>2.安装gcc</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">yum install gcc-c++<br></code></pre></td></tr></table></figure>
+
 <p>3.在redis目录下进行make操作</p>
-<p>src目录下，会生成编译后的redis服务程序<strong>redis-server</strong>和用于测试的客户端程序<strong>redis-cli</strong> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sell">cd redis-2.8.17<br>make<br></code></pre></td></tr></table></figure> 也可以使用make test ，是为了验证make是否成功，是否完整。</p>
-<p>4.启动redis服务 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd src<br>./redis-server<br></code></pre></td></tr></table></figure></p>
+<p> src目录下，会生成编译后的redis服务程序<strong>redis-server</strong>和用于测试的客户端程序<strong>redis-cli</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sell">cd redis-2.8.17<br>make<br></code></pre></td></tr></table></figure>
+<p> 也可以使用make test ，是为了验证make是否成功，是否完整。</p>
+<p>4.启动redis服务</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd src<br>./redis-server<br></code></pre></td></tr></table></figure>
+
 <p>5.使用测试客户端程序redis-cli和redis服务交互</p>
 <p>启动客户端之后可以执行<code>PING</code>命令来检测服务是否启动。</p>
-<p>在redis-cli 后面加上 --raw即<code>redis-cli --raw</code>可以有效避免中文乱码。</p>
+<p>在redis-cli 后面加上 –raw即<code>redis-cli --raw</code>可以有效避免中文乱码。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd /usr/local/redis-2.8.17/src &amp;&amp; ./redis-server<br>./redis-cli<br>set foo bar<br>get foo<br></code></pre></td></tr></table></figure>
-<p>6.查看运行状态并关闭进程 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">ps -ef|grep redis<br>kill 9 pid<br></code></pre></td></tr></table></figure></p>
+
+<p>6.查看运行状态并关闭进程 </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">ps -ef|grep redis<br>kill 9 pid<br></code></pre></td></tr></table></figure>
+
 <p>7.开启守护进程（Daemon Process），是 Linux 中的后台服务进程。它脱离终端，为了避免进程被任何终端所产生的信息所打断，其在执行过程中的信息也不在任何终端上显示。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd /usr/local/redis-2.8.17<br>vi redis.conf<br>修改daemonize no为daemonize yes<br>ps -ef|grep redis<br>kill 9 (pid)<br>cd src<br>./redis-server ../redis.conf<br></code></pre></td></tr></table></figure>
-<h3 id="编译安装redis主从配置">编译安装Redis主从配置</h3>
-<p>例：现在有两个虚拟机：ip分别为192.168.0.105（主机）和192.168.0.103（从机）</p>
-<p><strong>从节点配置</strong> <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd /usr/local/redis-2.8.17<br>vi redis.conf<br></code></pre></td></tr></table></figure></p>
-<p>修改daemonize no为<strong>daemonize yes</strong> 修改bind127.0.0.1为<strong>192.168.0.105</strong></p>
-<p><strong>主节点配置</strong> <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd /usr/local/redis-2.8.17<br>vi redis.conf<br></code></pre></td></tr></table></figure></p>
-<p>修改daemonize no 为 <strong>daemonize yes</strong> ，即开启守护进程。 修改# slaveof <masterip> <masterport> 取消注释，设置为 <strong>slaveof 192.168.0.105 6379</strong> ，当设置当本机为 slav 服务时，设置 master 服务的 IP 地址及端口，在 Redis 启动时，它会自动从 master 进行数据同步。</p>
+
+<h3 id="编译安装Redis主从配置"><a href="#编译安装Redis主从配置" class="headerlink" title="编译安装Redis主从配置"></a>编译安装Redis主从配置</h3><p>例：现在有两个虚拟机：ip分别为192.168.0.105（主机）和192.168.0.103（从机）</p>
+<p><strong>从节点配置</strong> </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd /usr/local/redis-2.8.17<br>vi redis.conf<br></code></pre></td></tr></table></figure>
+
+<p>修改daemonize no为<strong>daemonize yes</strong><br>修改bind127.0.0.1为<strong>192.168.0.105</strong>   </p>
+<p><strong>主节点配置</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd /usr/local/redis-2.8.17<br>vi redis.conf<br></code></pre></td></tr></table></figure>
+
+<p>修改daemonize no 为 <strong>daemonize yes</strong> ，即开启守护进程。<br>修改# slaveof <masterip> <masterport> 取消注释，设置为 <strong>slaveof  192.168.0.105 6379</strong> ，当设置当本机为 slav 服务时，设置 master 服务的 IP 地址及端口，在 Redis 启动时，它会自动从 master 进行数据同步。</p>
 <p>修改# repl-ping-slave-period 10，取消注释，设置为 <strong>repl-ping-slave-period 10</strong></p>
-<p><strong>两台机器全部启动redis服务</strong><br />
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd /usr/local/redis-2.8.17/src<br>./redis-server ../redis.conf<br>ps -ef|grep redis  # 查看进程<br></code></pre></td></tr></table></figure></p>
-<p><strong>启动redis客户端</strong></p>
-<p>主机启动，因为已经绑定了ip，所以要指定主机使用参数h <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">./redis-cli -h 192.168.0.105<br></code></pre></td></tr></table></figure></p>
-<p>从机启动 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">./redis-cli<br></code></pre></td></tr></table></figure></p>
-<p>确认连接情况，观察是否role已经正确设置为master/slave</p>
+<p><strong>两台机器全部启动redis服务</strong>  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd /usr/local/redis-2.8.17/src<br>./redis-server ../redis.conf<br>ps -ef|grep redis  # 查看进程<br></code></pre></td></tr></table></figure>
+
+<p><strong>启动redis客户端</strong> </p>
+<p>主机启动，因为已经绑定了ip，所以要指定主机使用参数h</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">./redis-cli -h 192.168.0.105<br></code></pre></td></tr></table></figure>
+
+<p>从机启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">./redis-cli<br></code></pre></td></tr></table></figure>
+
+<p>确认连接情况，观察是否role已经正确设置为master&#x2F;slave</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">INFO replication<br></code></pre></td></tr></table></figure>
-<p><strong>设置成功后进行存储测试</strong></p>
+
+<p><strong>设置成功后进行存储测试</strong> </p>
 <p>主机：存入数据1</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">set test 1<br></code></pre></td></tr></table></figure>
+
 <p>从机：取出成功，得到1</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">get test<br></code></pre></td></tr></table></figure>
-<h3 id="yum安装redis并设置主从同步">yum安装Redis并设置主从同步</h3>
-<p>1.安装并自动下载3.2.12-2版本</p>
-<p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">yum install epel-release<br>yum install redis<br></code></pre></td></tr></table></figure></p>
+
+
+
+<h3 id="yum安装Redis并设置主从同步"><a href="#yum安装Redis并设置主从同步" class="headerlink" title="yum安装Redis并设置主从同步"></a>yum安装Redis并设置主从同步</h3><p>1.安装并自动下载3.2.12-2版本</p>
+   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">yum install epel-release<br>yum install redis<br></code></pre></td></tr></table></figure>
+
 <p>2.修改配置文件</p>
-<p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">vi /etc/redis.conf<br>修改内容同上tar<br></code></pre></td></tr></table></figure></p>
+   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">vi /etc/redis.conf<br>修改内容同上tar<br></code></pre></td></tr></table></figure>
+
 <p>3.启动redis服务</p>
-<p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">redis-server /etc/redis.conf<br></code></pre></td></tr></table></figure></p>
+   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">redis-server /etc/redis.conf<br></code></pre></td></tr></table></figure>
+
 <p>4.启动客户端</p>
-<p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">主：redis-cli -h 192.168.0.105<br>从：redis-cli <br></code></pre></td></tr></table></figure></p>
+   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">主：redis-cli -h 192.168.0.105<br>从：redis-cli <br></code></pre></td></tr></table></figure>
+
 <p>5.确认情况</p>
-<p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">INFO replication<br></code></pre></td></tr></table></figure></p>
+   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">INFO replication<br></code></pre></td></tr></table></figure>
+
 <p>6.同步测试</p>
-<h3 id="一些问题">一些问题</h3>
-<h4 id="产生swap文件">产生swap文件</h4>
-<p>vi命令操作配置文件的时候： 中途意外退出，会产生临时文件【.配置文件名.swp】</p>
+<h3 id="一些问题"><a href="#一些问题" class="headerlink" title="一些问题"></a>一些问题</h3><h4 id="产生swap文件"><a href="#产生swap文件" class="headerlink" title="产生swap文件"></a>产生swap文件</h4><p>vi命令操作配置文件的时候： 中途意外退出，会产生临时文件【.配置文件名.swp】</p>
 <p>再次使用，可以直接【rm -f .配置文件名.swp】，然后正常编辑。</p>
-<p>例：<code>rm -f /etc/.redis.conf.swp</code> ，直接删除或者进行覆盖。 <img src="swp.png" srcset="/img/loading.gif" lazyload /></p>
-<h4 id="版本不一致">版本不一致</h4>
-<p>不同版本的Redis不要搭建主从，以免发生问题。比如通过yum安装的版本和编译下载的版本就不一致，配置主从同步需要版本一致！最好不要同时使用两种方法安装，以免混淆！</p>
-<h4 id="卸载文件不彻底">卸载文件不彻底</h4>
-<p>问题：执行了<code>yum remove redis</code>命令。此时，redis.conf 被vi等打开，删除的时候会出现警告： 警告：/etc/redis.conf 已另存为 /etc/redis.conf.rpmsave 。此时，保留了 /etc/redis.conf.rpmsave文件，再次yum install redis的时候，/etc/redis.conf会被创建为一个新的空文件，导致问题出现。</p>
-<p>解决方法： 删除/etc/redis.conf.rpmsave等文件</p>
-<h4 id="配置静态ip后无法ping通外部网络">配置静态ip后无法ping通外部网络</h4>
-<p>1.未知的名称或服务 <img src="DNS_error.png" srcset="/img/loading.gif" lazyload /> 一般是域名解析没有成功，在配置文件中设置DNS服务器，默认与网关ip相同。</p>
+<p>例：<code>rm -f /etc/.redis.conf.swp</code> ，直接删除或者进行覆盖。<br><img src="/swp.png" srcset="/img/loading.gif" lazyload>  </p>
+<h4 id="版本不一致"><a href="#版本不一致" class="headerlink" title="版本不一致"></a>版本不一致</h4><p>不同版本的Redis不要搭建主从，以免发生问题。比如通过yum安装的版本和编译下载的版本就不一致，配置主从同步需要版本一致！最好不要同时使用两种方法安装，以免混淆！</p>
+<h4 id="卸载文件不彻底"><a href="#卸载文件不彻底" class="headerlink" title="卸载文件不彻底"></a>卸载文件不彻底</h4><p>问题：执行了<code>yum remove redis</code>命令。此时，redis.conf 被vi等打开，删除的时候会出现警告： 警告：&#x2F;etc&#x2F;redis.conf 已另存为 &#x2F;etc&#x2F;redis.conf.rpmsave 。此时，保留了 &#x2F;etc&#x2F;redis.conf.rpmsave文件，再次yum install redis的时候，&#x2F;etc&#x2F;redis.conf会被创建为一个新的空文件，导致问题出现。</p>
+<p>解决方法： 删除&#x2F;etc&#x2F;redis.conf.rpmsave等文件</p>
+<h4 id="配置静态ip后无法ping通外部网络"><a href="#配置静态ip后无法ping通外部网络" class="headerlink" title="配置静态ip后无法ping通外部网络"></a>配置静态ip后无法ping通外部网络</h4><p>1.未知的名称或服务<br><img src="/DNS_error.png" srcset="/img/loading.gif" lazyload><br>一般是域名解析没有成功，在配置文件中设置DNS服务器，默认与网关ip相同。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">DNS1 = XXX;<br></code></pre></td></tr></table></figure>
 <p>重新加载配置文件并启动网络即可。</p>
-<p>2.启动网卡报错 Failed to start LSB: Bring up/down networking 禁用NetworkManager <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">systemctl stop NetworkManager<br>systemctl disable NetworkManager<br></code></pre></td></tr></table></figure> 重新启动网络即可。</p>
+<p>2.启动网卡报错<br>Failed to start LSB: Bring up&#x2F;down networking<br>禁用NetworkManager</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">systemctl stop NetworkManager<br>systemctl disable NetworkManager<br></code></pre></td></tr></table></figure>
+<p>重新启动网络即可。</p>
 
                 
               </div>
@@ -417,21 +444,23 @@
         </div>
       
       
-      <div class="license-meta-item">
-        <div>Licensed under</div>
-        <div>
-          
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
             
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
             
-              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
-                <i class="iconfont icon-by"></i>
-              </span>
-              </a>
-            
-          
+          </div>
         </div>
-      </div>
+      
     </div>
     <div class="license-icon iconfont"></div>
   </div>
@@ -474,7 +503,10 @@
       
   <aside class="sidebar" style="margin-left: -1rem">
     <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -586,22 +618,34 @@
     var boardCtn = jQuery('#board-ctn');
     var boardTop = boardCtn.offset().top;
 
-    window.tocbot.init({
+    window.tocbot.init(Object.assign({
       tocSelector     : '#toc-body',
       contentSelector : '.markdown-body',
-      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
       linkClass       : 'tocbot-link',
       activeLinkClass : 'tocbot-active-link',
       listClass       : 'tocbot-list',
       isCollapsedClass: 'tocbot-is-collapsed',
       collapsibleClass: 'tocbot-is-collapsible',
-      collapseDepth   : CONFIG.toc.collapseDepth || 0,
       scrollSmooth    : true,
-      headingsOffset  : -boardTop
-    });
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
     if (toc.find('.toc-list-item').length > 0) {
       toc.css('visibility', 'visible');
     }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
   });
 </script>
 
@@ -630,6 +674,21 @@
       window.anchors.options.class = 'anchorjs-link-left';
     }
     window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
   });
 </script>
 
@@ -673,6 +732,15 @@
           MathJax.typeset();
           MathJax.typesetPromise();
         }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
       </script>
     
 

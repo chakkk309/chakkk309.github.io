@@ -16,52 +16,52 @@
   <meta name="author" content="Jiaqi">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Database Storage I 1. 存储分层 大部分数据库中的数据是在硬盘中的，用户操作数据时需要把数据加载到内存中，最后将修改后的数据重新写入硬盘。数据库存储模块就需要管理数据库从磁盘到内存中流动的过程。 在存储层次结构中，离CPU最近的设备是CPU寄存器，它是最快也是最小最贵的存储，其次是CPU缓存和DRAM。离CPU越远存储设备就越大越慢，但是也越便宜，如：固态硬盘，机械硬盘和网络带">
+    <meta name="description" content="Database Storage I1. 存储分层大部分数据库中的数据是在硬盘中的，用户操作数据时需要把数据加载到内存中，最后将修改后的数据重新写入硬盘。数据库存储模块就需要管理数据库从磁盘到内存中流动的过程。 在存储层次结构中，离CPU最近的设备是CPU寄存器，它是最快也是最小最贵的存储，其次是CPU缓存和DRAM。离CPU越远存储设备就越大越慢，但是也越便宜，如：固态硬盘，机械硬盘和网络带宽。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Database Storage">
 <meta property="og:url" content="https://chakkk309.github.io/2022/03/19/DatabaseStorage/index.html">
 <meta property="og:site_name" content="Chakkk">
-<meta property="og:description" content="Database Storage I 1. 存储分层 大部分数据库中的数据是在硬盘中的，用户操作数据时需要把数据加载到内存中，最后将修改后的数据重新写入硬盘。数据库存储模块就需要管理数据库从磁盘到内存中流动的过程。 在存储层次结构中，离CPU最近的设备是CPU寄存器，它是最快也是最小最贵的存储，其次是CPU缓存和DRAM。离CPU越远存储设备就越大越慢，但是也越便宜，如：固态硬盘，机械硬盘和网络带">
+<meta property="og:description" content="Database Storage I1. 存储分层大部分数据库中的数据是在硬盘中的，用户操作数据时需要把数据加载到内存中，最后将修改后的数据重新写入硬盘。数据库存储模块就需要管理数据库从磁盘到内存中流动的过程。 在存储层次结构中，离CPU最近的设备是CPU寄存器，它是最快也是最小最贵的存储，其次是CPU缓存和DRAM。离CPU越远存储设备就越大越慢，但是也越便宜，如：固态硬盘，机械硬盘和网络带宽。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/DatabaseStorage/image-20220116204634712.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/DatabaseStorage/image-20220116213455155.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/DatabaseStorage/image-20220116213853826.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/DatabaseStorage/image-20220116220652189.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/DatabaseStorage/image-20220116221214357.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/DatabaseStorage/image-20220116222059161.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/DatabaseStorage/image-20220116224421478.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/DatabaseStorage/image-20220116224614718.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/DatabaseStorage/image-20220116224628548.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/DatabaseStorage/image-20220116224908013.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/DatabaseStorage/image-20220116225551497.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/DatabaseStorage/image-20220116225551497.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220116204634712.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220116213455155.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220116213853826.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220116220652189.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220116221214357.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220116222059161.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220116224421478.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220116224614718.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220116224628548.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220116224908013.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220116225551497.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220116225551497.png">
 <meta property="og:image" content="https://chakkk309.github.io/2022/03/19/DatabaseStorage/image-20220120124208951.png">
 <meta property="og:image" content="https://chakkk309.github.io/2022/03/19/DatabaseStorage/image-20220120124356647.png">
 <meta property="og:image" content="https://chakkk309.github.io/2022/03/19/DatabaseStorage/image-20220120124527816.png">
 <meta property="og:image" content="https://chakkk309.github.io/2022/03/19/DatabaseStorage/image-20220120124509458.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/DatabaseStorage/image-20220120125110306.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/DatabaseStorage/image-20220116230029080.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/DatabaseStorage/image-20220116230233794.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/DatabaseStorage/image-20220120125413788.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/DatabaseStorage/image-20220120125839569.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/DatabaseStorage/image-20220120130054267.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/DatabaseStorage/image-20220120132318675.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/DatabaseStorage/image-20220120132347095.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/DatabaseStorage/image-20220120134856976.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/DatabaseStorage/image-20220120135229862.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/DatabaseStorage/image-20220120135754433.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/DatabaseStorage/image-20220120140817303.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/DatabaseStorage/image-20220120140824731.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/DatabaseStorage/image-20220120140914969.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/DatabaseStorage/image-20220120141030548.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/DatabaseStorage/image-20220120141115810.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/DatabaseStorage/image-20220120141408669.png">
-<meta property="og:image" content="https://chakkk309.github.io/2022/03/19/DatabaseStorage/image-20220120141546716.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220120125110306.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220116230029080.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220116230233794.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220120125413788.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220120125839569.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220120130054267.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220120132318675.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220120132347095.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220120134856976.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220120135229862.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220120135754433.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220120140817303.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220120140824731.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220120140914969.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220120141030548.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220120141115810.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220120141408669.png">
+<meta property="og:image" content="https://chakkk309.github.io/image-20220120141546716.png">
 <meta property="article:published_time" content="2022-03-19T09:26:00.000Z">
 <meta property="article:modified_time" content="2022-08-26T16:55:14.231Z">
 <meta property="article:author" content="Jiaqi">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://chakkk309.github.io/2022/03/19/DatabaseStorage/image-20220116204634712.png">
+<meta name="twitter:image" content="https://chakkk309.github.io/image-20220116204634712.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -105,7 +105,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"chakkk309.github.io","root":"/","version":"1.9.2","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"chakkk309.github.io","root":"/","version":"1.9.4","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -118,8 +118,7 @@
 
 
   
-<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Chakkk" type="application/atom+xml">
-</head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 
 <body>
@@ -152,7 +151,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
-                Home
+                <span>Home</span>
               </a>
             </li>
           
@@ -164,7 +163,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
-                Archives
+                <span>Archives</span>
               </a>
             </li>
           
@@ -176,7 +175,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
-                About
+                <span>About</span>
               </a>
             </li>
           
@@ -189,7 +188,7 @@
               <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="iconfont icon-books"></i>
-                Others
+                <span>Others</span>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 
@@ -198,7 +197,7 @@
                   
                   <a class="dropdown-item" href="/books">
                     
-                    Books
+                    <span>Books</span>
                   </a>
                 
                   
@@ -206,7 +205,7 @@
                   
                   <a class="dropdown-item" href="/movies">
                     
-                    Movies
+                    <span>Movies</span>
                   </a>
                 
                   
@@ -214,7 +213,7 @@
                   
                   <a class="dropdown-item" href="/life">
                     
-                    Life
+                    <span>Life</span>
                   </a>
                 
                   
@@ -222,7 +221,7 @@
                   
                   <a class="dropdown-item" href="/graph">
                     
-                    (WIP)
+                    <span>(WIP)</span>
                   </a>
                 
               </div>
@@ -232,8 +231,9 @@
         
         
           <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
           </li>
         
       </ul>
@@ -335,64 +335,52 @@
             
               <div class="markdown-body">
                 
-                <h1 id="database-storage-i">Database Storage I</h1>
-<h2 id="存储分层">1. 存储分层</h2>
-<p>大部分数据库中的数据是在硬盘中的，用户操作数据时需要把数据加载到内存中，最后将修改后的数据重新写入硬盘。数据库存储模块就需要管理数据库从磁盘到内存中流动的过程。</p>
-<p>在存储层次结构中，离CPU最近的设备是CPU寄存器，它是最快也是最小最贵的存储，其次是CPU缓存和DRAM。离CPU越远存储设备就越大越慢，但是也越便宜，如：固态硬盘，机械硬盘和网络带宽。 <img src="image-20220116204634712.png" srcset="/img/loading.gif" lazyload alt="Storage Hierarchy" /></p>
-<h4 id="易失性存储">易失性存储</h4>
-<h4 id="examples-cpu-registers-cpu-caches-dram">- Examples: CPU Registers, CPU caches, DRAM</h4>
-<ul>
-<li><p>不稳定，一掉电数据就会丢失</p></li>
-<li><p>支持随机访问，程序可以按字节访问任意地址获取数据</p></li>
-<li><p>通常将这类存储称为“内存”</p></li>
+                <h1 id="Database-Storage-I"><a href="#Database-Storage-I" class="headerlink" title="Database Storage I"></a>Database Storage I</h1><h2 id="1-存储分层"><a href="#1-存储分层" class="headerlink" title="1. 存储分层"></a>1. 存储分层</h2><p>大部分数据库中的数据是在硬盘中的，用户操作数据时需要把数据加载到内存中，最后将修改后的数据重新写入硬盘。数据库存储模块就需要管理数据库从磁盘到内存中流动的过程。</p>
+<p>在存储层次结构中，离CPU最近的设备是CPU寄存器，它是最快也是最小最贵的存储，其次是CPU缓存和DRAM。离CPU越远存储设备就越大越慢，但是也越便宜，如：固态硬盘，机械硬盘和网络带宽。<br><img src="/image-20220116204634712.png" srcset="/img/loading.gif" lazyload alt="Storage Hierarchy"> </p>
+<h4 id="易失性存储"><a href="#易失性存储" class="headerlink" title="易失性存储"></a>易失性存储</h4><h4 id="Examples-CPU-Registers-CPU-caches-DRAM"><a href="#Examples-CPU-Registers-CPU-caches-DRAM" class="headerlink" title="- Examples: CPU Registers, CPU caches, DRAM"></a>- Examples: CPU Registers, CPU caches, DRAM</h4><ul>
+<li><p>不稳定，一掉电数据就会丢失</p>
+</li>
+<li><p>支持随机访问，程序可以按字节访问任意地址获取数据</p>
+</li>
+<li><p>通常将这类存储称为“内存”</p>
+</li>
 </ul>
-<h4 id="非易失性存储">非易失性存储</h4>
-<h4 id="examples-ssd-hdd-network-storage">- Examples: SSD, HDD, Network Storage</h4>
-<ul>
+<h4 id="非易失性存储"><a href="#非易失性存储" class="headerlink" title="非易失性存储"></a>非易失性存储</h4><h4 id="Examples-SSD-HDD-Network-Storage"><a href="#Examples-SSD-HDD-Network-Storage" class="headerlink" title="- Examples: SSD, HDD, Network Storage"></a>- Examples: SSD, HDD, Network Storage</h4><ul>
 <li>断电后数据不丢失</li>
-<li>按块/页寻址，比如：块的大小为1KB，就算要存储1字节数据也需要耗费1 KB的空间。按块存储没办法获取到具体某一个字节的数据，读的时候只能把整个块读到内存当中，再进行解析逐个读取；修改也是同理，都是以块为单位进行存取</li>
+<li>按块&#x2F;页寻址，比如：块的大小为1KB，就算要存储1字节数据也需要耗费1 KB的空间。按块存储没办法获取到具体某一个字节的数据，读的时候只能把整个块读到内存当中，再进行解析逐个读取；修改也是同理，都是以块为单位进行存取</li>
 <li>顺序存储，可以同时读取多个连续的数据块</li>
 <li>通常将这类存储称为“磁盘”</li>
 </ul>
-<figure>
-<img src="image-20220116213455155.png" srcset="/img/loading.gif" lazyload alt="Storage Hierarchy" /><figcaption aria-hidden="true">Storage Hierarchy</figcaption>
-</figure>
+<p><img src="/image-20220116213455155.png" srcset="/img/loading.gif" lazyload alt="Storage Hierarchy"> </p>
 <p>有一些比较新的存储设备，如Non-volatile Memory，字面理解为“非易失性内存”，又快有可以保证磁盘持久性，但这种设备目前还没有广泛的生产使用。</p>
 <p>由于DBMS体系结构假定数据库存储在磁盘上，因此DBMS的组件负责确定如何在非易失性磁盘和易失性内存之间移动数据，因为系统不能直接在磁盘上操作数据，这样性能会非常差。从磁盘获取数据非常慢。如果从L1缓存读取数据需要半秒，那么从SSD读取数据则需要1.7天，从HDD读取数据需要16.5周。</p>
 <p>其中Tape Archives是磁带盘，一小块可以存储几十个G，数据用磁头写入到磁带，容量超大但读取超慢。但是磁性存储是最不容易损坏的，只要不经常读取，这种存储性质是非常稳定的，多用来做不重要的数据备份与存档。</p>
 <p>存在内存中需要100 m，而存到内存上需要1.7天，所以不可能把所有数据实时存储到内存中。我们将专注于隐藏磁盘的延迟，而不是使用寄存器和缓存进行优化，</p>
-<h4 id="不同存储设备访问时间">不同存储设备访问时间：</h4>
-<figure>
-<img src="image-20220116213853826.png" srcset="/img/loading.gif" lazyload alt="Access Times" /><figcaption aria-hidden="true">Access Times</figcaption>
-</figure>
-<h4 id="随机存取和连续存储">随机存取和连续存储</h4>
-<p>一般来说连续存取要比随机存取快得多得多。用户的存取都是随机的，尽量把随机存取转换成数据库对磁盘的连续存取。</p>
+<h4 id="不同存储设备访问时间："><a href="#不同存储设备访问时间：" class="headerlink" title="不同存储设备访问时间："></a>不同存储设备访问时间：</h4><p><img src="/image-20220116213853826.png" srcset="/img/loading.gif" lazyload alt="Access Times">  </p>
+<h4 id="随机存取和连续存储"><a href="#随机存取和连续存储" class="headerlink" title="随机存取和连续存储"></a>随机存取和连续存储</h4><p>一般来说连续存取要比随机存取快得多得多。用户的存取都是随机的，尽量把随机存取转换成数据库对磁盘的连续存取。</p>
 <p>如：可以先缓存用户的部分查询内容，再找一个合适的时间一次性写入磁盘</p>
-<h4 id="存储引擎的设计目标">存储引擎的设计目标</h4>
-<ul>
+<h4 id="存储引擎的设计目标"><a href="#存储引擎的设计目标" class="headerlink" title="存储引擎的设计目标"></a>存储引擎的设计目标</h4><ul>
 <li><p>机器只有8个G的内存，不能说只能存储8个G的数据，可能磁盘有10个G的容量。要允许用户存储大于8个G的数据，在内存中管理巨大的数据库</p>
 <p>坏的设计：假设一份PPT很大，把数据全部加载到内存中的时间很长，甚至不能全部加载到内存中</p>
-<p>好的设计：PPT可以逐页加载到内存中</p></li>
-<li><p>读写磁盘的代价是巨大的，需要小心管理数据存取，不要让数据库经常读写磁盘</p></li>
-<li><p>尽量要把随机的读取转换成顺序的读写</p></li>
+<p>好的设计：PPT可以逐页加载到内存中</p>
+</li>
+<li><p>读写磁盘的代价是巨大的，需要小心管理数据存取，不要让数据库经常读写磁盘</p>
+</li>
+<li><p>尽量要把随机的读取转换成顺序的读写</p>
+</li>
 </ul>
-<figure>
-<img src="image-20220116220652189.png" srcset="/img/loading.gif" lazyload alt="System Design Goals" /><figcaption aria-hidden="true">System Design Goals</figcaption>
-</figure>
-<h2 id="面向硬盘的关系型数据库">2. 面向硬盘的关系型数据库</h2>
-<p>不论数据库设计再复杂，最终数据都要落在硬盘中的某个文件，也就是说数据在硬盘中的存储形式是<strong>文件</strong></p>
+<p><img src="/image-20220116220652189.png" srcset="/img/loading.gif" lazyload alt="System Design Goals"> </p>
+<h2 id="2-面向硬盘的关系型数据库"><a href="#2-面向硬盘的关系型数据库" class="headerlink" title="2. 面向硬盘的关系型数据库"></a>2. 面向硬盘的关系型数据库</h2><p>不论数据库设计再复杂，最终数据都要落在硬盘中的某个文件，也就是说数据在硬盘中的存储形式是<strong>文件</strong></p>
 <p>一个文件会被分成多个页，第一页是目录页，指明哪个数据在哪个页上，页有固定的大小。每个页中含有一个Header，用来解释数据的一些属性。</p>
 <p>数据库需要将数据存入内存，它有一个缓冲池来管理数据在磁盘和内存之间来回移动。</p>
 <p>-为什么是一个池呢？因为需要控制数据库的大小</p>
 <p>数据库需要执行引擎（执行器）来执行查询，执行引擎将向缓冲池请求特定页面，而缓冲池负责将该页面放入内存，并在内存中给执行引擎一个指向该页面的指针</p>
 <p>假设执行器要读取一个表，发现数据应该在文件中的第二页。它会去缓冲池里面找。缓冲池会将文件目录加载到内存中，找到了第二页的位置，再去磁盘中拉取第二页的内容到内存，那么执行器就会对第二页进行一些解析与操作。</p>
-<p><img src="image-20220116221214357.png" srcset="/img/loading.gif" lazyload alt="Disk-Oriented DBMS 1" /> <img src="image-20220116222059161.png" srcset="/img/loading.gif" lazyload alt="Disk-Oriented DBMS 2" /></p>
+<p><img src="/image-20220116221214357.png" srcset="/img/loading.gif" lazyload alt="Disk-Oriented DBMS 1"><br><img src="/image-20220116222059161.png" srcset="/img/loading.gif" lazyload alt="Disk-Oriented DBMS 2"></p>
 <p>数据库存储：数据库是如何在硬盘中是如何表示成文件的？（静态的表现）</p>
-<h2 id="file-storage">3. File storage</h2>
-<p>数据库把用户数据存储在磁盘中的一个或多个文件中。操作系统不知道也不关心文件的内容，这些内容以数据特有的方式进行编码。</p>
+<h2 id="3-File-storage"><a href="#3-File-storage" class="headerlink" title="3. File storage"></a>3. File storage</h2><p>数据库把用户数据存储在磁盘中的一个或多个文件中。操作系统不知道也不关心文件的内容，这些内容以数据特有的方式进行编码。</p>
 <p><strong>存储管理器（Storage Manager）</strong>负责管理或维护数据库里的文件，一般会把文件当成一组页的集合，它还跟踪哪些数据被读取和写入页面，以及这些页面中有多少空闲空间。</p>
-<h2 id="database-pages">4. Database pages</h2>
-<p>DBMS跨一个或多个文件组织数据库，这些文件是固定大小的数据块，称为页，数据库文件太大了，不可能把文件当成一个单元进行管理。</p>
+<h2 id="4-Database-pages"><a href="#4-Database-pages" class="headerlink" title="4. Database pages"></a>4. Database pages</h2><p>DBMS跨一个或多个文件组织数据库，这些文件是固定大小的数据块，称为页，数据库文件太大了，不可能把文件当成一个单元进行管理。</p>
 <ul>
 <li>这些数据块可能包含tuple，indexes，log records这些内容</li>
 <li>每个数据库的页都是功能固定的，大多数系统不会在页面中混合存储</li>
@@ -406,9 +394,11 @@
 <ul>
 <li><p><strong>硬盘页</strong>: 4 KB</p>
 <p>一个机械磁盘往往是4 KB一个块，有一些SSD块大小可能为0.5 KB，是最小的可以保证原子操作的单位,，即要么全部写入，要么全部不写入</p>
-<p>这意味着，如果数据库页面比硬件页面大，DBMS将不得不采取额外的措施，以确保安全地写入数据，因为当系统崩溃时，程序可以在将数据库页面写入磁盘的过程中中途完成。</p></li>
+<p>这意味着，如果数据库页面比硬件页面大，DBMS将不得不采取额外的措施，以确保安全地写入数据，因为当系统崩溃时，程序可以在将数据库页面写入磁盘的过程中中途完成。</p>
+</li>
 <li><p><strong>操作系统页</strong>: 4 KB</p>
-<p>应用软件没有办法和硬件直接交互，需要先存进OS，再由OS与硬盘交互</p></li>
+<p>应用软件没有办法和硬件直接交互，需要先存进OS，再由OS与硬盘交互</p>
+</li>
 <li><p><strong>数据库页</strong>: 512 B-16 KB</p>
 <blockquote>
 <p>大多数DBMS使用固定大小的页面，以避免支持可变大小页面所需的工程开销。例如，对于大小可变的页面，删除一个页面可能会在文件中创建一个空洞，而DBMS无法轻易地用新页面来填充这个空洞。</p>
@@ -418,23 +408,21 @@
 <li>4 KB: SQLite, DB2, ORACLE</li>
 <li>8 KB: SQL Server, PostgreSQL</li>
 <li>6 KB: MySQL</li>
-</ul></li>
 </ul>
-<h2 id="database-heap">5. Database heap</h2>
-<p>有几种方法可以找到DBMS需要的页面在磁盘上的位置，堆文件组织就是其中一种方法。堆文件是一个无序的页面集合，其中元组按随机顺序存储</p>
-<p>堆文件，一堆无序的页，每页存储了一些数据（随机/顺序）。这个页需要有增删改查的功能，还要支持迭代遍历所有的页。</p>
-<figure>
-<img src="image-20220116224421478.png" srcset="/img/loading.gif" lazyload alt="Database Heap" /><figcaption aria-hidden="true">Database Heap</figcaption>
-</figure>
+</li>
+</ul>
+<h2 id="5-Database-heap"><a href="#5-Database-heap" class="headerlink" title="5. Database heap"></a>5. Database heap</h2><p>有几种方法可以找到DBMS需要的页面在磁盘上的位置，堆文件组织就是其中一种方法。堆文件是一个无序的页面集合，其中元组按随机顺序存储</p>
+<p>堆文件，一堆无序的页，每页存储了一些数据（随机&#x2F;顺序）。这个页需要有增删改查的功能，还要支持迭代遍历所有的页。</p>
+<p><img src="/image-20220116224421478.png" srcset="/img/loading.gif" lazyload alt="Database Heap"></p>
 <p>通过使用页链表或页目录，DBMS可以在给定页id的情况下定位磁盘上的页：</p>
 <ul>
-<li><p>linked list: 头页 包含指向 空闲页面列表 和 数据页面列表的指针。如果DBMS正在寻找一个指定的页，它必须对数据页面列表顺序扫描，直到找到该页</p></li>
-<li><p>page directory: DBMS维护的特殊的页，这些页跟踪数据页的位置以及每个页上的空闲空间量</p></li>
+<li><p>linked list: 头页 包含指向 空闲页面列表 和 数据页面列表的指针。如果DBMS正在寻找一个指定的页，它必须对数据页面列表顺序扫描，直到找到该页</p>
+</li>
+<li><p>page directory: DBMS维护的特殊的页，这些页跟踪数据页的位置以及每个页上的空闲空间量</p>
+</li>
 </ul>
-<p><img src="image-20220116224614718.png" srcset="/img/loading.gif" lazyload alt="Linked List" /> <img src="image-20220116224628548.png" srcset="/img/loading.gif" lazyload alt="Page Directory" /></p>
-<h2 id="page-layout">6. Page Layout</h2>
-<h4 id="page-header">Page Header</h4>
-<p>每一页中有一个数据头，其中包含一些元数据 <img src="image-20220116224908013.png" srcset="/img/loading.gif" lazyload alt="Page Header" /></p>
+<p><img src="/image-20220116224614718.png" srcset="/img/loading.gif" lazyload alt="Linked List"><br><img src="/image-20220116224628548.png" srcset="/img/loading.gif" lazyload alt="Page Directory"></p>
+<h2 id="6-Page-Layout"><a href="#6-Page-Layout" class="headerlink" title="6. Page Layout"></a>6. Page Layout</h2><h4 id="Page-Header"><a href="#Page-Header" class="headerlink" title="Page Header"></a>Page Header</h4><p>每一页中有一个数据头，其中包含一些元数据<br><img src="/image-20220116224908013.png" srcset="/img/loading.gif" lazyload alt="Page Header"> </p>
 <ul>
 <li>页大小</li>
 <li>检验和：检查数据是否丢失</li>
@@ -446,12 +434,14 @@
 <p>跟踪DBMS在一个页面中存储了多少元组，然后在每次添加一个新的元组时将其附加到末尾。但是，当元组被删除或元组具有可变长度的属性时，就会出现问题。</p>
 <p>Q1：删除一个元组会怎么样？</p>
 <p>Q2：存储一个可变长度的数据怎么办？</p>
-<h4 id="数据的组织形式-槽页面和日志结构">数据的组织形式: 槽页面和日志结构</h4>
-<p><strong>slotted pages</strong>：页面将插槽映射到偏移量，页里存储的是数据</p>
+<h4 id="数据的组织形式-槽页面和日志结构"><a href="#数据的组织形式-槽页面和日志结构" class="headerlink" title="数据的组织形式: 槽页面和日志结构"></a>数据的组织形式: 槽页面和日志结构</h4><p><strong>slotted pages</strong>：页面将插槽映射到偏移量，页里存储的是数据</p>
 <ul>
-<li><p>DBMS中最常用的方法</p></li>
-<li><p>Header记录了使用的槽数，最后一个使用的槽的起始位置的偏移量，以及一个槽数组，它记录了每个元组的起始位置。</p></li>
-<li><p>添加一个元组，槽数组将从开始到结束增长，元组的数据将从结束到开始增长。当槽数组和元组数据满足时，该页被认为是满的。 <img src="image-20220116225551497.png" srcset="/img/loading.gif" lazyload alt="Slotted Pages 1" /> <img src="image-20220116225551497.png" srcset="/img/loading.gif" lazyload alt="Slotted Pages 2" /></p></li>
+<li><p>DBMS中最常用的方法</p>
+</li>
+<li><p>Header记录了使用的槽数，最后一个使用的槽的起始位置的偏移量，以及一个槽数组，它记录了每个元组的起始位置。</p>
+</li>
+<li><p>添加一个元组，槽数组将从开始到结束增长，元组的数据将从结束到开始增长。当槽数组和元组数据满足时，该页被认为是满的。<br><img src="/image-20220116225551497.png" srcset="/img/loading.gif" lazyload alt="Slotted Pages 1"><br><img src="/image-20220116225551497.png" srcset="/img/loading.gif" lazyload alt="Slotted Pages 2"></p>
+</li>
 </ul>
 <p><strong>log structure</strong>: DBMS只存储日志记录，不存储元组，页里存储的是操作日志</p>
 <ul>
@@ -461,114 +451,108 @@
 <li>适用于仅追加存储，DBMS不能返回和更新数据。</li>
 <li>为了避免长时间的读取，DBMS可以有索引来允许它跳转到日志中的特定位置。它还可以周期性地压缩日志。(如果它有一个元组，然后对它进行了更新，它可以将其压缩到只插入更新后的元组)压缩的问题是DBMS最终会产生写放大(它一遍又一遍地重写相同的数据)</li>
 </ul>
-<h4 id="日志压缩">日志压缩</h4>
-<p>日志结构文件：元组中存的不是数据本身，而是数据的变化（LOG)</p>
+<h4 id="日志压缩"><a href="#日志压缩" class="headerlink" title="日志压缩"></a>日志压缩</h4><p>日志结构文件：元组中存的不是数据本身，而是数据的变化（LOG)</p>
 <ul>
-<li><p>新增</p></li>
-<li><p>删数据不是删除数据，而是写一条日志说明哪条数据被删除</p></li>
-<li><p>修改数据是新写入一条LOG说明数据被修改了</p></li>
+<li><p>新增</p>
+</li>
+<li><p>删数据不是删除数据，而是写一条日志说明哪条数据被删除</p>
+</li>
+<li><p>修改数据是新写入一条LOG说明数据被修改了</p>
+</li>
 </ul>
 <p>例：存的不是数据本身，存的是数据的变化</p>
-<center>
-<img alt="LOG" src="image-20220120124208951.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />
-</center>
+<center><img alt="LOG" src="image-20220120124208951.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" /></center> 
+
 <p>如何从日志中读数据呢？</p>
 <p>需要重放LOG，把和这个数据相关的所有LOG找出来，推断并进行回放。往往是从最新的LOG向最旧的寻找，直到该条数据操作的时候。为了提升查找效率，可以添加类似索引的内容。</p>
-<center>
-<img alt="INDEX LOG" src="image-20220120124356647.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />
-</center>
+<center><img alt="INDEX LOG" src="image-20220120124356647.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" /></center> 
+
+   
+
 <p>这样下去，数据修改的次数多了数据库中的LOG会变得非常庞大，通常情况下会周期性地压缩LOG：</p>
-<center>
-<img alt="LOG" src="image-20220120124527816.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />
-</center>
-<center>
-<img alt="LOG COMPACTION" src="image-20220120124509458.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />
-</center>
-<p>DELETE id =4 为什么压缩不了呢？因为插入的数据不在该页内</p>
+<center><img alt="LOG" src="image-20220120124527816.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" /></center> 
+
+<center><img alt="LOG COMPACTION" src="image-20220120124509458.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" /></center> 
+
+<p>DELETE id &#x3D;4 为什么压缩不了呢？因为插入的数据不在该页内</p>
 <p>什么样的数据库使用这种压缩机制呢？HBASE、cassandra、levelDB、RockDB</p>
 <p>这种机制大多用在kv数据库上，因为一条数据只有一个键一个值；如果只关系型数据库，一条记录只记录修改一个字段，还需要寻找表中的其他字段。</p>
-<h4 id="压缩的其他方法">压缩的其他方法</h4>
-<p><strong>Level Compaction（按层压缩）</strong></p>
+<h4 id="压缩的其他方法"><a href="#压缩的其他方法" class="headerlink" title="压缩的其他方法"></a>压缩的其他方法</h4><p><strong>Level Compaction（按层压缩）</strong></p>
 <p>如果一个数据的插入语句和修改（删除）不在一个页上，内部压缩是压缩不了的。可以将两个块合并后再进行压缩（RockDB基本原理，最多能压缩到第七层）</p>
 <p>如何读数据？从第0层开始读，如果没有数据内容，再去寻找第1层，一直找到第7层。</p>
 <p><strong>Universal compaction（不分层压缩）</strong></p>
-<p>同级压缩，是通用的压缩方法： <img src="image-20220120125110306.png" srcset="/img/loading.gif" lazyload alt="Universal Compaction" /></p>
-<h5 id="log的好处">LOG的好处</h5>
-<p>插入时可以将随机写转换成顺序写。修改k =100的数据（数据页读+改+写回），新建最新的块向里面写日志，但是读数据和压缩时比较麻烦。</p>
-<h2 id="tuple-layout">7. Tuple Layout</h2>
-<p>tuple在磁盘上的表现是一组二进制字节，数据库的工作就是将这些数据编码好放在磁盘上（解释为属性类型和值）</p>
-<h4 id="tuple-header">Tuple Header</h4>
-<ul>
-<li><p>DBMS并发控制协议的可见性信息(例如，关于哪个事务创建/修改了那个元组的信息)</p></li>
+<p>同级压缩，是通用的压缩方法：<br><img src="/image-20220120125110306.png" srcset="/img/loading.gif" lazyload alt="Universal Compaction"></p>
+<h5 id="LOG的好处"><a href="#LOG的好处" class="headerlink" title="LOG的好处"></a>LOG的好处</h5><p>插入时可以将随机写转换成顺序写。修改k &#x3D;100的数据（数据页读+改+写回），新建最新的块向里面写日志，但是读数据和压缩时比较麻烦。</p>
+<h2 id="7-Tuple-Layout"><a href="#7-Tuple-Layout" class="headerlink" title="7. Tuple Layout"></a>7. Tuple Layout</h2><p>tuple在磁盘上的表现是一组二进制字节，数据库的工作就是将这些数据编码好放在磁盘上（解释为属性类型和值）</p>
+<h4 id="Tuple-Header"><a href="#Tuple-Header" class="headerlink" title="Tuple Header"></a>Tuple Header</h4><ul>
+<li><p>DBMS并发控制协议的可见性信息(例如，关于哪个事务创建&#x2F;修改了那个元组的信息)</p>
+</li>
 <li><p>NULL值的位映射：数据库列中的数据可以存null，header中往往有一堆二进制位表示后面的数据是不是null</p>
-<p>数据与数据是连续存储的，为避免读错数据要记录下哪个字段存的是null</p></li>
+<p>数据与数据是连续存储的，为避免读错数据要记录下哪个字段存的是null</p>
+</li>
 </ul>
-<p>注：不需要存储关于数据库模式的元数据 | tuple里面不需要存储表结构 <img src="image-20220116230029080.png" srcset="/img/loading.gif" lazyload alt="Tuple Header" /></p>
-<h4 id="元组数据">元组数据</h4>
-<ul>
-<li><p>属性的实际数据，属性通常按照创建表时指定的顺序存储</p></li>
-<li><p>大多数DBMS不允许tuple超过一个page的大小 <img src="image-20220116230233794.png" srcset="/img/loading.gif" lazyload alt="Tuple Data" /></p></li>
+<p>注：不需要存储关于数据库模式的元数据 | tuple里面不需要存储表结构<br><img src="/image-20220116230029080.png" srcset="/img/loading.gif" lazyload alt="Tuple Header"></p>
+<h4 id="元组数据"><a href="#元组数据" class="headerlink" title="元组数据"></a>元组数据</h4><ul>
+<li><p>属性的实际数据，属性通常按照创建表时指定的顺序存储</p>
+</li>
+<li><p>大多数DBMS不允许tuple超过一个page的大小<br><img src="/image-20220116230233794.png" srcset="/img/loading.gif" lazyload alt="Tuple Data"></p>
+</li>
 </ul>
-<h4 id="唯一识别符">唯一识别符</h4>
-<ul>
-<li><p>数据库中的每个元组都被分配一个唯一的标识符，在全局寻找数据时使用</p></li>
-<li><p>一般的计算方式为：<code>page_id + offset/slot</code></p></li>
+<h4 id="唯一识别符"><a href="#唯一识别符" class="headerlink" title="唯一识别符"></a>唯一识别符</h4><ul>
+<li><p>数据库中的每个元组都被分配一个唯一的标识符，在全局寻找数据时使用</p>
+</li>
+<li><p>一般的计算方式为：<code>page_id + offset/slot</code></p>
+</li>
 <li><p>应用程序不能依赖这些id来表示任何东西，record id是数据库内部的一个id，在外部只能用主键这些来查找</p>
 <p>-PostgreSQL使用6-bytes的CTID来表示</p>
 <p>-SQLite使用8-bytes的ROWID来表示</p>
-<p>-ORACLE使用10-bytes的ROWID来表示</p></li>
+<p>-ORACLE使用10-bytes的ROWID来表示</p>
+</li>
 </ul>
-<h4 id="非规范化元组数据">非规范化元组数据</h4>
-<p>如果两个表是相关的，DBMS可以“预连接”它们，这样两个表最终会在同一个页面上。这使得读取速度更快，因为DBMS只需要加载一个页面，而不是两个单独的页面。但是，由于DBMS需要为每个元组提供更多的空间，因此更新成本更高。</p>
-<h1 id="database-storage-ii">Database Storage II</h1>
-<h2 id="数据的表现形式">1.数据的表现形式</h2>
-<p>元组中的数据本质上就是字节数组，DBMS应该知道如何解释这些字节来获得属性的值，数据表示方案是DBMS存储值的字节的方式。 <img src="image-20220120125413788.png" srcset="/img/loading.gif" lazyload alt="Data Representation" /></p>
+<h4 id="非规范化元组数据"><a href="#非规范化元组数据" class="headerlink" title="非规范化元组数据"></a>非规范化元组数据</h4><p>如果两个表是相关的，DBMS可以“预连接”它们，这样两个表最终会在同一个页面上。这使得读取速度更快，因为DBMS只需要加载一个页面，而不是两个单独的页面。但是，由于DBMS需要为每个元组提供更多的空间，因此更新成本更高。</p>
+<h1 id="Database-Storage-II"><a href="#Database-Storage-II" class="headerlink" title="Database Storage II"></a>Database Storage II</h1><h2 id="1-数据的表现形式"><a href="#1-数据的表现形式" class="headerlink" title="1.数据的表现形式"></a>1.数据的表现形式</h2><p>元组中的数据本质上就是字节数组，DBMS应该知道如何解释这些字节来获得属性的值，数据表示方案是DBMS存储值的字节的方式。<br><img src="/image-20220120125413788.png" srcset="/img/loading.gif" lazyload alt="Data Representation"></p>
 <p>有五种高级数据类型可以存储在元组中：</p>
-<h3 id="integers">1.1 Integers</h3>
-<p><strong>- Examples: INTEGER, BIGINT, SMALLINT, TINYINT</strong></p>
-<p>大多数DBMS使用IEEE-754标准所指定的原生C/ C++类型来存储整数，这些值是固定长度的。</p>
-<h3 id="variable-precious-numbers">1.2 Variable Precious Numbers</h3>
-<p><strong>- Examples: FLOAT, REAL</strong></p>
+<h3 id="1-1-Integers"><a href="#1-1-Integers" class="headerlink" title="1.1 Integers"></a>1.1 Integers</h3><p><strong>- Examples: INTEGER, BIGINT, SMALLINT, TINYINT</strong></p>
+<p>大多数DBMS使用IEEE-754标准所指定的原生C&#x2F; C++类型来存储整数，这些值是固定长度的。</p>
+<h3 id="1-2-Variable-Precious-Numbers"><a href="#1-2-Variable-Precious-Numbers" class="headerlink" title="1.2 Variable Precious Numbers"></a>1.2 Variable Precious Numbers</h3><p><strong>- Examples: FLOAT, REAL</strong></p>
 <p>对变精度数字的操作比任意精度数字的运算速度更快，因为CPU可以直接对它们执行指令。然而，由于某些数字无法精确表示，在进行计算时可能会出现舍入误差</p>
 <p>如计算可变精度浮点数是 0.1+0.2 是否与0.3 相等：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span>* argv[])</span> &#123;<br>    <span class="hljs-type">float</span> x = <span class="hljs-number">0.1</span>;<br>    <span class="hljs-type">float</span> y = <span class="hljs-number">0.2</span>;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;x+y = %f\n&quot;</span>, x+y);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;0.3 = %f\n&quot;</span>, <span class="hljs-number">0.3</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <p>结果输出，小数点后六位：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c">x+y = <span class="hljs-number">0.300000</span><br><span class="hljs-number">0.3</span> = <span class="hljs-number">0.300000</span><br></code></pre></td></tr></table></figure>
+
 <p>输出小数点后20位：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span>* argv[])</span> &#123;<br>    <span class="hljs-type">float</span> x = <span class="hljs-number">0.1</span>;<br>    <span class="hljs-type">float</span> y = <span class="hljs-number">0.2</span>;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;x+y = %.20f\n&quot;</span>, x+y);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;0.3 = %.20f\n&quot;</span>, <span class="hljs-number">0.3</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <p>结果输出，可以发现并不是完全相等</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c">x+y = <span class="hljs-number">0.30000001192092895508</span><br><span class="hljs-number">0.3</span> = <span class="hljs-number">0.29999999999999998890</span><br></code></pre></td></tr></table></figure>
+
 <p>所有关于钱的数据，是不允许使用这种可变浮点FLOAT的，比如在Java中可用BIGDECIMAL。</p>
-<h3 id="fixed-point-precision-numbers">1.3 Fixed-Point Precision Numbers</h3>
-<p><strong>- Examples: NUMERIC, DECIMAL</strong></p>
+<h3 id="1-3-Fixed-Point-Precision-Numbers"><a href="#1-3-Fixed-Point-Precision-Numbers" class="headerlink" title="1.3 Fixed-Point Precision Numbers"></a>1.3 Fixed-Point Precision Numbers</h3><p><strong>- Examples: NUMERIC, DECIMAL</strong></p>
 <p>这些是具有任意精度和比例的数值数据类型。它们通常以精确的、可变长度的二进制表示形式存储(几乎像字符串一样)，以及附加的元数据，这些元数据将告诉系统数据的长度和小数点应该在哪里。当舍入错误不可接受时，使用这些数据类型，但DBMS为获得这种准确性付出了性能代价。</p>
-<p>Example1: PG中NUMERIC的表示形式</p>
-<figure>
-<img src="image-20220120125839569.png" srcset="/img/loading.gif" lazyload alt="Numeric-Postgres" /><figcaption aria-hidden="true">Numeric-Postgres</figcaption>
-</figure>
+<p>Example1: PG中NUMERIC的表示形式 </p>
+<p><img src="/image-20220120125839569.png" srcset="/img/loading.gif" lazyload alt="Numeric-Postgres"></p>
 <p>Example2: MySQL中NUMERIC的表示形式</p>
 <ul>
-<li>数据多少位/权重/指数/正负零/指针指向char，是一个字符串 <img src="image-20220120130054267.png" srcset="/img/loading.gif" lazyload alt="Numeric-MySQL" /></li>
+<li>数据多少位&#x2F;权重&#x2F;指数&#x2F;正负零&#x2F;指针指向char，是一个字符串<br><img src="/image-20220120130054267.png" srcset="/img/loading.gif" lazyload alt="Numeric-MySQL"></li>
 </ul>
-<h3 id="variable-length-data">1.4 Variable-Length Data</h3>
-<p><strong>- Examples: VARCHAR, VARBINARY, TEXT, BLOB</strong></p>
+<h3 id="1-4-Variable-Length-Data"><a href="#1-4-Variable-Length-Data" class="headerlink" title="1.4 Variable-Length Data"></a>1.4 Variable-Length Data</h3><p><strong>- Examples: VARCHAR, VARBINARY, TEXT, BLOB</strong></p>
 <p>这些表示任意长度的数据类型。它们通常与一个记录字符串长度的头文件一起存储，以方便跳转到下一个值。它还可以包含数据的校验和。</p>
 <p>大多数DBMS不允许元组的大小超过单个页面的大小。那些将数据存储在一个特殊的“溢出”页面上，并让元组包含对该页面的引用的对象。这些溢出页可以包含指向其他溢出页的指针，直到可以存储所有数据为止。</p>
-<p>有时会存储超长的数据，可能比数据库的一个页还长。这种情况通常使用 溢出页 来存储数据。如果数据特别长，会单开辟一个页进行存储。 <img src="image-20220120132318675.png" srcset="/img/loading.gif" lazyload alt="TUPLE" /></p>
+<p>有时会存储超长的数据，可能比数据库的一个页还长。这种情况通常使用 溢出页 来存储数据。如果数据特别长，会单开辟一个页进行存储。<br><img src="/image-20220120132318675.png" srcset="/img/loading.gif" lazyload alt="TUPLE"> </p>
 <p>不同的数据库触发溢出页的条件也有所不同：</p>
 <ul>
 <li>Postgres：数据大于2KB（一个页6KB）</li>
-<li>MySQL: Overflow（大于1/2个页，一个页18 KB）</li>
+<li>MySQL: Overflow（大于1&#x2F;2个页，一个页18 KB）</li>
 <li>SQL Server: Overflow（大于整个页，一个页最少要存一行数据）</li>
 </ul>
-<p>如果溢出页也没存下？向后添加溢出页。但是尽量不要存储过长的数据， 存取一次磁盘只能拿到一页的数据。如果存储图片，需要存储url，不要直接存储图片数据。 <img src="image-20220120132347095.png" srcset="/img/loading.gif" lazyload alt="TUPLE" /></p>
+<p>如果溢出页也没存下？向后添加溢出页。但是尽量不要存储过长的数据， 存取一次磁盘只能拿到一页的数据。如果存储图片，需要存储url，不要直接存储图片数据。<br><img src="/image-20220120132347095.png" srcset="/img/loading.gif" lazyload alt="TUPLE"> </p>
 <p>也可以将很大的数据存储到外部文件，系统或者别的软件可能修改它，数据库无法保证这个文件没有被修改过。更好的方法是用户根据业务自行管理链接到数据库的外部文件。</p>
 <p>有些系统允许您将这些大的值存储在一个外部文件中，然后元组将包含一个指向该文件的指针。例如，如果数据库正在存储照片信息，DBMS可以将照片存储在外部文件中，而不是让它们占用DBMS中的大量空间。这样做的一个缺点是DBMS不能操作这个文件的内容。因此，不存在持久性或事务保护。</p>
-<h3 id="dates-times">1.5 Dates &amp; Times</h3>
-<p><strong>- Examples: TIME, DATE, TIMESTAMP</strong></p>
-<p>日期/时间的表示因系统而异。通常，这些被表示为某个单位时间(微/毫秒)Unix时代以来的秒数。</p>
-<h4 id="system-catalogs">SYSTEM CATALOGS</h4>
-<blockquote>
+<h3 id="1-5-Dates-amp-Times"><a href="#1-5-Dates-amp-Times" class="headerlink" title="1.5 Dates &amp; Times"></a>1.5 Dates &amp; Times</h3><p><strong>- Examples: TIME, DATE, TIMESTAMP</strong></p>
+<p>日期&#x2F;时间的表示因系统而异。通常，这些被表示为某个单位时间(微&#x2F;毫秒)Unix时代以来的秒数。</p>
+<h4 id="SYSTEM-CATALOGS"><a href="#SYSTEM-CATALOGS" class="headerlink" title="SYSTEM CATALOGS"></a>SYSTEM CATALOGS</h4><blockquote>
 <p>为了使DBMS能够破译元组的内容，它维护一个内部编目来告诉它关于数据库的元数据。元数据将包含关于数据库有哪些表和列以及它们的类型和值的顺序的信息。大多数DBMS将它们的目录以它们用于表的格式存储在自己内部。它们使用特殊的代码来“引导”这些目录表。</p>
 </blockquote>
 <p>存储系统的元数据，一般都当做系统表存储起来，不需要其他数据存储的形式，如：</p>
@@ -580,83 +564,70 @@
 <p>几乎所有的数据库都自己管理catalog，以表的形式自己存储自己。一般的数据库中都有一张<strong>INFORMATION_SCHEMA</strong>表，其中存储着数据库中各种元信息。</p>
 <p>查看数据库中表结构的原信息命令（查看当前数据库中的表）</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- SQL-92</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <br>  <span class="hljs-keyword">FROM</span> INFORMATION_SCHEMA.TABLES<br><span class="hljs-keyword">WHERE</span> table_catalog <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;&lt;db name&#x27;</span><span class="hljs-operator">&gt;</span>;<br><br><span class="hljs-comment">--Postgre</span><br>\d;<br><br><span class="hljs-comment">-- MySQL</span><br><span class="hljs-keyword">SHOW</span> TABLES;<br><br><span class="hljs-comment">--SQLite</span><br>.tables<br></code></pre></td></tr></table></figure>
-<h2 id="数据库类型">2.数据库类型</h2>
-<h3 id="oltp">2.1 OLTP</h3>
-<p>在线事务处理：快速读写数据量很小的数据，往往意味着高并发（用户使用）</p>
+
+<h2 id="2-数据库类型"><a href="#2-数据库类型" class="headerlink" title="2.数据库类型"></a>2.数据库类型</h2><h3 id="2-1-OLTP"><a href="#2-1-OLTP" class="headerlink" title="2.1 OLTP"></a>2.1 OLTP</h3><p>在线事务处理：快速读写数据量很小的数据，往往意味着高并发（用户使用）</p>
 <p>OLTP工作负载的特点是快速、短时间运行的操作、一次操作单个实体的简单查询和重复操作。OLTP工作负载通常会处理更多的写操作而不是读操作。</p>
 <p>-Example: Amazon店面。用户可以将东西添加到购物车中，可以进行购买，但这些行为只会影响他们的账户</p>
-<h3 id="olap">2.2 OLAP</h3>
-<p>在线分析处理：复杂查询，读取大量数据并做一些复杂计算（公司使用）</p>
+<h3 id="2-2-OLAP"><a href="#2-2-OLAP" class="headerlink" title="2.2 OLAP"></a>2.2 OLAP</h3><p>在线分析处理：复杂查询，读取大量数据并做一些复杂计算（公司使用）</p>
 <p>OLAP工作负载的特点是长时间运行、复杂的查询和读取数据库的大部分内容。在OLAP工作中，数据库系统从OLTP端收集的现有数据中分析和导出新数据。</p>
 <p>-Example: Amazon计算这些地理位置在一个月内购买最多的五件商品</p>
-<h3 id="htap">2.3 HTAP</h3>
-<p>HTAP是事务处理与分析处理的混合型数据库(Hybird Transaction + Analytical Processing)</p>
-<p>事务型的倾向于写，分析性的越集中于读 <img src="image-20220120134856976.png" srcset="/img/loading.gif" lazyload alt="Database Workloads" /></p>
+<h3 id="2-3-HTAP"><a href="#2-3-HTAP" class="headerlink" title="2.3 HTAP"></a>2.3 HTAP</h3><p>HTAP是事务处理与分析处理的混合型数据库(Hybird Transaction + Analytical Processing)</p>
+<p>事务型的倾向于写，分析性的越集中于读<br><img src="/image-20220120134856976.png" srcset="/img/loading.gif" lazyload alt="Database Workloads"> </p>
 <p>HTAP没有出现时的通常做法：先从OLTP数据库中抽取数据做ETL，再放进数据仓库进行分析，最后把分析的结果写回到OLTP供用户查询。</p>
 <p>HTAP的出现可以兼顾这两种工作情况，不必进行数据移动，节约资源与空间</p>
-<figure>
-<img src="image-20220120135229862.png" srcset="/img/loading.gif" lazyload alt="Bifurcated Environment" /><figcaption aria-hidden="true">Bifurcated Environment</figcaption>
-</figure>
-<h5 id="行列存储">行列存储</h5>
-<p>关系模型没有规定我们数据要按行存储（在底层），用户只是想按行查找，所以数据页中不一定一个Tuple是一行。</p>
-<p>例： <img src="image-20220120135754433.png" srcset="/img/loading.gif" lazyload alt="EXAMPLE" /></p>
+<p><img src="/image-20220120135229862.png" srcset="/img/loading.gif" lazyload alt="Bifurcated Environment">  </p>
+<h5 id="行列存储"><a href="#行列存储" class="headerlink" title="行列存储"></a>行列存储</h5><p>关系模型没有规定我们数据要按行存储（在底层），用户只是想按行查找，所以数据页中不一定一个Tuple是一行。</p>
+<p>例：<br><img src="/image-20220120135754433.png" srcset="/img/loading.gif" lazyload alt="EXAMPLE"> </p>
 <p><strong>OLTP语句：</strong></p>
 <p>1.查询页面的更新记录</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> P.<span class="hljs-operator">*</span>, R.<span class="hljs-operator">*</span><br>  <span class="hljs-keyword">FROM</span> pages <span class="hljs-keyword">AS</span> P<br>  <span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> revisions <span class="hljs-keyword">AS</span> R<br>    <span class="hljs-keyword">ON</span> P.latest <span class="hljs-operator">=</span> R.revID<br>  <span class="hljs-keyword">WHERE</span> P.pageID <span class="hljs-operator">=</span> ? <br></code></pre></td></tr></table></figure>
+
 <p>2.用户更新资料</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mssql">UPDATE useracct<br>  SET lastLogin = NOW(),<br>      hostname = ?<br>  WHERE userID = ?<br></code></pre></td></tr></table></figure>
+
 <p>3.新增更新记录</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> revisions<br><span class="hljs-keyword">VALUES</span>(?,?...,?)<br></code></pre></td></tr></table></figure>
+
 <p><strong>OLAP语句:</strong></p>
 <p>做复杂分析操作</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">COUNT</span>(U.lastLogin),<br>        EXTACT(<span class="hljs-keyword">month</span> <span class="hljs-keyword">FROM</span> U.lastLogin) <span class="hljs-keyword">AS</span> <span class="hljs-keyword">month</span><br>        <span class="hljs-keyword">FROM</span> useracct <span class="hljs-keyword">AS</span> U<br>      <span class="hljs-keyword">WHERE</span> U.hostname <span class="hljs-keyword">LIKE</span> <span class="hljs-string">&#x27;%.gov&#x27;</span><br>      <span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span><br>        EXTACT(<span class="hljs-keyword">month</span> <span class="hljs-keyword">FROM</span> U.lastLogin)<br></code></pre></td></tr></table></figure>
-<h2 id="数据存储模型">3.数据存储模型</h2>
-<p>在页面中存储元组一般有行存和列存两种方法</p>
-<h3 id="nsm">3.1 NSM</h3>
-<p>如果一行是一个存储单位，就叫做n-ary storage model（NSM)</p>
+
+<h2 id="3-数据存储模型"><a href="#3-数据存储模型" class="headerlink" title="3.数据存储模型"></a>3.数据存储模型</h2><p>在页面中存储元组一般有行存和列存两种方法</p>
+<h3 id="3-1-NSM"><a href="#3-1-NSM" class="headerlink" title="3.1 NSM"></a>3.1 NSM</h3><p>如果一行是一个存储单位，就叫做n-ary storage model（NSM)</p>
 <p>n-ary存储模型中，DBMS将单个元组的所有属性连续存储在单个页面中，因此NSM也被称为“行存储”。这种方法对于OLTP工作负载非常理想，在这种负载下，请求需要大量插入，事务往往只操作单个实体。它是理想的，因为它只需要一次获取就能够获得单个元组的所有属性。</p>
-<p>一个单独的Tuple，保存着一组属性，组成了一组行记录。这种数据存储结构，按行存储更适合OLTP。 <img src="image-20220120140817303.png" srcset="/img/loading.gif" lazyload alt="NSM" /></p>
-<figure>
-<img src="image-20220120140824731.png" srcset="/img/loading.gif" lazyload alt="NSM" /><figcaption aria-hidden="true">NSM</figcaption>
-</figure>
-<figure>
-<img src="image-20220120140914969.png" srcset="/img/loading.gif" lazyload alt="NSM" /><figcaption aria-hidden="true">NSM</figcaption>
-</figure>
-<p>列存更适合OLAP： <img src="image-20220120141030548.png" srcset="/img/loading.gif" lazyload alt="NSM" /></p>
-<p>如果是行存储，无用的数据也需要取出并解析： <img src="image-20220120141115810.png" srcset="/img/loading.gif" lazyload alt="NSM" /></p>
-<h4 id="行存优点">行存优点</h4>
-<ul>
+<p>一个单独的Tuple，保存着一组属性，组成了一组行记录。这种数据存储结构，按行存储更适合OLTP。<br><img src="/image-20220120140817303.png" srcset="/img/loading.gif" lazyload alt="NSM"></p>
+<p><img src="/image-20220120140824731.png" srcset="/img/loading.gif" lazyload alt="NSM"></p>
+<p><img src="/image-20220120140914969.png" srcset="/img/loading.gif" lazyload alt="NSM"></p>
+<p>列存更适合OLAP：<br><img src="/image-20220120141030548.png" srcset="/img/loading.gif" lazyload alt="NSM"></p>
+<p>如果是行存储，无用的数据也需要取出并解析：<br><img src="/image-20220120141115810.png" srcset="/img/loading.gif" lazyload alt="NSM">    </p>
+<h4 id="行存优点"><a href="#行存优点" class="headerlink" title="行存优点"></a>行存优点</h4><ul>
 <li>可以快速插入，更新和删除</li>
 <li>对整行数据查询支持地比较好</li>
 </ul>
-<h4 id="行存缺点">行存缺点</h4>
-<ul>
-<li>不适合扫描表的大部分和/或属性的子集。这是因为它会获取处理查询不需要的数据，从而污染缓冲池</li>
+<h4 id="行存缺点"><a href="#行存缺点" class="headerlink" title="行存缺点"></a>行存缺点</h4><ul>
+<li>不适合扫描表的大部分和&#x2F;或属性的子集。这是因为它会获取处理查询不需要的数据，从而污染缓冲池</li>
 </ul>
-<h3 id="dsm">3.2 DSM</h3>
-<p>拆开存储，通俗来讲叫做列存，一个tuple存的是一列，列存是分析友好的。</p>
-<p>在分解存储模型中，DBMS将所有元组的单个属性(列)连续地存储在一个数据块中。因此，它也被称为“列存储”。这个模型非常适合OLAP工作负载，其中有许多只读查询，这些查询在表属性的一个子集上执行大的扫描。 <img src="image-20220120141408669.png" srcset="/img/loading.gif" lazyload alt="DSM" /></p>
-<h4 id="tuple定义">Tuple定义</h4>
-<figure>
-<img src="image-20220120141546716.png" srcset="/img/loading.gif" lazyload alt="Tuple Identification" /><figcaption aria-hidden="true">Tuple Identification</figcaption>
-</figure>
+<h3 id="3-2-DSM"><a href="#3-2-DSM" class="headerlink" title="3.2 DSM"></a>3.2 DSM</h3><p>拆开存储，通俗来讲叫做列存，一个tuple存的是一列，列存是分析友好的。</p>
+<p>在分解存储模型中，DBMS将所有元组的单个属性(列)连续地存储在一个数据块中。因此，它也被称为“列存储”。这个模型非常适合OLAP工作负载，其中有许多只读查询，这些查询在表属性的一个子集上执行大的扫描。<br><img src="/image-20220120141408669.png" srcset="/img/loading.gif" lazyload alt="DSM"> </p>
+<h4 id="Tuple定义"><a href="#Tuple定义" class="headerlink" title="Tuple定义"></a>Tuple定义</h4><p><img src="/image-20220120141546716.png" srcset="/img/loading.gif" lazyload alt="Tuple Identification"> </p>
 <p>在使用列存储时，要将元组放回一起，有两种常见的方法：</p>
 <ul>
-<li><p><strong>固定长度偏移量</strong>：假设属性都是固定长度的，DBMS可以为每个元组计算属性的偏移量。当系统需要特定元组的属性时，它知道如何从offset跳转到文件中的该位置。为了适应变长字段，系统可以填充字段，使它们都具有相同的长度，或者使用一个接受固定大小的整数并将该整数映射到值的字典。</p></li>
-<li><p><strong>嵌入式tuple id</strong>：在这里，对于列中的每个属性，DBMS存储一个元组id(例如:一个主键)。系统还会存储一个映射，告诉它如何跳转到每个具有该id的属性。注意，这个方法有很大的存储开销，因为它需要为每个属性条目存储一个tuple id。</p></li>
+<li><p><strong>固定长度偏移量</strong>：假设属性都是固定长度的，DBMS可以为每个元组计算属性的偏移量。当系统需要特定元组的属性时，它知道如何从offset跳转到文件中的该位置。为了适应变长字段，系统可以填充字段，使它们都具有相同的长度，或者使用一个接受固定大小的整数并将该整数映射到值的字典。</p>
+</li>
+<li><p><strong>嵌入式tuple id</strong>：在这里，对于列中的每个属性，DBMS存储一个元组id(例如:一个主键)。系统还会存储一个映射，告诉它如何跳转到每个具有该id的属性。注意，这个方法有很大的存储开销，因为它需要为每个属性条目存储一个tuple id。</p>
+</li>
 </ul>
-<h4 id="dsm优点">DSM优点</h4>
-<ul>
+<h4 id="DSM优点"><a href="#DSM优点" class="headerlink" title="DSM优点"></a>DSM优点</h4><ul>
 <li>减少了查询执行过程中浪费的工作量，因为DBMS只读取该查询所需的数据</li>
 <li>支持更好的压缩，因为相同属性的所有值都是连续存储的</li>
 </ul>
-<h4 id="dsm缺点">DSM缺点</h4>
-<ul>
-<li>由于元组分割/拼接，点查询、插入、更新和删除速度较慢</li>
+<h4 id="DSM缺点"><a href="#DSM缺点" class="headerlink" title="DSM缺点"></a>DSM缺点</h4><ul>
+<li>由于元组分割&#x2F;拼接，点查询、插入、更新和删除速度较慢</li>
 </ul>
-<p><br/></p>
+<br/>
+
 <blockquote>
-<p>updated: 2021-07-03</p>
+<p>updated: 2021-07-03 </p>
 </blockquote>
 
                 
@@ -692,21 +663,23 @@
         </div>
       
       
-      <div class="license-meta-item">
-        <div>Licensed under</div>
-        <div>
-          
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
             
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
             
-              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
-                <i class="iconfont icon-by"></i>
-              </span>
-              </a>
-            
-          
+          </div>
         </div>
-      </div>
+      
     </div>
     <div class="license-icon iconfont"></div>
   </div>
@@ -749,7 +722,10 @@
       
   <aside class="sidebar" style="margin-left: -1rem">
     <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -861,22 +837,34 @@
     var boardCtn = jQuery('#board-ctn');
     var boardTop = boardCtn.offset().top;
 
-    window.tocbot.init({
+    window.tocbot.init(Object.assign({
       tocSelector     : '#toc-body',
       contentSelector : '.markdown-body',
-      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
       linkClass       : 'tocbot-link',
       activeLinkClass : 'tocbot-active-link',
       listClass       : 'tocbot-list',
       isCollapsedClass: 'tocbot-is-collapsed',
       collapsibleClass: 'tocbot-is-collapsible',
-      collapseDepth   : CONFIG.toc.collapseDepth || 0,
       scrollSmooth    : true,
-      headingsOffset  : -boardTop
-    });
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
     if (toc.find('.toc-list-item').length > 0) {
       toc.css('visibility', 'visible');
     }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
   });
 </script>
 
@@ -905,6 +893,21 @@
       window.anchors.options.class = 'anchorjs-link-left';
     }
     window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
   });
 </script>
 
@@ -948,6 +951,15 @@
           MathJax.typeset();
           MathJax.typesetPromise();
         }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
       </script>
     
 

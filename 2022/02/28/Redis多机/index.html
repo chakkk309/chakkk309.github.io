@@ -16,12 +16,12 @@
   <meta name="author" content="Jiaqi">
   <meta name="keywords" content="">
   
-    <meta name="description" content="复制（Replicate） 为什么需要主从复制？  解决单点故障 读写分离  复制过程 Redis2.8版本以前复制过程分为同步和命令传播两部分  主从复制  1.同步 客户端向127.0.0.1 12345这台Redis服务器发送SLAVEOF 127.0.0.1 6379命令，要求该服务器复制127.0.0.1 6379 这台服务器。即12345对6379进行复制，12345被叫做从服务器（s">
+    <meta name="description" content="复制（Replicate）为什么需要主从复制？ 解决单点故障 读写分离  复制过程Redis2.8版本以前复制过程分为同步和命令传播两部分   1.同步客户端向127.0.0.1 12345这台Redis服务器发送SLAVEOF 127.0.0.1 6379命令，要求该服务器复制127.0.0.1 6379 这台服务器。即12345对6379进行复制，12345被叫做从服务器（slave），637">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redis 多机">
 <meta property="og:url" content="https://chakkk309.github.io/2022/02/28/Redis%E5%A4%9A%E6%9C%BA/index.html">
 <meta property="og:site_name" content="Chakkk">
-<meta property="og:description" content="复制（Replicate） 为什么需要主从复制？  解决单点故障 读写分离  复制过程 Redis2.8版本以前复制过程分为同步和命令传播两部分  主从复制  1.同步 客户端向127.0.0.1 12345这台Redis服务器发送SLAVEOF 127.0.0.1 6379命令，要求该服务器复制127.0.0.1 6379 这台服务器。即12345对6379进行复制，12345被叫做从服务器（s">
+<meta property="og:description" content="复制（Replicate）为什么需要主从复制？ 解决单点故障 读写分离  复制过程Redis2.8版本以前复制过程分为同步和命令传播两部分   1.同步客户端向127.0.0.1 12345这台Redis服务器发送SLAVEOF 127.0.0.1 6379命令，要求该服务器复制127.0.0.1 6379 这台服务器。即12345对6379进行复制，12345被叫做从服务器（slave），637">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://r6j1m70cd.hb-bkt.clouddn.com/%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%20.jpg">
 <meta property="og:image" content="http://r6j1m70cd.hb-bkt.clouddn.com/%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%20PSYNC.jpg">
@@ -74,7 +74,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"chakkk309.github.io","root":"/","version":"1.9.2","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"chakkk309.github.io","root":"/","version":"1.9.4","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -87,8 +87,7 @@
 
 
   
-<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Chakkk" type="application/atom+xml">
-</head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 
 <body>
@@ -121,7 +120,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
-                Home
+                <span>Home</span>
               </a>
             </li>
           
@@ -133,7 +132,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
-                Archives
+                <span>Archives</span>
               </a>
             </li>
           
@@ -145,7 +144,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
-                About
+                <span>About</span>
               </a>
             </li>
           
@@ -158,7 +157,7 @@
               <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="iconfont icon-books"></i>
-                Others
+                <span>Others</span>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 
@@ -167,7 +166,7 @@
                   
                   <a class="dropdown-item" href="/books">
                     
-                    Books
+                    <span>Books</span>
                   </a>
                 
                   
@@ -175,7 +174,7 @@
                   
                   <a class="dropdown-item" href="/movies">
                     
-                    Movies
+                    <span>Movies</span>
                   </a>
                 
                   
@@ -183,7 +182,7 @@
                   
                   <a class="dropdown-item" href="/life">
                     
-                    Life
+                    <span>Life</span>
                   </a>
                 
                   
@@ -191,7 +190,7 @@
                   
                   <a class="dropdown-item" href="/graph">
                     
-                    (WIP)
+                    <span>(WIP)</span>
                   </a>
                 
               </div>
@@ -201,8 +200,9 @@
         
         
           <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
           </li>
         
       </ul>
@@ -242,7 +242,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.9k words
+          7k words
         
       </span>
     
@@ -304,21 +304,15 @@
             
               <div class="markdown-body">
                 
-                <h2 id="复制replicate">复制（Replicate）</h2>
-<h4 id="为什么需要主从复制"><strong>为什么需要主从复制？</strong></h4>
-<ul>
+                <h2 id="复制（Replicate）"><a href="#复制（Replicate）" class="headerlink" title="复制（Replicate）"></a>复制（Replicate）</h2><h4 id="为什么需要主从复制？"><a href="#为什么需要主从复制？" class="headerlink" title="为什么需要主从复制？"></a><strong>为什么需要主从复制？</strong></h4><ul>
 <li>解决单点故障</li>
 <li>读写分离</li>
 </ul>
-<h4 id="复制过程">复制过程</h4>
-<p>Redis2.8版本以前复制过程分为<strong>同步</strong>和<strong>命令传播</strong>两部分</p>
-<figure>
-<img src="http://r6j1m70cd.hb-bkt.clouddn.com/%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%20.jpg" srcset="/img/loading.gif" lazyload alt="主从复制" /><figcaption aria-hidden="true">主从复制</figcaption>
-</figure>
-<h5 id="同步">1.同步</h5>
-<p>客户端向127.0.0.1 12345这台Redis服务器发送<code>SLAVEOF 127.0.0.1 6379</code>命令，要求该服务器复制127.0.0.1 6379 这台服务器。即12345对6379进行复制，12345被叫做从服务器（slave），6379则为主服务器（master）。</p>
+<h4 id="复制过程"><a href="#复制过程" class="headerlink" title="复制过程"></a>复制过程</h4><p>Redis2.8版本以前复制过程分为<strong>同步</strong>和<strong>命令传播</strong>两部分</p>
+<p><img src="http://r6j1m70cd.hb-bkt.clouddn.com/%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%20.jpg" srcset="/img/loading.gif" lazyload alt="主从复制 "> </p>
+<h5 id="1-同步"><a href="#1-同步" class="headerlink" title="1.同步"></a>1.同步</h5><p>客户端向127.0.0.1 12345这台Redis服务器发送<code>SLAVEOF 127.0.0.1 6379</code>命令，要求该服务器复制127.0.0.1 6379 这台服务器。即12345对6379进行复制，12345被叫做从服务器（slave），6379则为主服务器（master）。</p>
 <p>同步操作具体过程如下：</p>
-<ol type="1">
+<ol>
 <li>slave 向 master 发送SYNC命令</li>
 <li>master收到后执行 BGSAVE 命令，后台生成一个RDB文件，且使用一个缓冲区来记录从现在开始执行的所有写命令</li>
 <li>master将RDB文件发送给slave</li>
@@ -326,10 +320,8 @@
 <li>master将其在缓冲区内记录的命令发送给slave</li>
 <li>slave根据这些命令进行更新</li>
 </ol>
-<h5 id="命令传播">2.命令传播</h5>
-<p>同步后主从数据库并不是一直保持一致的状态，这时就需要命令传播来保证主从数据的一致性。一旦master接收到某条写入命令，会向slave发送该条命令，保证两者之间数据的一致性。</p>
-<h5 id="版本后slave对于master的复制可分为两种情况">2.8版本后slave对于master的复制可分为两种情况</h5>
-<ul>
+<h5 id="2-命令传播"><a href="#2-命令传播" class="headerlink" title="2.命令传播"></a>2.命令传播</h5><p>同步后主从数据库并不是一直保持一致的状态，这时就需要命令传播来保证主从数据的一致性。一旦master接收到某条写入命令，会向slave发送该条命令，保证两者之间数据的一致性。</p>
+<h5 id="2-8版本后slave对于master的复制可分为两种情况"><a href="#2-8版本后slave对于master的复制可分为两种情况" class="headerlink" title="2.8版本后slave对于master的复制可分为两种情况"></a>2.8版本后slave对于master的复制可分为两种情况</h5><ul>
 <li><strong>初次复制</strong>：slave之前从没复制过任何master，或这次的master与上次复制的不是同一个</li>
 <li><strong>断线后重复制</strong>：处于命令传播状态下的slave与master断开连接后，重新连接以继续复制master。但是断线重连后的复制效率却很低，需要再一次进行同步与命令传播操作。实际上同步操作不是必须进行的，真正需要的是主从服务器连接中断期间，master新执行的几条写入数据。</li>
 </ul>
@@ -347,39 +339,39 @@
 </ul>
 <p><strong>部分重同步过程</strong></p>
 <ul>
-<li><p>服务器首次进行复制，向master发送<code>psync ? -1</code>命令，主动请求master进行完整重同步</p></li>
-<li><p>服务器不是首次复制，向master发送<code>PSYNC &lt;runid&gt; &lt;offset&gt;</code>，runid：上次复制的master的运行ID；offset：从服务器当前的复制偏移量</p></li>
+<li><p>服务器首次进行复制，向master发送<code>psync ? -1</code>命令，主动请求master进行完整重同步</p>
+</li>
+<li><p>服务器不是首次复制，向master发送<code>PSYNC &lt;runid&gt; &lt;offset&gt;</code>，runid：上次复制的master的运行ID；offset：从服务器当前的复制偏移量</p>
+</li>
 <li><p>master接收到命令后的返回结果：</p>
 <ul>
 <li><code>+FULLRESYNC &lt;runid&gt; &lt;offset&gt;</code>，master将与slave执行完整重同步操作，slave会保存runID在下一次发送时，slave也会将offset作为自己的初始化偏移量</li>
 <li><code>+CONTINUE</code>，将进行部分重同步操作，slave只需等待master发送缺少的部分数据即可</li>
 <li><code>ERROR</code>，表示master的版本低于2.8，两者不兼容，slave将换成master可以识别的PYSNC命令重新发送，最后执行完整重同步操作</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 <p>图例：复制 -&gt; 网络中断 -&gt; 重复制</p>
-<figure>
-<img src="http://r6j1m70cd.hb-bkt.clouddn.com/%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%20PSYNC.jpg" srcset="/img/loading.gif" lazyload alt="主从复制 PSYNC" /><figcaption aria-hidden="true">主从复制 PSYNC</figcaption>
-</figure>
+<p><img src="http://r6j1m70cd.hb-bkt.clouddn.com/%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%20PSYNC.jpg" srcset="/img/loading.gif" lazyload alt="主从复制 PSYNC"> </p>
 <p><strong>三个重要参数</strong></p>
 <p><strong>master和slave的复制偏移量（replication offset）</strong></p>
 <p>执行复制的双方分别维护一个复制偏移量，以判断主从的状态是否一致。master每次向从服务器发送N个字节后，就将自己的复制偏移量加N；slave同理，每接收一个字节的数据就把自己维护的offset+1。</p>
 <p><strong>master的复制积压缓冲区（replication backlog)</strong></p>
 <p>复制积压缓冲区是由master维护的一个固定长度的队列，默认大小为1MB。当master进行命令传播时，同时也会将写命令放入这个缓冲区中存储，并且为队列中的每个字节记录复制偏移量。当slave重新连接上master时，master会根据双方的offset来决定对slave进行何种操作：</p>
 <ul>
-<li><p>offset+1之后的数据 存在于缓冲区，master将进部分重同步操作</p></li>
-<li><p>offset+1之后的数据不存在于缓冲区，master将对slave进行完整重同步操作</p></li>
+<li><p>offset+1之后的数据 存在于缓冲区，master将进部分重同步操作</p>
+</li>
+<li><p>offset+1之后的数据不存在于缓冲区，master将对slave进行完整重同步操作</p>
+</li>
 </ul>
 <p><strong>服务器的运行ID（runID)</strong></p>
 <p>每个redis服务器都会有自己的运行ID，在服务器启动时自动生成。运行ID相当于一个身份标识，用于识别是否是同一个服务器。运行ID在服务器启动时自动生成，由40个随机的十六进制字符组成。</p>
-<h4 id="复制的具体实现">复制的具体实现</h4>
-<p>client向slave发送SLAVEOF命令，复制启动</p>
+<h4 id="复制的具体实现"><a href="#复制的具体实现" class="headerlink" title="复制的具体实现"></a>复制的具体实现</h4><p>client向slave发送SLAVEOF命令，复制启动</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">SLAVEOF</span> <span class="hljs-number">127.0.0.1</span> <span class="hljs-number">6379</span><br></code></pre></td></tr></table></figure>
-<h5 id="设置master的地址和端口">1.设置master的地址和端口</h5>
-<p>slave将client给定的naster的IP和端口保存后，回复OK命令，表示复制指令已经被接收</p>
-<h5 id="建立套接字连接">2.建立套接字连接</h5>
-<p>slave根据命令设置的IP和端口，创建向master的socket连接</p>
-<h5 id="发送ping命令">3.发送PING命令</h5>
-<p>slave向master发送PING命令，有以下两个作用：</p>
+
+<h5 id="1-设置master的地址和端口"><a href="#1-设置master的地址和端口" class="headerlink" title="1.设置master的地址和端口"></a>1.设置master的地址和端口</h5><p>slave将client给定的naster的IP和端口保存后，回复OK命令，表示复制指令已经被接收</p>
+<h5 id="2-建立套接字连接"><a href="#2-建立套接字连接" class="headerlink" title="2.建立套接字连接"></a>2.建立套接字连接</h5><p>slave根据命令设置的IP和端口，创建向master的socket连接</p>
+<h5 id="3-发送PING命令"><a href="#3-发送PING命令" class="headerlink" title="3.发送PING命令"></a>3.发送PING命令</h5><p>slave向master发送PING命令，有以下两个作用：</p>
 <ul>
 <li>检查套接字的读写状态是否正常</li>
 <li>检查master是否能正常处理命令请求</li>
@@ -390,53 +382,46 @@
 <li>master向slave返回一个错误，表示master暂时不能处理这个命令请求，这时slave仍然会断开重新请求</li>
 <li>slave收到PONG的回复，表示主从之间网络正常，可以继续复制</li>
 </ul>
-<h5 id="身份验证">4.身份验证</h5>
-<h5 id="发送端口信息">5.发送端口信息</h5>
-<p>slave向master发送自己的监听端口号，master则将其保存</p>
-<h5 id="同步-1">6.同步</h5>
-<p>slave向master发送PSYNC命令，执行同步操作并更新</p>
+<h5 id="4-身份验证"><a href="#4-身份验证" class="headerlink" title="4.身份验证"></a>4.身份验证</h5><h5 id="5-发送端口信息"><a href="#5-发送端口信息" class="headerlink" title="5.发送端口信息"></a>5.发送端口信息</h5><p>slave向master发送自己的监听端口号，master则将其保存</p>
+<h5 id="6-同步"><a href="#6-同步" class="headerlink" title="6.同步"></a>6.同步</h5><p>slave向master发送PSYNC命令，执行同步操作并更新</p>
 <ul>
 <li>完整重同步：slave向master发送<code>PSYNC ? -1</code>命令</li>
 <li>部分重同步：slave向master发送<code>PSYNC &lt;runid&gt; &lt;offset&gt;</code>命令</li>
 </ul>
 <p>master回复有以下三种情况：</p>
 <ul>
-<li><p>master返回<code>+FULLRESYNC &lt;runid&gt; &lt;offset&gt;</code>，master将与slave执行完整重同步操作</p></li>
-<li><p>master返回<code>+CONTINUE</code>，将进行部分重同步操作</p></li>
-<li><p>master返回<code>ERROR</code>，表示master的版本低于2.8，两者不兼容，slave将换成master可以识别的PYSNC命令重新发送</p></li>
+<li><p>master返回<code>+FULLRESYNC &lt;runid&gt; &lt;offset&gt;</code>，master将与slave执行完整重同步操作</p>
+</li>
+<li><p>master返回<code>+CONTINUE</code>，将进行部分重同步操作</p>
+</li>
+<li><p>master返回<code>ERROR</code>，表示master的版本低于2.8，两者不兼容，slave将换成master可以识别的PYSNC命令重新发送</p>
+</li>
 </ul>
-<h5 id="命令传播-1">7.命令传播</h5>
-<p>完成了同步，进入命令传播状阶段，slave只用接收master传过来的写入命令进行同步即可</p>
-<h4 id="心跳检测">心跳检测</h4>
-<p>命令传播阶段，slave会默认以每秒一次的频率，向主服务器发送命令<code>REPLCONF ACK &lt;replication_offset&gt;</code>，作用如下：</p>
+<h5 id="7-命令传播"><a href="#7-命令传播" class="headerlink" title="7.命令传播"></a>7.命令传播</h5><p>完成了同步，进入命令传播状阶段，slave只用接收master传过来的写入命令进行同步即可</p>
+<h4 id="心跳检测"><a href="#心跳检测" class="headerlink" title="心跳检测"></a>心跳检测</h4><p>命令传播阶段，slave会默认以每秒一次的频率，向主服务器发送命令<code>REPLCONF ACK &lt;replication_offset&gt;</code>，作用如下：</p>
 <ul>
 <li><strong>检测主从服务器的网络连接状态</strong>：如果master超过一秒钟没有收到slave发来的ack命令，master则会知道它们之间的连接出现了故障</li>
-<li><strong>辅助实现min-slaves选型</strong>：<code>min-slaves-to-write 3 &amp; min-slaves-max-lag 10</code>将其作为master的配置，即 在slave数量少于三个或三个slave的延迟（lag）值都大于或等于10秒时，master将拒绝执行写入命令</li>
+<li><strong>辅助实现min-slaves选型</strong>：<code>min-slaves-to-write 3 &amp; min-slaves-max-lag 10   </code>将其作为master的配置，即 在slave数量少于三个或三个slave的延迟（lag）值都大于或等于10秒时，master将拒绝执行写入命令</li>
 <li><strong>检测命令丢失</strong>：如果因为网络故障，master传播给slave的写命令在半路丢失，那么当slave向master发送ack命令时，master将大仙salve的offset小于自己的，而后master就会在在即的backlog中找到slave缺少的数据，并将其重新发送给slave</li>
 </ul>
-<h4 id="主从复制的缺点">主从复制的缺点</h4>
-<p>只有一个master，宕机后需要人工手动恢复，无法做到高可用</p>
-<h2 id="哨兵sentinel">哨兵（Sentinel）</h2>
-<p>哨兵模式是Redis的高可用性解决方案：通过一个或多个sentinel来监控主服务器及其下属从节点的状态，在master发生故障时，从它的slave中选取一个作为新的master并执行故障转移操作。</p>
-<h4 id="sentinel的初始化">1.Sentinel的初始化</h4>
-<p>当一个哨兵启动时，需要执行以下步骤：</p>
-<ol type="1">
+<h4 id="主从复制的缺点"><a href="#主从复制的缺点" class="headerlink" title="主从复制的缺点"></a>主从复制的缺点</h4><p>只有一个master，宕机后需要人工手动恢复，无法做到高可用</p>
+<h2 id="哨兵（Sentinel）"><a href="#哨兵（Sentinel）" class="headerlink" title="哨兵（Sentinel）"></a>哨兵（Sentinel）</h2><p>哨兵模式是Redis的高可用性解决方案：通过一个或多个sentinel来监控主服务器及其下属从节点的状态，在master发生故障时，从它的slave中选取一个作为新的master并执行故障转移操作。</p>
+<h4 id="1-Sentinel的初始化"><a href="#1-Sentinel的初始化" class="headerlink" title="1.Sentinel的初始化"></a>1.Sentinel的初始化</h4><p>当一个哨兵启动时，需要执行以下步骤：</p>
+<ol>
 <li>初始化服务器</li>
 <li>将普通的Redis服务器使用的代码替换成Sentinel专用代码：二者之间有一些区别，如普通服务器Redis的服务器端口为6379，而Sentinel的端口为26379；且二者的命令表不同。</li>
 <li>初始化Sentinel状态：初始化一个sentinelState结构，保存了服务器中所有和sentinel功能有关的状态。</li>
 <li>根据给定的配置文件，初始化Sentinel的监视主服务器列表</li>
-<li>创建连向主服务器的网络连接：sentinel将成为主服务器的客户端，对于每个被sentinel监视的主服务器来说，sentinel会创建两个连向主服务器的异步网络连接。
-<ul>
+<li>创建连向主服务器的网络连接：sentinel将成为主服务器的客户端，对于每个被sentinel监视的主服务器来说，sentinel会创建两个连向主服务器的异步网络连接。<ul>
 <li>命令连接：向主服务器发送个命令，并接收命令回复。</li>
 <li>订阅连接：用于订阅主服务器的<code>__sentinel__：</code>hello频道。</li>
-</ul></li>
+</ul>
+</li>
 </ol>
-<h4 id="sentinel实现原理">2.Sentinel实现原理</h4>
-<p><strong>获取主服务器信息</strong>：sentinel默认以每十秒一次的频率，通过命令连接向主服务器发送INFO命令，通过分析INFO回复来获取主服务器的当前信息，如：当前服务器的运行ID及它的角色（role：master）；以及它手下的slave的基本信息。sentinel会根据这些信息更新主从的实例信息。</p>
-<p><strong>获取从服务器信息</strong>：sentinel发现有主服务器有新的slave时，还会创建到slave的<em>命令连接</em>和<em>订阅连接</em>。<em>命令连接</em>成功创建后，sentinel会向slave发送INFO命令获取其信息并更新slave的实例结构。</p>
+<h4 id="2-Sentinel实现原理"><a href="#2-Sentinel实现原理" class="headerlink" title="2.Sentinel实现原理"></a>2.Sentinel实现原理</h4><p><strong>获取主服务器信息</strong>：sentinel默认以每十秒一次的频率，通过命令连接向主服务器发送INFO命令，通过分析INFO回复来获取主服务器的当前信息，如：当前服务器的运行ID及它的角色（role：master）；以及它手下的slave的基本信息。sentinel会根据这些信息更新主从的实例信息。</p>
+<p><strong>获取从服务器信息</strong>：sentinel发现有主服务器有新的slave时，还会创建到slave的<em>命令连接</em>和<em>订阅连接</em>。<em>命令连接</em>成功创建后，sentinel会向slave发送INFO命令获取其信息并更新slave的实例结构。   </p>
 <p>sentinel通过命令连接向其他服务器发送命令，同时通过创建订阅连接来接收消息。对于监视同一个服务器的多个sentinel来说，信息是共享的，这也就意味着多个sentinel可以互相发现。即分析收到的频道信息来感知其他sentinel的存在，发送消息来告知别人自己的存在。sentinel之间会相互创建命令连接，最中监视同一个主从服务器的多个sentinel形成相互连接的网络。</p>
-<h4 id="工作过程">工作过程</h4>
-<p>sentinel会以每秒一次的频率向所有与它创建了命令连接的实例（主从服务器以及其他sentinel）发送<code>PING</code>命令，以此来判断实例是否在线，有两种回复：</p>
+<h4 id="工作过程"><a href="#工作过程" class="headerlink" title="工作过程"></a>工作过程</h4><p>sentinel会以每秒一次的频率向所有与它创建了命令连接的实例（主从服务器以及其他sentinel）发送<code>PING</code>命令，以此来判断实例是否在线，有两种回复：</p>
 <ul>
 <li>有效回复：<code>+PONG/-LOADING/-MASTERDOWN</code></li>
 <li>无效回复：其他命令或超时未回复</li>
@@ -444,21 +429,17 @@
 <p>sentinel的配置文件中<code>down-after-milliseconds</code>字段：如果一个实例在指定的毫秒内连续向sentinel返回无效回复，则会修改该实例的结构，以此表示该实例已经<strong>主观下线</strong>。</p>
 <p>sentinel向其他监视这一服务器的sentinel发送命令，当接收到足够多数量的已下线判断后，就会将master设定为<strong>客观下线</strong>。</p>
 <p>这时候需要从多个sentinel中选举一个领头sentinel（这里使用的是raft选举）来对已经下线的master执行故障转移操作。</p>
-<h5 id="领头sentinel执行故障转移">领头Sentinel执行故障转移</h5>
-<p>1.在已经下线的master的众多slave里选出一个，将其提升为master</p>
+<h5 id="领头Sentinel执行故障转移"><a href="#领头Sentinel执行故障转移" class="headerlink" title="领头Sentinel执行故障转移"></a>领头Sentinel执行故障转移</h5><p>1.在已经下线的master的众多slave里选出一个，将其提升为master</p>
 <p>选主规则：正常在线的–&gt; 最近成功通信的 -&gt; 保存的数据较新的 -&gt; 优先级最高的 -&gt; 偏移量最大的 -&gt; 运行ID最小的</p>
 <p>2.让所有slave改为复制新的master</p>
 <p>3.将已经下线的旧master设为新master的slave，当其重新上线后会认主</p>
 <blockquote>
-<p>哨兵实现过程：启动并初始化sentinel/获取主服务器信息/获取从服务器信息/向主从服务器发送信息/接收来自主从服务器的频道信息/检测主观下线状态/检测客观下线状态/选举领头sentinel/故障转移</p>
+<p>哨兵实现过程：启动并初始化sentinel&#x2F;获取主服务器信息&#x2F;获取从服务器信息&#x2F;向主从服务器发送信息&#x2F;接收来自主从服务器的频道信息&#x2F;检测主观下线状态&#x2F;检测客观下线状态&#x2F;选举领头sentinel&#x2F;故障转移</p>
 </blockquote>
-<h2 id="集群cluster">集群（Cluster）</h2>
-<p>Redis集群是一个分布式数据库方案，通过分片（sharding）来进行数据共享，并提供复制和数据转移功能。</p>
+<h2 id="集群（Cluster）"><a href="#集群（Cluster）" class="headerlink" title="集群（Cluster）"></a>集群（Cluster）</h2><p>Redis集群是一个分布式数据库方案，通过分片（sharding）来进行数据共享，并提供复制和数据转移功能。</p>
 <p>一个集群通常由多个节点组成，为了建立连接，客户端向它们发送<code>CLUSTER MEET</code>命令，通过握手形成了集群。</p>
 <p><strong>节点握手过程：</strong></p>
-<figure>
-<img src="http://r6j1m70cd.hb-bkt.clouddn.com/cluster%20meet.jpg" srcset="/img/loading.gif" lazyload alt="cluster meet" /><figcaption aria-hidden="true">cluster meet</figcaption>
-</figure>
+<p><img src="http://r6j1m70cd.hb-bkt.clouddn.com/cluster%20meet.jpg" srcset="/img/loading.gif" lazyload alt="cluster meet"></p>
 <ul>
 <li>节点A会把节点B的相关结构添加到自己维护的字典里</li>
 <li>A向B发送一条MEET消息</li>
@@ -469,24 +450,27 @@
 <p>随后，节点A会将B的信息通过Gossip协议传播给集群中的其他节点，让其他节点也与B进行握手。最终，B会被集群中所有节点认识，实现最终一致性。</p>
 <p><strong>槽指派</strong></p>
 <p>集群通过分片的方式来保存数据库中的键值对，整个数据库被分为16384个槽（slot），当他们都在被节点进行处理时，集群处于上线状态。</p>
-<ol type="1">
+<ol>
 <li>一个node节点会将自己负责处理的slots记录起来，还会通过消息发送给集群中其他节点，以此来告知其他节点自己负责处理那些节点，同时也会将收到的其他节点发来的slot信息存储起来。这样下来集群中的每个节点都会知道数据库中的16384个slot分别被指派给了谁。</li>
 </ol>
 <p>clusterNode结构的slots属性和numslot属性记录了节点负责处理那些槽：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">clusterNode</span> &#123;</span><br>    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> slots[<span class="hljs-number">16384</span>/<span class="hljs-number">8</span>];<br>    <span class="hljs-type">int</span> numslots;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>Redis以0为起始索引，16383为终止索引 slots是一个二进制数组，一共有2048个字节。如果索引上n的二进制位为1，则代表该节点负责处理槽n numslots记录节点负责处理的槽的数量</p>
-<p><strong>指派过程</strong> 将1-5000的slot指派给节点7000，将5000-10000的slot指派给节点7001，将10000 -16383的slot指派给节点7002</p>
+
+<p>Redis以0为起始索引，16383为终止索引<br>slots是一个二进制数组，一共有2048个字节。如果索引上n的二进制位为1，则代表该节点负责处理槽n<br>numslots记录节点负责处理的槽的数量</p>
+<p><strong>指派过程</strong><br>将1-5000的slot指派给节点7000，将5000-10000的slot指派给节点7001，将10000 -16383的slot指派给节点7002</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">127.0.0.1:7000&gt; CLUSTER ADDSLOTS 1 2 3 4 ... 5000<br>127.0.0.1:7001&gt; CLUSTER ADDSLOTS 5001 5002 5003 5004 ... 10000<br>127.0.0.1:7002&gt; CLUSTER ADDSLOTS 10000 10001 10002 10003 ... 16383<br></code></pre></td></tr></table></figure>
-<ol start="2" type="1">
-<li>slot指派完毕，集群进入上线状态。客户端开始向节点发送数据命令。接收到命令的节点会计算出命令要处理的数据库键属于哪个槽，并检查这个槽是否指派给了自己。
-<ul>
+
+<ol start="2">
+<li>slot指派完毕，集群进入上线状态。客户端开始向节点发送数据命令。接收到命令的节点会计算出命令要处理的数据库键属于哪个槽，并检查这个槽是否指派给了自己。<ul>
 <li>如果是自己负责，那么该节点直接执行该命令</li>
 <li>如果不是给自己，会向client返回一个MOVED错误，指引client redirect至正确的节点，并再次发送之前想要之前想要执行的命令。</li>
-</ul></li>
+</ul>
+</li>
 </ol>
 <p><strong>计算键属于哪个槽</strong></p>
 <p>使用CRC16来进行校验</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">slot_number</span>(<span class="hljs-params">key</span>):<br>    <span class="hljs-keyword">return</span> CRC16(key) &amp; <span class="hljs-number">16383</span><br></code></pre></td></tr></table></figure>
+
 <p>CRC16(key)用于计算键key的CRC-16校验和，而 &amp; 16383则用于计算一个介于0和16383之间的整数作为key的槽号。</p>
 <p><strong>判断槽是否由当前节点负责</strong></p>
 <p>当前节点查找槽信息，如果不是自己负责，返回正确的信息，如：<code>MOVED 6257 127.0.0.1:7001</code>。</p>
@@ -494,15 +478,15 @@
 <p>客户端通常会与集群中多个节点创建套接字连接，节点转向实际上就是换一个socket来发送命令</p>
 </blockquote>
 <p><strong>重新分片</strong></p>
-<p>重新分片操作可以将任意数量已经指派给某个节点的槽，改为指派给另一个节点，且相应的键值对数据也会进行移动。 重新分片操作可以在线进行，也就意味着集群不需要下线就可以完成这一操作。</p>
-<h4 id="复制与故障转移">复制与故障转移</h4>
-<p>Redis集群中的节点分为主节点与从节点。其中master用处理槽，而slave则用于复制某个主节点，并在被复制的主节点下线时，代替该节点继续处理命令请求。</p>
+<p>重新分片操作可以将任意数量已经指派给某个节点的槽，改为指派给另一个节点，且相应的键值对数据也会进行移动。<br>重新分片操作可以在线进行，也就意味着集群不需要下线就可以完成这一操作。</p>
+<h4 id="复制与故障转移"><a href="#复制与故障转移" class="headerlink" title="复制与故障转移"></a>复制与故障转移</h4><p>Redis集群中的节点分为主节点与从节点。其中master用处理槽，而slave则用于复制某个主节点，并在被复制的主节点下线时，代替该节点继续处理命令请求。</p>
 <p><strong>设置从节点</strong></p>
 <p>向一个节点发送命令</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs C">CLUSTER REPLICATE &lt;node_id&gt;<br></code></pre></td></tr></table></figure>
+
 <p>接收该命令的节点A成为node_id节点的从节点，并对其进行复制，随后节点A在自己的结构中标识自己已经成了从节点，并调用复制代码对node_id节点进行复制。其实可以看出这里的复制操作，和主从复制的功能是一样的，其实底层也是采用了相同的代码。节点A成为了从节点后，会通过消息发送给集群中的其他节点。</p>
-<p><strong>故障检测</strong> 集群中每个节点都会定期地向其他节点发送PONG消息，来检测对方是否在线。如果没有在规定的时间内发送PING回复，就会将其标记为<strong>疑似下线</strong>。 集群中的各个节点都会通过互相发送消息的方式来交互集群中各个节点的状态信息，当半数以上负责处理槽的主节点都将某个主节点X标记为疑似下线，那么该节点会被认为是<strong>已下线状态</strong>，并广而告之。</p>
-<p><strong>故障转移</strong> 当一个从节点发现自己正在复制的主节点进入了已下线模式，开始对该主节点进行故障转移：</p>
+<p><strong>故障检测</strong><br>集群中每个节点都会定期地向其他节点发送PONG消息，来检测对方是否在线。如果没有在规定的时间内发送PING回复，就会将其标记为<strong>疑似下线</strong>。<br>集群中的各个节点都会通过互相发送消息的方式来交互集群中各个节点的状态信息，当半数以上负责处理槽的主节点都将某个主节点X标记为疑似下线，那么该节点会被认为是<strong>已下线状态</strong>，并广而告之。</p>
+<p><strong>故障转移</strong><br>当一个从节点发现自己正在复制的主节点进入了已下线模式，开始对该主节点进行故障转移：</p>
 <ul>
 <li>从复制该主节点的众多从节点中选出一个</li>
 <li>被选中的从节点执行SLAVE no one命令，成为新的主节点</li>
@@ -510,9 +494,8 @@
 <li>新的主节点向集群广播一条PONG消息，通知其他节点，自己已经变成了主节点，并接管了前任的任务</li>
 <li>新的主节点开始工作，故障转移完成</li>
 </ul>
-<p><strong>选举新的主节点</strong> 基于Raft的领导选举方法实现，大同小异。</p>
-<h5 id="消息">消息</h5>
-<p>集群中节点通过消息进行通信，有以下五种分类：</p>
+<p><strong>选举新的主节点</strong><br>基于Raft的领导选举方法实现，大同小异。</p>
+<h5 id="消息"><a href="#消息" class="headerlink" title="消息"></a>消息</h5><p>集群中节点通过消息进行通信，有以下五种分类：</p>
 <ul>
 <li><strong>MEET</strong>：握手</li>
 <li><strong>PING</strong>：检测节点是否在线</li>
@@ -554,21 +537,23 @@
         </div>
       
       
-      <div class="license-meta-item">
-        <div>Licensed under</div>
-        <div>
-          
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
             
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
             
-              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
-                <i class="iconfont icon-by"></i>
-              </span>
-              </a>
-            
-          
+          </div>
         </div>
-      </div>
+      
     </div>
     <div class="license-icon iconfont"></div>
   </div>
@@ -611,7 +596,10 @@
       
   <aside class="sidebar" style="margin-left: -1rem">
     <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -723,22 +711,34 @@
     var boardCtn = jQuery('#board-ctn');
     var boardTop = boardCtn.offset().top;
 
-    window.tocbot.init({
+    window.tocbot.init(Object.assign({
       tocSelector     : '#toc-body',
       contentSelector : '.markdown-body',
-      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
       linkClass       : 'tocbot-link',
       activeLinkClass : 'tocbot-active-link',
       listClass       : 'tocbot-list',
       isCollapsedClass: 'tocbot-is-collapsed',
       collapsibleClass: 'tocbot-is-collapsible',
-      collapseDepth   : CONFIG.toc.collapseDepth || 0,
       scrollSmooth    : true,
-      headingsOffset  : -boardTop
-    });
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
     if (toc.find('.toc-list-item').length > 0) {
       toc.css('visibility', 'visible');
     }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
   });
 </script>
 
@@ -767,6 +767,21 @@
       window.anchors.options.class = 'anchorjs-link-left';
     }
     window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
   });
 </script>
 
@@ -810,6 +825,15 @@
           MathJax.typeset();
           MathJax.typesetPromise();
         }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
       </script>
     
 
