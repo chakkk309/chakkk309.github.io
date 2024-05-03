@@ -1,0 +1,1075 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/images/chakkk.jpg">
+  <link rel="icon" href="/images/chakkk.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Jiaqi">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="一. requent Itemset Analysis1. The Market-Basket Model1.1 定义购物篮模型是频繁项集挖掘的一个经典例子，用来描述两个对象之间的关系。每个 basket 都由一系列 item 项组成。item 可以看作最小的信息单位，用 i 表示；itemset 则是项的集合，即购物篮。 通常假设：一个 basket 中的 item 数量很小（远小于所有的 it">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Graph Mining">
+<meta property="og:url" content="https://chakkk309.github.io/2022/09/28/GraphMining/index.html">
+<meta property="og:site_name" content="Chakkk">
+<meta property="og:description" content="一. requent Itemset Analysis1. The Market-Basket Model1.1 定义购物篮模型是频繁项集挖掘的一个经典例子，用来描述两个对象之间的关系。每个 basket 都由一系列 item 项组成。item 可以看作最小的信息单位，用 i 表示；itemset 则是项的集合，即购物篮。 通常假设：一个 basket 中的 item 数量很小（远小于所有的 it">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/1/1.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/1/2.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/1/3.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/1/4.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/1/5.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/1/6.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/1/7.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/1/8.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/1/9.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/1/10.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/1/11.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/2/1.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/2/2.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/2/3.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/2/4.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/2/5.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/2/6.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/2/7.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/2/8.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/2/9.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/2/10.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/2/11.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/2/12.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/2/13.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/2/14.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/2/15.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/2/16.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/2/17.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/2/18.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/2/19.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/2/20.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/2/21.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/2/22.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/2/23.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/2/24.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/2/25.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/2/26.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/3/1.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/3/2.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/3/3.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/3/4.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/3/5.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/3/6.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/3/7.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/3/8.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/3/9.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/4/1.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/4/2.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/4/3.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/4/4.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/4/5.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/4/8.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/4/6.png">
+<meta property="og:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/4/7.png">
+<meta property="article:published_time" content="2022-09-28T10:13:14.000Z">
+<meta property="article:modified_time" content="2024-05-03T11:42:21.503Z">
+<meta property="article:author" content="Jiaqi">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://chakkk309.github.io/2022/09/28/GraphMining/1/1.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Graph Mining - Chakkk</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"chakkk309.github.io","root":"/","version":"1.9.4","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Chakkk ‘s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-books"></i>
+                <span>Others</span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/books">
+                    
+                    <span>Books</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/movies">
+                    
+                    <span>Movies</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/life">
+                    
+                    <span>Life</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/graph">
+                    
+                    <span>(WIP)</span>
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/images/ta.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">Graph Mining</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-09-28 18:13" pubdate>
+          September 28, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          12k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          30 mins
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> views
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Graph Mining</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="一-requent-Itemset-Analysis"><a href="#一-requent-Itemset-Analysis" class="headerlink" title="一. requent Itemset Analysis"></a>一. requent Itemset Analysis</h1><h3 id="1-The-Market-Basket-Model"><a href="#1-The-Market-Basket-Model" class="headerlink" title="1. The Market-Basket Model"></a>1. The Market-Basket Model</h3><h4 id="1-1-定义"><a href="#1-1-定义" class="headerlink" title="1.1 定义"></a>1.1 定义</h4><p>购物篮模型是频繁项集挖掘的一个经典例子，用来描述两个对象之间的关系。每个 basket 都由一系列 item 项组成。item 可以看作最小的信息单位，用 i 表示；itemset 则是项的集合，即购物篮。</p>
+<p>通常假设：一个 basket 中的 item 数量很小（远小于所有的 item 总数），且 basket 的数量很大，大到内存无法装下。</p>
+<p>包含 k 个项的项集称为 k 项集，如 {Milk} 是一项集，{Diaper, Milk} 是二项集。</p>
+<center><img src="1/1.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" /> </center>
+
+
+
+<p>item 是超市里正在出售的商品，每个Transaction 可以看作一个购物篮，顾客购物时同时购买了面包，可乐和牛奶。通过分析顾客的账单，可以发现一些关联规则：</p>
+<center><img src="1/2.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" /> </center>
+
+<p>即购买了牛奶的顾客也能也会同时购买可乐，购买了尿布和牛奶的人也许会同时购买啤酒🍺。通过发现顾客购买商品之间的联系，分析他们的购物习惯，这种关联可以帮助了解哪些商品频繁地被顾客一起购买，通过顾客的消费习惯调整营销策略，进一步提升营业额。</p>
+<h3 id="2-Frequent-Itemset"><a href="#2-Frequent-Itemset" class="headerlink" title="2. Frequent Itemset"></a>2. Frequent Itemset</h3><h4 id="2-1-频繁项集定义"><a href="#2-1-频繁项集定义" class="headerlink" title="2.1 频繁项集定义"></a>2.1 频繁项集定义</h4><p>在多个购物篮中出现频率较高的项集被称为“<strong>频繁项集</strong>”。</p>
+<p>如何量化“高频率”呢？</p>
+<p>使用 <strong>support</strong>，也就是支持度，来衡量一个项集是否算作频繁。如牛奶的支持度，就是一天内有多少个顾客购买了牛奶。如果购买的比例太低，说明很少有人购买这个商品，那么在实际当中意义就不大。</p>
+<p>项集I的支持度是说 I 在购物篮中出现的次数，即商品的畅销程度，支持度越大越好，表示占所有商品的购买比例越大。假设有一个数字 s（<strong>support threshold</strong>）叫做支持度阈值，如果I的支持度大于等于 s，I 就是频繁项集，简单理解就是几个频繁一起出现的商品组合。</p>
+<p>例：如何通过最小阈值找到频繁项</p>
+<center><img src="1/3.png" srcset="/img/loading.gif" lazyload style="zoom:33%;" /> </center>
+
+<p>给定集合中有 5 样商品（后续用首字母缩写表示）。支持度阈值为 3，即为在集合中出现了三次及以上的 item 为频繁项集，pepsi 只出现了两次，所以它不属于频繁的 item。根据这个规则，还可以找出符合规则的 doubleton（二元组）。</p>
+<p>ps：其实<code>&#123;&#125;</code>也算做所有集合的子集，但通常忽略不计。</p>
+<h4 id="2-2-关联规则"><a href="#2-2-关联规则" class="headerlink" title="2.2 关联规则"></a>2.2 关联规则</h4><p>从数据中找到了频繁项集，但是往往用 if-then 形式的规则集合来表示抽取结果，这些规则称为关联关联规则（association rule）。表示形式为 <em>I</em> → j，<em>I</em> 是一个项集，j 是一个项，意味着如果 <em>I</em> 中的所有项出现在一个购物篮中时，<em>j</em> “有可能”也出现在这个购物篮中。</p>
+<p>如何量化“有可能”呢？</p>
+<p>定义规则的<strong>置信度（confidence）</strong>来表示j出现在购物篮中的概率。</p>
+<p>$$conf(I \rightarrow j) &#x3D; \frac{support(I \cup j) }{support(I)}$$</p>
+<p>所有包含 I的购物篮中同时包含 j 的购物篮的比例，是个条件概率<code>P(A|B)</code>，即在 A 发生的情况下，B 发生的概率是多少，可信度越大越好。简单来讲就是说顾客已经购买了一些商品A，还会有多大的概率购买商品B。</p>
+<p><strong>Interest</strong></p>
+<p>$$Interest(I \rightarrow j)&#x3D; conf(I \rightarrow j) - P_r[j] $$</p>
+<p>例：计算 Confidence和 Interest</p>
+<center><img src="1/4.png" srcset="/img/loading.gif" lazyload style="zoom:33%;" /> </center>
+
+<h4 id="2-3-寻找关联规则"><a href="#2-3-寻找关联规则" class="headerlink" title="2.3 寻找关联规则"></a>2.3 寻找关联规则</h4><p>问题：如何寻找支持度 &gt;&#x3D;s 且置信度 &gt;&#x3D;c 的关联规则？</p>
+<p>难点：难点在于如何找到指定的频繁项集。</p>
+<h4 id="2-4-关联规则挖掘步骤"><a href="#2-4-关联规则挖掘步骤" class="headerlink" title="2.4 关联规则挖掘步骤"></a>2.4 关联规则挖掘步骤</h4><ol>
+<li>找到所有的频繁项集</li>
+<li>使用关联规则算法找出其中物品的关联</li>
+</ol>
+<p>例：</p>
+<center><img src="1/5.png" srcset="/img/loading.gif" lazyload style="zoom:33%;" /> </center>
+
+<p>一共有 B1-B8 共 8 个集合，s 为 3，c 的置信度为 0.75。</p>
+<h4 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h4><ul>
+<li>一个规则很强（High confidence），并不代表它就有意义。</li>
+</ul>
+<h2 id="3-如何寻找频繁子集"><a href="#3-如何寻找频繁子集" class="headerlink" title="3.如何寻找频繁子集"></a>3.如何寻找频繁子集</h2><h3 id="3-1-A-Priori-Algothrithm"><a href="#3-1-A-Priori-Algothrithm" class="headerlink" title="3.1 A-Priori Algothrithm"></a>3.1 A-Priori Algothrithm</h3><p>虽然听起来频繁集规则就是一个简单的数据库计数问题，但它实际上非常复杂。假设只有三中种商品，但是它们可以组合成很多种不同的 itemset，总数非常多，如果有很多种商品那么网络的规模会变得十分庞大，不可能用简单的技术方法来计算频繁项集，如下图：</p>
+<center><img src="1/6.png" srcset="/img/loading.gif" lazyload style="zoom:25%;" /> </center>
+
+<p>假设一个关系型数据库中有 N 条记录，数据项长短不一，假设每行的平均宽度为 W，复杂度则为 <code>O(NMW)</code>， 看起来可能并不复杂，通常一个复杂的算法可能为 $O(N^2)$。但是这里的复杂度在于 M，M 是非常庞大的。</p>
+<center><img src="1/7.png" srcset="/img/loading.gif" lazyload style="zoom:30%;" /> </center>
+
+<p>如果有 d 种商品，所有可能的 itemsets就是 $M &#x3D; d^2 - 1$，d 种商品，可以选择也也可以不选择，有（0, 1）种可能，它不能非空，所以再减一，必须至少购买一件商品。$2^{10} &#x3D; 1024$，$ 2^{20}$ 就已经上万了。</p>
+<p>有一千种商品，已经没有办法在普通的计算机中进行计算了。需要找一些更加有效的方法去大幅度缩小搜索空间。</p>
+<p> A-Priori 算法的核心思想非常简单，只有两句话，且没有任何数学公式。</p>
+<ul>
+<li><p><strong>A subset of a frequent itemset must be frequent</strong></p>
+<p>{M, L, C} is frequent → {M, L} is frequent</p>
+</li>
+<li><p><strong>The supersets of any infrequent itemset cannot be frequent</strong></p>
+<p>{B} is infrequent → {B, M} is infrequent</p>
+</li>
+</ul>
+<p>ps: 大神关于 A-Priori 算法的三篇论文在 1993 至 1995 年连续三年发表在数据库顶会上（ICDE，SIGMOD，VLDB），A-Priori 也被称为数据挖掘十大算法之一。</p>
+<p>运用这个算法，将上面的网络图进行剪枝，假设 B 不是频繁项，那么都不用计算，首先排除了包括 B 的所有项集都不是频繁项集，大大减少了需要查找的数据量，十分实用。</p>
+<center><img src="1/8.png" srcset="/img/loading.gif" lazyload style="zoom:25%;" /> </center>
+
+<p>根据这种思想，已知项 B 不频繁，那么以下所有包含B项的超集都不频繁，减少了要计算的数据量。</p>
+<p>算法思路：尽量避免生成不频繁的 candidate itemset，但还是避免不了多次扫描数据库，这就会有很多IO操作（瓶颈）。</p>
+<ol>
+<li>生成某个特定大小的 itemset，通常从1开始，一个一个的商品</li>
+<li>扫描数据库，如果不频繁（即 &lt; 最小支持阈值），扔掉，只保留频繁的商品</li>
+<li>用已经知道频繁的 itemset，将它们进行组合，组合成两个两个的 itemset（candiddate）。再去扫描迭代，找到两个两个频繁的项（truly） ，再拼成三个三个，如此迭代，每次做到 k&#x3D;k+1。</li>
+</ol>
+<center><img src="1/9.png" srcset="/img/loading.gif" lazyload style="zoom:25%;" /> </center>
+
+<center><img src="1/10.png" srcset="/img/loading.gif" lazyload style="zoom:33%;" /> </center>
+
+<p>例：如果一些项是用字符表示的如 “Milk”， 我们需要先给定一个数字，按照数字大小进行排序。</p>
+<center><img src="1/11.png" srcset="/img/loading.gif" lazyload style="zoom:33%;" /> </center>
+
+<p>注：一开始有点疑惑 $C_3$ 是如何得出来的，是由 $L_2$ 中的 {2,3} 和 {2,5} 拼成。</p>
+<h3 id="3-2-PCY-算法"><a href="#3-2-PCY-算法" class="headerlink" title="3.2 PCY 算法"></a>3.2 PCY 算法</h3><h3 id="3-3-多哈希算法"><a href="#3-3-多哈希算法" class="headerlink" title="3.3 多哈希算法"></a>3.3 多哈希算法</h3><br/>
+
+<p>Ref：</p>
+<p><a target="_blank" rel="noopener" href="https://zjunzhao.github.io/posts/2020_09_23_frequent_itemsets_mining.html#section3">https://zjunzhao.github.io/posts/2020_09_23_frequent_itemsets_mining.html#section3</a></p>
+<p>很多问题都可以描述为寻找相似的集合，如：寻找相似的单词；购买了相同商品的顾客；有相同特征的图片等。本节课的内容关于如何寻找高维数据的相似性。</p>
+<blockquote>
+<p>使用普通贝叶斯方法查找相似项的时间复杂度为 $O(N^2)$，N 为数据的个数。但用一种方法可以使其降为$O(N)$。</p>
+</blockquote>
+<h1 id="二-Jaccard-similarity"><a href="#二-Jaccard-similarity" class="headerlink" title="二. Jaccard similarity"></a>二. Jaccard similarity</h1><p>这是一种衡量集合相似度的方法，集合 S 和集合 T 的 Jaccard 相似度为 $Jaccard(C_1, C_2)  &#x3D; \frac{ S \cap T}{S \cup T}$，记为 $sim(S, T)$。而 Jaccard distance 则为：$1- sim(C1, C2)$， 寻找距离最近的邻居节点作为“最小距离。</p>
+<p>例：</p>
+<center><img src="2/1.png" srcset="/img/loading.gif" lazyload style="zoom:45%;" /> </center>
+
+<p>问题：给定一个数目上万的庞大文档，如何找出其中最相似（near duplicate）的内容？</p>
+<p>解决步骤：</p>
+<ol>
+<li><strong>Shingling</strong>：将文档转化为集合</li>
+<li><strong>Min-Hashing</strong>：将大集合分解为短的签名，同时保留之前的相似度</li>
+<li><strong>Locality-Sentisitive Hashing</strong>：获取潜在的相似签名</li>
+</ol>
+<p>整体流程：</p>
+<center><img src="2/2.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" /> </center>
+
+<h3 id="1-Shingling"><a href="#1-Shingling" class="headerlink" title="1. Shingling"></a>1. Shingling</h3><p><strong>k-shingling</strong>：一篇文档就是一个字符串，文档的 k-shingling 定义为集中任意长度为 k 的子串。每篇文档可以表示成文档中出现一次或者多次的 k-shingling 集合，这些小的集合通常被称为 token。为了识别字面上相似的文档，将文档表示成很多 shinglings，比较它们的相似度，这样就将文本相似度转化为集合求交集的问题了。</p>
+<p>例：k&#x3D;2, document $D_1 &#x3D; abcab$, 2-shingle &#x3D; $S(D_1) &#x3D; {ab, bc,ca}$</p>
+<p>为了压缩 shingle，我们可以把它们哈希到 4 字节，Hash 后为$h(D_1) &#x3D; {1, 5,7}$</p>
+<p><strong>shingles 优点</strong>：</p>
+<ol>
+<li>将文档相似性问题转化为，只需要判断 shingles 是否相似</li>
+<li>改变一个单词只会影响几个 shingle，整体的相似度不会发生太大改变</li>
+</ol>
+<p>注：理论上我们可以选择任意常数作为 k，但也需要进行一些 trade-off 如果文档是邮件选择 k&#x3D;5 比较合适，如果是研究论文选择 k&#x3D;9 比较合适。</p>
+<p><strong>将集合转化为特征矩阵</strong></p>
+<p>列对应集合，行对应全集中的元素，如果元素属于集合，那么对应的位置为 1，否则为 0。每一列表示一个文档，每一行则是相关的 shingle，一般这种矩阵都是稀疏的，也就是说矩阵中的 0 居多。</p>
+<p>例：下图为全集 {a,b,c,d} 中元素组成的多个集合的矩阵表示。$S_1&#x3D;{a,d}  S_2&#x3D;{c}  S_3&#x3D;{b,d,e} S_4&#x3D;{a,c,d}$</p>
+<center><img src="2/3.png" srcset="/img/loading.gif" lazyload alt="characteristic matrix" style="zoom:45%;" /> </center>
+
+<p>将数据可视化为特征矩阵，一下子就变得非常直观，但是这种矩阵不是数据真正的存储方式，因为它们往往是稀疏的（0 的数量远多于 1 的数目），如果存储 0 会浪费很多空间。</p>
+<p><strong>应用案例</strong>：如果行代表商品，列代表顾客。每一列就是顾客一次购物所购买的商品集合，这些数据或许存储在数据库中的销售记录表中，表中可能还存储了该次购物的其他数据，如销售日期等。使用特征矩阵计算 Jaccard 相似度，例子如下：</p>
+<center><img src="2/4.png" srcset="/img/loading.gif" lazyload alt="Jaccard e.g." style="zoom:33%;" /> </center>
+
+<p>$sim(C_1, C_2) &#x3D; 3&#x2F;6$</p>
+<p>$d(C_1, C_2) &#x3D; 1- sim(C_1, C_2)  &#x3D; 3&#x2F;6$</p>
+<p>第一列 c1 和第二列 c2 的相似度为它们并集比交集，一开始我并不理解 0 和 1 元素的并集和交集怎么计算，但我们可以把这件事情看作这两列元素的与&#x2F;或，这样就清晰多了。只需要计算两个元素与的结果为 1&#x2F;两个元素相交为1 的个数，即两个元素都为 1 的个数&#x2F;有一个元素为 1 的个数即可。</p>
+<p>计算所有列的相似度需要花费很多时间，但我们可以在此基础上做一些优化，减少一些计算量，也就用到了下面的最小哈希算法。</p>
+<h3 id="2-Min-Hashing"><a href="#2-Min-Hashing" class="headerlink" title="2. Min-Hashing"></a>2. Min-Hashing</h3><p>为了进行最小哈希，首先随机打乱这个矩阵的排列顺序。每次打乱之后，找出每个列向量（即每个集合）中的第一个值为 1 的行索引，并将该索引组成一个新的集合，这个集合就是一次最小哈希操作后的哈希签名，例：</p>
+<center><img src="2/5.png" srcset="/img/loading.gif" lazyload alt="Min-Hashing" style="zoom:33%;" /> </center>
+
+<p>根据第一列棕色的排列顺序查找矩阵，首先看棕色列中元素为 1 的那一行，在矩阵中第一列的位置的元素为 0，继续寻找第 2 个下标指向的位置，矩阵中对应元素为 1，所以 $h(S_1) &#x3D; 2$，对该列的哈希结束。随后继续对剩下的三列进行 hash，将输入的矩阵降维，计算后的签名为 $2121$。</p>
+<p>左边的三列 permutation 其实是三种矩阵的不同排列组合，物理上不可能对非常非常大的特征矩阵进行排列转换，但这个哈希函数却在某种意义上把矩阵重新排列，将其变为了下图，在新的矩阵中，我们可以通过从上往下扫描直到遇到1位置，这样就非常的直观清楚，但实际操作中的排列转换并不是这么做的。</p>
+<p>我们通过一个随机哈希函数来模拟随机排列转换的效果，该函数将行号映射到与行数目大致相同的桶中，这样我们就可以不进行实际的随机排列转换操作，减少计算量。</p>
+<center><img src="2/6.png" srcset="/img/loading.gif" lazyload alt="Min-Hashing" style="zoom:33%;" /> </center>
+
+<p>Min-Hashing 是在 Jaccard 相似度基础上进行改进的，Min-Hashing 是一个可以匹配 Jaccard 相似度的一个哈希函数。首先对集合进行 hash 操作降维，再计算哈希后的 signature 的相似度，这样大大减少了计算量。但是如何保证最小哈希之后的签名的相似度与原集合保持一致呢？</p>
+<p><strong>注：最小哈希计算之后的签名的相等概率等于原集合的相似度</strong></p>
+<p>假设只考虑集合 S1 和 S2 所对应的列，那么他们所在的行的元素由 0 和 1 排列组合为以下三类：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>1</td>
+<td>X</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>Z</td>
+</tr>
+</tbody></table>
+<p>X 类和 Y 类行数目的比例决定了 $SIM(S_1, S_2)以及 h(S_1) &#x3D; h(S_2)$ 的概率大小，由此看来 $SIM(S_1, S_2) &#x3D; x&#x2F; (x+y)$。</p>
+<p>$h(S_1) &#x3D; h(S_2)$ 的概率为：</p>
+<center><img src="2/7.png" srcset="/img/loading.gif" lazyload alt="input" style="zoom:33%;" /> </center>
+
+<p>将原矩阵和哈希签名后的矩阵的相似度进行比较，发现他们相似但是并不相等。因为这个矩阵太小，不足以说明在大规模数据情况下的真正规律。</p>
+<h3 id="3-LSH"><a href="#3-LSH" class="headerlink" title="3. LSH"></a>3. LSH</h3><p>对集合进行哈希得到签名矩阵后，节省了很多空间。但是当集合数量非常庞大时，仍然需要很庞大的计算量。LS 只关注那些可能相似的文档对，而不需要研究所有的文档对。局部敏感哈希算法是进行多次哈希，使得相似项会比不相似项更可能哈希到同一桶（bucket）中，等待后续进行相似度的计算。</p>
+<p>这里有两个概念，false positive 即哈希到同一个桶里面的不相似文档; flase positive 没有影射到相同桶中的真正相似的文档。</p>
+<p>例：下图是 12 行签名矩阵，被分成 4 个 band， 每条由 3 行组成。</p>
+<center><img src="2/8.png" srcset="/img/loading.gif" lazyload alt="Fig. 3.7" style="zoom:25%;" /> </center>
+
+<p>band1 中的第 2 列与第 5 列相似，所以它俩在这个 band 中肯定会在同一个桶中，即它们是一对相似后选对。</p>
+<p>注：<strong>band 并不是桶</strong>，针对每个 band 都存在一个哈希函数能够将 band 中的每个列映射到某个桶中。每个 band有一个专属它自己的桶。假设当两个向量相同时它们才会被哈希到同一个桶中。</p>
+<blockquote>
+<p>Question ：我们应该使用多少个哈希函数生成 signature 呢？</p>
+<p>Answer：More is always better，但这里也存在一个 tradeoff，如果我们使用了更多的哈希函数，这意味着有更多的计算量，将花费更多的内存和计算时间，但准确度会更高。我们需要在计算资源和准确度之间做一个取舍。</p>
+</blockquote>
+<p>例：</p>
+<center><img src="2/9.png" srcset="/img/loading.gif" lazyload alt="Fig. 3.7" style="zoom:25%;" /> </center>
+
+<p>signature 的长度是 100，意味着使用了 100 个哈希函数。一个整数占四个字节，signature 的大小为 40MB。我们需要找到相似度为 0.8 的文档对。把s ignature 分为 20 个 band，每个 band 中有 5 个整数。我们对此进行一些计算：</p>
+<p>我们把相似度阈值设置为 0.8，即两个候选对的相似度为 0.8，大于设置的阈值，即 C1 和 C2 成为候选对，也就是说我们希望两列至少在同一个 bucket 桶里面。</p>
+<p>C1 和 C2 在同一个 bucket 里面的概率是 $(0.8)^5&#x3D;0.328$，一个 band 中有 5 列，所以需要计算 5 列都相等的概率则为 0.8 的 5 次方。</p>
+<p>接着计算 C1 和 C2 在一个 band 中不相似的概率为 1-0.328，那么在 20 个 band 里面不相等的概率为$(1-0.328)^{20}&#x3D;0.00035$，<strong>也就是说在 20 个 band 里相等的概率为 99.965%<strong>。剩下的 0.035% 的候选对则为</strong>假阴性</strong>，它们不该出现在同一个 bucket 中，我们会忽略这些候选对。</p>
+<center><img src="2/10.png" srcset="/img/loading.gif" lazyload alt="false negatives" style="zoom:25%;" /> </center>
+
+<p>假设 C1 和 C2 的相似度为 30%，小于阈值 0.8，意味着它们哈希后不会出现在同一个桶中，所有的 band 都是不同的。C1 和 C2 在 hash 到同一个 bucket 的概率为 $0.3^5$，在 20 个 band 中相似的对为 0.474，也就是说文档中有 4.74% 的对成为了候选对，但是一开始假设的相似度为 30%，远远小于设定的阈值，所以理论上文档中不存在候选对，这就是所谓的<strong>假阳性</strong>。</p>
+<center><img src="2/11.png" srcset="/img/loading.gif" lazyload alt="false negatives" style="zoom:25%;" /> </center>
+
+
+
+<p><strong>分析：</strong></p>
+<p>假设有 b 个 band，每个 band 有 r 行，假设某两个文档之间的 Jaccard 的相似度为 s。</p>
+<center><img src="2/12.png" srcset="/img/loading.gif" lazyload style="zoom:35%;" /> </center>
+
+<p>一些候选对被忽略了，还有一些本不应该成为候选对。应该如何选择哈希函数？应该如何将矩阵分成 bands 和rows？唯一固定的是 $M&#x3D;b*r$这个公式。</p>
+<center><img src="2/13.png" srcset="/img/loading.gif" lazyload style="zoom:25%;" /> </center>
+
+<p>理想状态：</p>
+<center><img src="2/14.png" srcset="/img/loading.gif" lazyload style="zoom:25%;" /> </center>
+
+<p>x 轴是相似度，左边是 0 右边为 1；y 轴为两列在同一个 bucket 的概率。图中是一个理想状态，小于阈值 s 的相似度为 0，它们不是候选对，大于等于阈值的相似度为 1，即一定是候选对。</p>
+<p>现在的状态：</p>
+<center><img src="2/15.png" srcset="/img/loading.gif" lazyload style="zoom:25%;" /> </center>
+
+<p>s 是给定的阈值，我们要做的就是尽可能得让 s 左边的假阳性三角区域变小，这是我们有一个哈希函数，一个band一列的函数情况。</p>
+<center><img src="2/16.png" srcset="/img/loading.gif" lazyload style="zoom:25%;" /> </center>
+
+<p>b 个 band，r 列的函数图像：</p>
+<center><img src="2/17.png" srcset="/img/loading.gif" lazyload style="zoom:25%;" /> </center>
+
+<p>转换过程：</p>
+<center><img src="2/18.png" srcset="/img/loading.gif" lazyload style="zoom:25%;" /> </center>
+
+<p>举例：</p>
+<center><img src="2/19.png" srcset="/img/loading.gif" lazyload style="zoom:25%;" /> </center>
+
+<center><img src="2/20.png" srcset="/img/loading.gif" lazyload style="zoom:25%;" /> </center>
+
+<h2 id="Exercise"><a href="#Exercise" class="headerlink" title="Exercise"></a>Exercise</h2><p><strong>Exercise 3.2.1</strong> : What are the first ten 3-shingles in the first sentence of Section 3.2?</p>
+<blockquote>
+<p>The most effective way to represent documents as sets, for the purpose of identifying lexically similar documents is to construct from the document the set of short strings that appear within it.</p>
+</blockquote>
+<p>A : The most effective, most effective way, effective way to, way to represent, to represent documents, represent documents as, documents as sets,  <code>as sets, for</code>, <code>sets, for the</code>, for the purpose. </p>
+<p><strong>Exercise 3.2.2</strong> : If we use the stop-word-based shingles of Section 3.2.4, and we take the stop words to be all the words of three or fewer letters, then what are the shingles in the first sentence of Section 3.2? </p>
+<p><em>The</em> most effective way <em>to</em> represent documents <em>as</em> sets, <em>for</em> <em>the</em> purpose <em>of</em> identifying lexically similar documents <em>is</em> <em>to</em> construct <em>from</em> <em>the</em> document <em>the</em> <em>set</em> <em>of</em> short strings <em>that</em> appear within <em>it</em>.</p>
+<p><strong>Exercise 3.2.3</strong> : What is the largest number of k-shingles a document of n bytes can have? You may assume that the size of the alphabet is large enough that the number of possible strings of length k is at least n.</p>
+<p><strong>A: N-k+1, <a target="_blank" rel="noopener" href="https://datascience.stackexchange.com/questions/33009/mining-of-massive-datasets">Solution</a></strong> </p>
+<p><strong>Exercise 3.3.1</strong> : Verify the theorem from Section 3.3.3, which relates the Jaccard similarity to the probability of minhashing to equal values, for the particular case of Fig. 3.2.</p>
+<center><img src="2/21.png" srcset="/img/loading.gif" lazyload style="zoom:25%;" /> </center>
+
+<p>(a) Compute the Jaccard similarity of each of the pairs of columns in Fig. 3.2.</p>
+<p>$SIM(S_1, S_2)&#x3D; 0, \quad SIM(S_1, S_3)&#x3D; 1&#x2F;4,\quad SIM(S_1, S_4)&#x3D; 2&#x2F;3$</p>
+<p>$SIM(S_2, S_3)&#x3D; 0, \quad SIM(S_2, S_4)&#x3D; 1&#x2F;3, \quad SIM(S_3, S_4)&#x3D; 1&#x2F;5$</p>
+<p><strong>!</strong> b. Compute, for each pair of columns of that figure, the fraction of the 120 permutations of the rows that make the two columns hash to the same value.</p>
+<p><strong>Exercise 3.3.2</strong> : Using the data from Fig. 3.4, add to the signatures of the columns the values of the following hash functions:</p>
+<center><img src="2/22.png" srcset="/img/loading.gif" lazyload style="zoom:45%;" /> </center>
+
+<p>(a) h3(x) &#x3D; 2x + 4 mod 5. </p>
+<p>(b) h4(x) &#x3D; 3x − 1 mod 5.</p>
+<center><img src="2/23.png" srcset="/img/loading.gif" lazyload style="zoom:45%;" /> </center>
+
+<p><strong>Exercise 3.3.3</strong> : In Fig. 3.6 is a matrix with six rows. </p>
+<center><img src="2/24.png" srcset="/img/loading.gif" lazyload style="zoom:35%;" /> </center>
+
+<p>(a) Compute the minhash signature for each column if we use the following three hash functions: h1(x) &#x3D; 2x + 1 mod 6; h2(x) &#x3D; 3x + 2 mod 6; h3(x) &#x3D; 5x + 2 mod 6. </p>
+<center><img src="2/25.png" srcset="/img/loading.gif" lazyload alt="a" style="zoom:45%;" /> </center>
+
+<p>(b) Which of these hash functions are true permutations? <strong>None</strong></p>
+<p>(c) How close are the estimated Jaccard similarities for the six pairs of columns to the true Jaccard similarities?</p>
+<p>Others</p>
+<center><img src="2/26.png" srcset="/img/loading.gif" lazyload style="zoom:35%;" /> </center>
+
+<p>Ref：</p>
+<ul>
+<li>Mining in Massive Datasets <a target="_blank" rel="noopener" href="https://core.xjtlu.edu.cn/pluginfile.php/480899/mod_resource/content/1/ch3n.pdf">Book-Chapter3</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.chegg.com/homework-help/mining-of-massive-datasets-2nd-edition-solutions-9781139924801">https://www.chegg.com/homework-help/mining-of-massive-datasets-2nd-edition-solutions-9781139924801</a></li>
+<li><a target="_blank" rel="noopener" href="http://bbes.cn/r8de1u">http://bbes.cn/r8de1u</a></li>
+</ul>
+<h1 id="三-图"><a href="#三-图" class="headerlink" title="三. 图"></a>三. 图</h1><h2 id="1-图的基本性质"><a href="#1-图的基本性质" class="headerlink" title="1. 图的基本性质"></a>1. 图的基本性质</h2><p>如何衡量一个网络？有以下四种属性：</p>
+<center><img src="3/1.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" /> </center>
+
+<h5 id="1-度的分布-Degree-Distribution"><a href="#1-度的分布-Degree-Distribution" class="headerlink" title="1. 度的分布 (Degree Distribution)"></a>1. 度的分布 (Degree Distribution)</h5><p>P(k) 是随机选择一个节点，度为k的概率是多少：</p>
+<p>$N_k  $ 度为 k 的点的数目&#x2F;总节点的数目，即$P(k) &#x3D; \frac{N_k}{N}$</p>
+<center><img src="3/2.png" srcset="/img/loading.gif" lazyload style="zoom:33%;" /> </center>
+
+<p>在真实的图当中，degree 的分布是满足幂律分布这种倾斜分布特性的。对于有向图而言，还需要考虑入度和出度的分布。</p>
+<h5 id="2-路径长度-Path"><a href="#2-路径长度-Path" class="headerlink" title="2. 路径长度 (Path)"></a>2. 路径长度 (Path)</h5><p>路径本质上来说是节点的序列，是一系列一个连着一个的节点。</p>
+<p>在一系列点中的最短路径也就是组成路径的边的长度，在有向图当中，路径需要遵循箭头的方向，也就是边的顺序。</p>
+<center><img src="3/3.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" /> </center>
+
+<ul>
+<li>直径（diameter）</li>
+<li>平均路径长度</li>
+</ul>
+<h5 id="3-聚集系数-Clustering-Coefficient"><a href="#3-聚集系数-Clustering-Coefficient" class="headerlink" title="3. 聚集系数(Clustering Coefficient)"></a>3. 聚集系数(Clustering Coefficient)</h5><p>一个点的邻居节点的连接紧密程度。</p>
+<center><img src="3/4.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" /> </center>
+
+<p>例子：</p>
+<center><img src="3/5.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" /> </center>
+
+<h5 id="4-连通性-Connectivity"><a href="#4-连通性-Connectivity" class="headerlink" title="4. 连通性(Connectivity)"></a>4. 连通性(Connectivity)</h5><p>最大连通分量</p>
+<p>如何寻找连通分量？</p>
+<ol>
+<li>在图中随机取一个点，做 BFS，找到所有节点</li>
+</ol>
+<h2 id="2-真实世界中的图"><a href="#2-真实世界中的图" class="headerlink" title="2. 真实世界中的图"></a>2. 真实世界中的图</h2><ol>
+<li>度分布</li>
+</ol>
+<center><img src="3/6.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" /> </center>
+
+<p>度分布是非常具有倾斜性的，degree 大的点的数目有非常小的，degree 下的数目书非常大的。 社交网络中，大 V 的节点是非常少，而大部分的人邻居数目是非常少的。这种现象就叫做幂律函数。 </p>
+<ol start="2">
+<li>聚集系数</li>
+</ol>
+<center><img src="3/7.png" srcset="/img/loading.gif" lazyload style="zoom:33%;" /> </center>
+
+<p>degree 大的点，它的聚集系数比较小；而 degree 小的点，它的聚集系数比较大。在社交网络当中，大 v 节点大邻居好友之间的构建好友的可能性是比较小的。但是普通人，他的好友之间也是好友的概率是非常大的。这个平均聚集系数相对来说是比较大的，呈现出一定的社区现象，即一个节点周围的邻居一起构建出比较紧密的子图结构。</p>
+<ol start="3">
+<li>连通分量</li>
+</ol>
+<center><img src="3/8.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" /> </center>
+
+<p>图中最大的连通分量占据了 99.9% 的节点，图中大部分节点都在最大的社区中，剩下的节点要么在很小的连通分量当中，要么是孤立的节点。</p>
+<ol start="4">
+<li>半径</li>
+</ol>
+<p>六度分离：</p>
+<center><img src="3/9.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" /> </center>
+
+<h1 id="三-PageRank"><a href="#三-PageRank" class="headerlink" title="三. PageRank"></a>三. PageRank</h1><p>Idea: 把链接当作投票，越是重要的页面就会有越多的链接。但是，所有链接的比重都是相等的吗？</p>
+<p>这是一个递归问题：来自重要页面的链接更加重要‼️</p>
+<p>intution：</p>
+<ol>
+<li>人们经常访问的页面会更重要，但是互联网数据太过庞大，假设人们随机访问链接。</li>
+</ol>
+<h2 id="The-Flow-Model"><a href="#The-Flow-Model" class="headerlink" title="The Flow Model"></a><strong>The Flow Model</strong></h2><p>将页面$j$的排名定义为$r_{j}$</p>
+<p>$$r_{j}&#x3D;\sum_{i \rightarrow j} \frac{r_{i}}{\mathrm{~d}_{\mathrm{i}}}$$</p>
+<p>$d_{i}$ 为节点  j 的出度，$r_{j}$ 为 solutions to the flow equation. 例如下图：</p>
+<center><img src="4/1.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" /> </center>
+
+<p>首先带入公式得到各个节点的 flow equation, 这样我们就有了三个等式，但是同时也有了三个未知变量$r_{j},r_{a},r_{m}$，且公式中也没有任何常，没有办法求解。所以就有了一个额外约束：</p>
+<p>$r_{y}+r_{a}+r_{m}&#x3D;1$，于是得到了$r_{y}&#x3D;\frac{2}{5}, r_{a}&#x3D;\frac{2}{5}, r_{m}&#x3D;\frac{1}{5}$</p>
+<p>虽然使用 Gaussian elimination 能够求解，但只适用于小数据集。我们还需要找到一种方法来对庞大的网络数据图来进行计算。</p>
+<h2 id="PageRank：Matrix-Formulation"><a href="#PageRank：Matrix-Formulation" class="headerlink" title="PageRank：Matrix Formulation"></a><strong>PageRank：Matrix Formulation</strong></h2><p>随机邻接矩阵 M。</p>
+<p>假设页面 i 有 $d{i}$ 条边指向其它节点，$\text { If } i \rightarrow j \text {, then } M_{j i}&#x3D;\frac{1}{d} \text { else } M_{j i}&#x3D;0$。其中M是随机矩阵中的一列，列的总和为1。</p>
+<p>上面的公式可以被重写为：$$\boldsymbol{r}&#x3D;\boldsymbol{M} \cdot \boldsymbol{r}$$</p>
+<p>例：</p>
+<center><img src="4/2.png" srcset="/img/loading.gif" lazyload style="zoom:40%;" /> </center>
+
+<p>例：</p>
+<center><img src="4/3.png" srcset="/img/loading.gif" lazyload style="zoom:40%;" /> </center>
+
+<p>幂迭代</p>
+<center><img src="4/4.png" srcset="/img/loading.gif" lazyload style="zoom:30%;" /> </center>
+
+<center><img src="4/5.png" srcset="/img/loading.gif" lazyload style="zoom:100%;" /> </center>
+
+<center><img src="4/8.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" /> </center>
+
+<p> <strong>Google Formation</strong></p>
+<p>之前的 Pagerank 有三个问题：</p>
+<center><img src="4/6.png" srcset="/img/loading.gif" lazyload style="zoom:33%;" /> </center>
+
+<p>问题：</p>
+<center><img src="4/7.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" /> </center>
+
+<h2 id="Topic-Specific-Personalized-PageRank"><a href="#Topic-Specific-Personalized-PageRank" class="headerlink" title="Topic-Specific (Personalized) PageRank"></a>Topic-Specific (Personalized) PageRank</h2><h1 id="四-案例"><a href="#四-案例" class="headerlink" title="四. 案例"></a>四. 案例</h1><h3 id="数据收集"><a href="#数据收集" class="headerlink" title="数据收集"></a>数据收集</h3><p>本文从斯坦福的开源图网络库  SNAP 中选择一个具有代表性的社交媒体 <a target="_blank" rel="noopener" href="https://snap.stanford.edu/data/ego-Twitter.html">Twitter数据集</a> 来实现好友推荐和寻找意见领袖的功能。我们将使用原始文本格式的 “twitter_conbine.txt” 数据集，大小为 42.4 MB（44,550,129 字节），包含 2,420,766 个条目。 每一行代表一个单向的好友关注关系，包含两个用户 ID，用空格隔开，即 <code>214328887 34428380</code> 表示Twitter ID 为 214328887 的用户关注了 34428380 个用户，Spark 直接从本地读取 txt，无需再进行格式转化。</p>
+<p>ps：数据集以 ego 命令独立用户，称用户的连接为 alters。</p>
+<h3 id="数据建模"><a href="#数据建模" class="headerlink" title="数据建模"></a>数据建模</h3><p> — 构建属性图</p>
+<p>社交网络本质上是一个由节点和边组成的图，在 Twitter 数据集中具体表现为用户和粉丝关注关系组成的有向图。我们需要从本地已的 txt 好友关注关系信息中抽取顶点和边，将其抽象为 VertexRDD 和 EdgeRDD，使用 GraphX 将其构建为一个 Twitter 社交网络图，作为好友推荐和寻找意见领袖的数据基础。Vertex RDD 的函数及其参数为：<strong>RDD[(VertexId, VD)]</strong></p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs scala"><span class="hljs-keyword">val</span> vertices: <span class="hljs-type">RDD</span>[(<span class="hljs-type">VertexId</span>, <span class="hljs-type">String</span>)] = sc.parallelize(<br>      user.first().split(<span class="hljs-string">&quot; &quot;</span>).distinct.map( i =&gt; &#123;<br>      (i.toLong, i + <span class="hljs-string">&quot;user&quot;</span>)<br>&#125;))<br></code></pre></td></tr></table></figure>
+
+<p>VertexId 在本数据集中为用户节点的 id，要求为 Long 类型。又因为数据集中会存在同一个用户关注多个用户的情况，为了保证顶点 id 的唯一性，需要进行去重操作。 VD 意味着每个顶点都有一个属性，GraphX不支持缺少属性的图，我们可以为每条边和顶点设置相同的默认值。由于数据集中不包括用户的姓名等 profile，故我们将使用用户 id+user 字符来构建 String，来代表每个用户节点的属性。边的构建函数为：<strong>RDD[Edge[ED]]</strong></p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs scala"><span class="hljs-keyword">val</span> edges: <span class="hljs-type">RDD</span>[<span class="hljs-type">Edge</span>[<span class="hljs-type">String</span>]] = twitterData.map(_.split(<span class="hljs-string">&quot; &quot;</span>)).map &#123; arr =&gt;<br>      <span class="hljs-keyword">val</span> followeeId = arr(<span class="hljs-number">0</span>).toLong<br>      <span class="hljs-keyword">val</span> followerId = arr(<span class="hljs-number">1</span>).toLong<br>      <span class="hljs-type">Edge</span>(followeeId, followerId, <span class="hljs-string">&quot;follow&quot;</span>)<br>&#125;))<br></code></pre></td></tr></table></figure>
+
+<p>Edge 有一个 srcId 和一个 dstId 对应源和目标 vertex identifiers。此外 Edge 还有一个属性。srcId 和 dstId 在 Twitter 数据集中体现为一个用户对另一个用户的单向关注关系，我们将属性设置为 ”follow“ 关系。Edge 这部分数据集的格式符合要求，不必进行额外处理就可以直接构建 Edge RDD。</p>
+<p>在 GraphX 中，图的基础类为 Graph，它包含两个 RDD，一个为边 RDD，一个为顶点 RDD，可以通过前面构建过的顶点 RDD 和边 RDD 来生成属性图。</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs scala"><span class="hljs-keyword">val</span> graph = <span class="hljs-type">Graph</span>(vertices, edges)<br></code></pre></td></tr></table></figure>
+
+<p>随机图生成：GraphX 包含 <a target="_blank" rel="noopener" href="https://spark.apache.org/docs/1.3.0/api/java/org/apache/spark/graphx/util/GraphGenerators.html">R-MAT多步算法</a>，会生成与现实世界比较相近的图，经常用于模拟典型的社交网络架构。</p>
+<h3 id="图基本信息"><a href="#图基本信息" class="headerlink" title="图基本信息"></a>图基本信息</h3><p>属性图和 RDD 一样，也拥有基本操作符，如 numEdges、numVertices、inDegree、outDegree。这些属性在 Twitter 网络中体现为用户关注关系数量，用户个数以及每个用户的粉丝数和关注数。这些基本信息能够让我们对这个网络有一个初步了解。</p>
+<p>图的基本属性：</p>
+<ol>
+<li>度中心性 degree distribution 幂律分布</li>
+<li>聚集系数 clustering coefficient  <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/8e48b6d0706a">https://www.jianshu.com/p/8e48b6d0706a</a></li>
+</ol>
+<h3 id="相关算法包"><a href="#相关算法包" class="headerlink" title="相关算法包"></a>相关算法包</h3><p>spark和scala的相关性：<a target="_blank" rel="noopener" href="https://mvnrepository.com/artifact/org.apache.spark/spark-core">https://mvnrepository.com/artifact/org.apache.spark/spark-core</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Graph Mining</div>
+      <div>https://chakkk309.github.io/2022/09/28/GraphMining/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Jiaqi</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>September 28, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/08/26/projectList/" title="开源项目申请">
+                        <span class="hidden-mobile">开源项目申请</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br><span>Copyright © 2020-2022 Chakkk </span> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.1/es5/tex-mml-chtml.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
